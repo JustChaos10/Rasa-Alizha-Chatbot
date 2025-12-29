@@ -9,7 +9,7 @@ from app import app
 from auth.models import db, User
  
  
-def seed_users_from_csv(csv_file_path: str = "/Users/dhrutipurushotham/Documents/ITC/RASa/RASA-LLM-CHATBOT/data/users_seed.csv", skip_existing: bool = True):
+def seed_users_from_csv(csv_file_path: str = "docs/users_seed.csv", skip_existing: bool = True):
     """
     Seed users from CSV file into the database.
     Args:
@@ -123,7 +123,7 @@ def main():
     """Main function to run the seeding script"""
     import argparse
     parser = argparse.ArgumentParser(description='Seed users from CSV into the database')
-    parser.add_argument('--csv', default='data/users_seed.csv', help='Path to CSV file')
+    parser.add_argument('--csv', default='docs/users_seed.csv', help='Path to CSV file')
     parser.add_argument('--update-existing', action='store_true',
                         help='Update existing users instead of skipping them')
     parser.add_argument('--clear', action='store_true',
