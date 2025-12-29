@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Admin Dashboard - RASA Chatbot</title>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+
+    <!--Import Google Icon Font-->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!--Import materialize.css-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='css/materialize.min.css') }}"
+    />
+
+    <!--Main css-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <!-- Navigation Bar -->
+    <nav class="nav-wrapper indigo">
+      <div class="container">
+        <!-- No brand on admin navbar -->
+        <a href="{{ url_for('admin_dashboard') }}" class="brand-logo" style="display:none"></a>
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          {% if current_user.is_authenticated %}
+            <li>
+              <a href="#" style="color: #fff !important; cursor: default;">
+                Welcome, {{ current_user.email }}
+              </a>
+            </li>
+            <li><a href="{{ url_for('index') }}"><i class="material-icons left">chat</i>Chat</a></li>
+            
+            <li><a href="{{ url_for('admin_dashboard') }}"><i class="material-icons left">admin_panel_settings</i>Admin</a></li>
+            <li><a href="#" id="logoutBtn"><i class="material-icons left">logout</i>Logout</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <ul class="sidenav" id="mobile-nav">
+      {% if current_user.is_authenticated %}
+        <li><div class="user-view">
+          <div class="background indigo"></div>
+          <a href="#user"><i class="material-icons circle">account_circle</i></a>
+          <a href="#name"><span class="white-text name">{{ current_user.email }}</span></a>
+          <a href="#email"><span class="white-text email">{{ current_user.role }}</span></a>
+        </div></li>
+        <li><a href="{{ url_for('index') }}"><i class="material-icons">chat</i>Chat</a></li>
+        <li><a href="{{ url_for('admin_dashboard') }}"><i class="material-icons">admin_panel_settings</i>Admin</a></li>
+        <li><div class="divider"></div></li>
+        <li><a href="#" id="mobileLogoutBtn"><i class="material-icons">logout</i>Logout</a></li>
+      {% endif %}
+    </ul>
+
+    <main style="min-height: calc(100vh - 64px);">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!--JavaScript at end of body for optimized loading-->
+    <!-- jQuery with robust fallback to avoid `$ is not defined` -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      if (!window.jQuery) {
+        var alt = document.createElement('script');
+        alt.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+        document.head.appendChild(alt);
+      }
+    </script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/lib/materialize.min.js') }}"
+    ></script>
+    
+    <!-- Initialize Materialize components and handle auth -->
+    <script>
+      $(document).ready(function() {
+        // Initialize Materialize components (guard if CDN hiccups)
+        if (window.jQuery) {
+          $('.sidenav').sidenav();
+          $('.dropdown-trigger').dropdown();
+          $('.modal').modal();
+        }
+        
+        // Handle logout for both desktop and mobile
+        $('#logoutBtn, #mobileLogoutBtn').click(async function(e) {
+          e.preventDefault();
+          
+          try {
+            const response = await fetch('{{ url_for("auth.logout") }}', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              credentials: 'same-origin'
+            });
+            
+            const data = await response.json();
+            
+            if (data.ok) {
+              // Clear client-side per-user chat cache and sender binding
+              try {
+                sessionStorage.removeItem('chat_html');
+                sessionStorage.removeItem('sender_id');
+              } catch (e) {}
+              M.toast({html: 'Logged out successfully', classes: 'green'});
+              setTimeout(() => {
+                window.location.href = '{{ url_for("auth.login") }}';
+              }, 1000);
+            } else {
+              M.toast({html: 'Logout failed', classes: 'red'});
+            }
+            
+          } catch (error) {
+            console.error('Logout error:', error);
+            // Fallback: navigate to GET /auth/logout
+            window.location.href = '{{ url_for("auth.logout") }}';
+          }
+        });
+      });
+    </script>
+    
+    <!-- Dark Mode removed on admin too -->
+  </body>
+</html>

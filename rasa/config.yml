@@ -1,0 +1,30 @@
+recipe: default.v1
+language: en
+version: "3.1"
+
+# Minimal pipeline for fast small talk classification
+# All complex queries go to LLM Router
+
+pipeline:
+  - name: WhitespaceTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: 30  # Reduced epochs for faster training
+    entity_recognition: false  # No entities needed for small talk
+    intent_classification: true
+  - name: FallbackClassifier
+    threshold: 0.7  # High threshold - anything below goes to LLM
+    ambiguity_threshold: 0.1
+
+# Minimal policies - no complex dialog management needed
+policies:
+  - name: RulePolicy
+    core_fallback_threshold: 0.7
+
+assistant_id: hybrid-alizha-minimal

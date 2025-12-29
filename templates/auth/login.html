@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - RASA Chatbot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+    <meta content="utf-8" http-equiv="encoding" />
+
+    <!-- Import Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+
+    <!-- Import materialize.css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+
+    <style>
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        main {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .auth-card {
+            max-width: 400px;
+            width: 100%;
+            margin: 2rem;
+        }
+        .auth-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #667eea;
+        }
+        .error-message {
+            color: #f44336;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+        .btn-auth {
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .auth-links {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .auth-links a {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="auth-card">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="auth-title">
+                        <i class="material-icons medium">account_circle</i><br>
+                        Sign In
+                    </h4>
+                    
+                    <form id="loginForm">
+                        
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input id="email" name="email" type="email" class="validate" required>
+                                <label for="email">Email</label>
+                                <span class="helper-text" data-error="Please enter a valid email"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input id="password" name="password" type="password" class="validate" required minlength="8">
+                                <label for="password">Password</label>
+                                <span class="helper-text" data-error="Password must be at least 8 characters"></span>
+                            </div>
+                        </div>
+
+                        <div class="error-message" id="errorMessage"></div>
+
+                        <button class="btn btn-large waves-effect waves-light btn-auth" type="submit" id="loginBtn">
+                            <i class="material-icons left">send</i>Sign In
+                        </button>
+                    </form>
+
+                    <div class="auth-links">
+                        <p>
+                            <a href="{{ url_for('auth.register') }}">Don't have an account? Sign up</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='js/lib/materialize.min.js') }}"></script>
+    
+    <script>
+        $(document).ready(function() {
+            M.updateTextFields();
+            
+            $('#loginForm').on('submit', async function(e) {
+                e.preventDefault();
+                
+                const btn = $('#loginBtn');
+                const errorDiv = $('#errorMessage');
+                
+                // Disable button and show loading
+                btn.prop('disabled', true).html('<i class="material-icons left">hourglass_empty</i>Signing In...');
+                errorDiv.hide();
+                
+                try {
+                    const formData = {
+                        email: $('#email').val(),
+                        password: $('#password').val()
+                    };
+                    
+                    const response = await fetch('{{ url_for("auth.login_post") }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.ok) {
+                        // Ensure a fresh per-user sender and chat cache on login
+                        try {
+                            sessionStorage.removeItem('chat_html');
+                            sessionStorage.removeItem('sender_id');
+                        } catch (e) {}
+                        M.toast({html: '✅ Login successful! Redirecting...', classes: 'green'});
+                        setTimeout(() => {
+                            window.location.href = '{{ url_for("index") }}';
+                        }, 1000);
+                    } else {
+                        errorDiv.text(data.error || 'Login failed').show();
+                        btn.prop('disabled', false).html('<i class="material-icons left">send</i>Sign In');
+                    }
+                    
+                } catch (error) {
+                    errorDiv.text('Network error. Please try again.').show();
+                    btn.prop('disabled', false).html('<i class="material-icons left">send</i>Sign In');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

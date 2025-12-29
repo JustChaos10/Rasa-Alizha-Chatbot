@@ -1,0 +1,158 @@
+version: "3.1"
+
+# Minimal NLU for small talk only
+# All other intents are handled by the LLM Router
+
+nlu:
+- intent: greet
+  examples: |
+    - hi
+    - hello
+    - hey
+    - good morning
+    - good evening
+    - hi there
+    - greetings
+    - sup
+    - howdy
+    - yo
+    - hiya
+    - morning
+    - evening
+    - afternoon
+    - hi alizha
+    - hello alizha
+    - hey alizha
+    - hi bot
+    - hello bot
+    - wassup
+    - what's up
+
+- intent: goodbye
+  examples: |
+    - goodbye
+    - bye
+    - see you later
+    - thanks bye
+    - exit
+    - quit
+    - done
+    - thank you goodbye
+    - see ya
+    - farewell
+    - take care
+
+- intent: affirm
+  examples: |
+    - yes
+    - yeah
+    - correct
+    - that's right
+    - yes please
+    - yep
+    - sure
+    - ok
+    - okay
+    - alright
+    - absolutely
+    - definitely
+    - of course
+    - right
+    - y
+    - ya
+    - true
+    - that is right
+    - yes I do
+    - go ahead
+
+- intent: deny
+  examples: |
+    - no
+    - nope
+    - not really
+    - no thanks
+    - that's wrong
+    - incorrect
+    - nah
+    - not interested
+    - no way
+    - never
+    - not now
+    - maybe later
+    - not right now
+    - skip
+    - pass
+    - no ty
+    - no thank you
+    - nah thanks
+    - nope thanks
+    - no thanks
+    - i meant no
+    - just no
+    - simply no
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - what are you?
+    - who are you?
+    - are you real?
+    - you are a bot
+    - are you artificial intelligence?
+
+- intent: bot_capabilities
+  examples: |
+    - what can you do
+    - what are your capabilities
+    - how can you help me
+    - what services do you offer
+    - tell me what you can do
+    - what functions do you have
+    - what are your features
+    - how can you assist me
+    - what help can you provide
+    - show me your capabilities
+    - list your features
+    - what tasks can you perform
+    - what can you help me with
+    - what are you capable of
+    - show me what you can do
+    - help me understand your features
+    - what can this bot do
+    - what can this chatbot do
+    - what is your purpose
+    - what were you built for
+    - what is your function
+    - describe your capabilities
+    - explain what you do
+    - list your abilities
+
+# Fallback for anything else - will be routed to LLM
+# These anchor examples help Rasa recognize patterns that should NOT match small talk
+- intent: nlu_fallback
+  examples: |
+    - asdfghjkl
+    - xyzabc123
+    - what is coffee
+    - what is a dog
+    - what is python
+    - what is machine learning
+    - explain quantum physics
+    - tell me about history
+    - who invented the telephone
+    - where is Paris
+    - how does gravity work
+    - why is the sky blue
+    - calculate 5 plus 3
+    - write a poem
+    - translate hello to spanish
+    - summarize this article
+    - what happened in world war 2
+    - who is albert einstein
+    - what is the capital of france
+    - how to cook pasta
+    - what time is it in tokyo
+    - random question about science
+    - something completely unrelated

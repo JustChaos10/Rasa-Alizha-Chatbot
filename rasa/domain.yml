@@ -1,0 +1,42 @@
+version: "3.1"
+
+# Minimal domain for hybrid architecture
+# Only small talk intents - everything else goes to LLM Router
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - bot_capabilities
+  - nlu_fallback
+
+responses:
+  utter_greet:
+    - text: "Hello! I'm Alizha, your AI assistant. I can help you with weather, news, web search, leave requests, and much more. What would you like to do?"
+
+  utter_goodbye:
+    - text: "Goodbye! Have a great day! 👋"
+
+  utter_iamabot:
+    - text: "I am Alizha, an AI assistant powered by advanced language models. I'm here to help you! 🤖"
+
+  utter_capabilities:
+    - text: "
+        I can help you with many things! Here's what I can do \n
+        \n
+        🌤️ **Weather** - Get current weather for any city\n
+        📰 **News** - Fetch latest headlines or search for specific topics\n  
+        🔍 **Web Search** - Search the internet for information\n
+        📅 **Leave Requests** - Help you apply for leave\n
+        💬 **Chat** - Answer questions and have conversations\n
+        
+        Just ask me anything!"
+
+  utter_default:
+    - text: "I'll help you with that."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: false

@@ -1,0 +1,55 @@
+[project]
+name = "rasa-chatbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+
+dependencies = [
+    "aiohttp",
+    "faiss-cpu>=1.13.1",
+    "fastapi",
+    "fastmcp[service]",
+    "flask>=3.0",
+    "flask-cors",
+    "flask-login",
+    "flask-migrate",
+    "flask-sqlalchemy>=3.0",
+    "flask-wtf",
+    "google-generativeai",
+    "groq",
+    "httpx",
+    "jsonschema",
+    "langchain",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=4.0.0",
+    "langchain-groq",
+    "langchain-huggingface>=1.1.0",
+    "langdetect",
+    "llm-guard",
+    "matplotlib>=3.10.8",
+    "mcp",
+    "numpy",
+    "packaging",
+    "pillow",
+    "psycopg2",
+    "psycopg2-binary",
+    "pydantic",
+    "pypdf>=6.4.1",
+    "pypdf2",
+    "python-docx",
+    "python-dotenv",
+    "qdrant-client",
+    "redis",
+    "requests",
+    "seaborn>=0.13.2",
+    "sentence-transformers>=5.1.2",
+    "sqlalchemy",
+    "unstructured>=0.18.21",
+    "uvicorn",
+    "werkzeug",
+    "matplotlib",
+    "seaborn",
+    "langfuse",
+]
+

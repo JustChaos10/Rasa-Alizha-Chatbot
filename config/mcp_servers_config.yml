@@ -1,0 +1,117 @@
+# Configuration for Knowledge Base and SQL MCP Servers
+
+# ============================================================================
+# Vector Database Configuration (for Knowledge Base Server)
+# ============================================================================
+vector_db:
+  # Path to documents directory
+  docs_path: "documents"
+  
+  # Path to store FAISS vector database
+  vectordb_path: "data/vectordb"
+  
+  # HuggingFace embedding model for semantic search
+  # Options: sentence-transformers/all-MiniLM-L6-v2, sentence-transformers/all-mpnet-base-v2
+  embedding_model: "sentence-transformers/all-MiniLM-L6-v2"
+  
+  # Text chunking configuration
+  chunk_size: 500
+  chunk_overlap: 100
+  
+  # Number of document chunks to retrieve for each query
+  top_k: 5
+  
+  # Whether to append to existing DB (false = rebuild on each start)
+  append_db: false
+
+# ============================================================================
+# RAG LLM Configuration (for Knowledge Base Server)
+# ============================================================================
+rag_llm:
+  # Google Gemini model for answer generation
+  model: "gemini-2.5-flash"
+  
+  # Temperature for response generation (0.0 = deterministic, 1.0 = creative)
+  temperature: 0.0
+
+# ============================================================================
+# PostgreSQL Database Configuration (for SQL Server)
+# ============================================================================
+database:
+  # Connection pool size
+  pool_size: 10
+  
+  # Query execution timeout (seconds)
+  timeout: 300
+  
+  # Schema cache TTL (seconds)
+  schema_cache_ttl: 3600
+  
+  # Maximum retry attempts for failed queries
+  max_retries: 3
+  
+  # Connection timeout (seconds)
+  connection_timeout: 30
+
+# ============================================================================
+# Server Configuration
+# ============================================================================
+server:
+  # Knowledge Base server port
+  kb_port: 8082
+  
+  # SQL server port
+  sql_port: 8083
+  
+  # Server host
+  host: "127.0.0.1"
+  
+  # Debug mode
+  debug: false
+
+# ============================================================================
+# Logging Configuration
+# ============================================================================
+logging:
+  # Log level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  level: "INFO"
+  
+  # Enable file logging
+  to_file: true
+  
+  # Maximum log file size
+  max_size: "10MB"
+  
+  # Number of backup log files
+  backup_count: 5
+
+# ============================================================================
+# Visualization Configuration
+# ============================================================================
+visualization:
+  # Directory for storing generated charts
+  kb_charts_dir: "charts/kb"
+  sql_charts_dir: "charts/sql"
+  
+  # Chart cleanup settings
+  max_age_hours: 24
+  max_files: 100
+  
+  # Visualization generation timeout (seconds)
+  timeout: 120
+
+# ============================================================================
+# Performance Configuration
+# ============================================================================
+performance:
+  # Query processing timeout (seconds)
+  query_timeout: 300
+  
+  # Vector search timeout (seconds)
+  vector_search_timeout: 120
+  
+  # SQL execution timeout (seconds)
+  sql_execution_timeout: 120
+  
+  # LLM generation timeout (seconds)
+  llm_generation_timeout: 180
