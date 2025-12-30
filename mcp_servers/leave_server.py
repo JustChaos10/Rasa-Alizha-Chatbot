@@ -53,7 +53,10 @@ GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 import sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from architecture.telemetry import trace_llm_call, log_llm_event
+from rate_limiter import get_global_rate_limiter
+
 ENTITY_MODEL = "llama-3.3-70b-versatile"  # Fast model for extraction
+_rate_limiter = get_global_rate_limiter()
 
 
 # ============================================================================
@@ -112,6 +115,9 @@ Rules:
         metadata={"source": "leave_server"}
     ) as trace:
         try:
+            # Rate Limit Check
+            await _rate_limiter.wait_for_slot_async()
+            
             async with httpx.AsyncClient(timeout=10.0) as client:
                 response = await client.post(
                     GROQ_API_URL,
@@ -127,6 +133,9 @@ Rules:
                     }
                 )
                 response.raise_for_status()
+                
+                # Record successful call
+                _rate_limiter.record_call()
                 
                 data = response.json()
                 content = data["choices"][0]["message"]["content"].strip()

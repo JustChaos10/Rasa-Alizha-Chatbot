@@ -25,9 +25,8 @@ from .tool_logger import ToolLogger, get_tool_logger, ToolType
 from .conversation_memory import ConversationMemory, get_conversation_memory
 from .form_registry import FormHandlerRegistry, FormSubmission
 
-# Import llm_utils separately to avoid circular imports when importing from mcp_servers
-# Use: from architecture.llm_utils import MultiProviderLLM, get_llm
-# The exports are still listed in __all__ for documentation
+# NOTE: LLM calls should use GlobalLLMService from shared_utils
+# Use: from shared_utils import get_global_llm_service
 
 __all__ = [
     # Base classes
@@ -68,10 +67,4 @@ __all__ = [
     # Forms
     "FormHandlerRegistry",
     "FormSubmission",
-    
-    # LLM Utilities
-    "MultiProviderLLM",
-    "get_llm",
-    "LLMProvider",
-    "LLMResponse",
 ]

@@ -758,25 +758,24 @@ For "5 per cent" extract as 5.
 JSON:"""
         
         try:
-            response = await self.llm.invoke(prompt)
-            if response.success:
-                # Try to parse JSON from response
-                content = response.content.strip()
-                # Remove markdown code blocks if present
-                if content.startswith("```"):
-                    content = re.sub(r'^```(?:json)?\n?', '', content)
-                    content = re.sub(r'\n?```$', '', content)
-                
-                data = json.loads(content)
-                if isinstance(data, dict):
-                    # Validate all values are numeric
-                    clean_data = {}
-                    for k, v in data.items():
-                        if isinstance(v, (int, float)):
-                            clean_data[str(k)] = float(v)
-                        elif v is None or str(v).lower() in ['nil', 'none', 'null']:
-                            clean_data[str(k)] = 0.0
-                    return clean_data
+            content = await self.llm.call_async(prompt, trace_name="viz-extract-data")
+            # Try to parse JSON from response
+            content = content.strip()
+            # Remove markdown code blocks if present
+            if content.startswith("```"):
+                content = re.sub(r'^```(?:json)?\n?', '', content)
+                content = re.sub(r'\n?```$', '', content)
+            
+            data = json.loads(content)
+            if isinstance(data, dict):
+                # Validate all values are numeric
+                clean_data = {}
+                for k, v in data.items():
+                    if isinstance(v, (int, float)):
+                        clean_data[str(k)] = float(v)
+                    elif v is None or str(v).lower() in ['nil', 'none', 'null']:
+                        clean_data[str(k)] = 0.0
+                return clean_data
         except Exception as e:
             logger.warning(f"LLM data extraction failed: {e}")
         
@@ -799,15 +798,56 @@ Options:
 Respond with ONLY ONE WORD: bar, pie, or line"""
         
         try:
-            response = await self.llm.invoke(prompt)
-            if response.success:
-                chart_type = response.content.strip().lower()
-                if chart_type in ["bar", "pie", "line"]:
-                    return chart_type
+            content = await self.llm.call_async(prompt, trace_name="viz-chart-type")
+            chart_type = content.strip().lower()
+            if chart_type in ["bar", "pie", "line"]:
+                return chart_type
         except Exception as e:
             logger.warning(f"LLM chart type decision failed: {e}")
         
         return "bar"  # Default
+    
+    async def _llm_translate_labels(self, data: Dict[str, float]) -> Dict[str, float]:
+        """
+        Translate Arabic labels to English for better chart rendering.
+        
+        Args:
+            data: Dictionary with potentially Arabic labels as keys
+            
+        Returns:
+            Dictionary with translated English labels
+        """
+        if not data:
+            return data
+        
+        labels = list(data.keys())
+        prompt = f"""Translate these Arabic labels to concise English labels for a chart.
+
+Labels: {labels}
+
+Return ONLY a JSON object mapping Arabic to English.
+Example: {{"العنصر أ": "Item A", "العنصر ب": "Item B"}}
+
+JSON:"""
+        
+        try:
+            content = await self.llm.call_async(prompt, trace_name="viz-translate")
+            content = content.strip()
+            if content.startswith("```"):
+                content = re.sub(r'^```(?:json)?\n?', '', content)
+                content = re.sub(r'\n?```$', '', content)
+            
+            translations = json.loads(content)
+            if isinstance(translations, dict):
+                translated_data = {}
+                for k, v in data.items():
+                    new_key = translations.get(k, k)
+                    translated_data[new_key] = v
+                return translated_data
+        except Exception as e:
+            logger.warning(f"LLM label translation failed: {e}")
+        
+        return data  # Return original if translation fails
     
     def _generate_title(self, query: str, chart_type: str) -> str:
         """Generate a reasonable chart title from the query (supports Arabic and English)."""

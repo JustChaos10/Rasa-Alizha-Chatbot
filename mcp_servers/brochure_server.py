@@ -19,9 +19,11 @@ from typing import Any, Dict, List, Optional
 
 from mcp.server.fastmcp import FastMCP
 
-# Import telemetry
+# Add parent directory to path for imports
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from architecture.telemetry import trace_llm_call, log_llm_event
+
+# Import the GLOBAL LLM Service - THE ONLY WAY TO CALL LLMs
+from shared_utils import get_global_llm_service
 
 # Configure logging
 logging.basicConfig(
@@ -33,10 +35,9 @@ logger = logging.getLogger("brochure-server")
 # Initialize MCP server
 mcp = FastMCP("brochure-server")
 
-# API Configuration
-GROQ_API_KEY = os.getenv("GROQ_API_KEY")
-GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
-BROCHURE_MODEL = "llama-3.3-70b-versatile"
+# Get the global LLM service (handles rate limiting, failover, etc.)
+_llm_service = get_global_llm_service()
+logger.info("🤖 Brochure server using GlobalLLMService")
 
 # Google CSE Configuration for Image Search
 GOOGLE_CSE_API_KEY = os.getenv("GOOGLE_CSE_API_KEY", "").strip()
@@ -203,7 +204,7 @@ _image_service = ImageSearchService()
 
 
 # ============================================================================
-# LLM FUNCTIONS
+# LLM FUNCTION - Uses GlobalLLMService
 # ============================================================================
 
 async def call_llm(
@@ -213,62 +214,23 @@ async def call_llm(
     json_mode: bool = False,
     trace_name: str = "brochure-llm"
 ) -> str:
-    """Call the Groq LLM API with telemetry."""
-    if not GROQ_API_KEY:
-        raise ValueError("GROQ_API_KEY environment variable is not set")
+    """
+    Call LLM using the GlobalLLMService.
     
-    # Extract query preview for telemetry
-    query_preview = ""
-    for msg in messages:
-        if msg.get("role") == "user":
-            query_preview = msg.get("content", "")[:100]
-            break
-    
-    payload = {
-        "model": BROCHURE_MODEL,
-        "messages": messages,
-        "max_tokens": max_tokens,
-        "temperature": temperature,
-    }
-    if json_mode:
-        payload["response_format"] = {"type": "json_object"}
-    
-    # Telemetry: trace this LLM call
-    with trace_llm_call(
-        name=trace_name,
-        model=f"groq/{BROCHURE_MODEL}",
-        input_data={"messages": messages},
-        model_parameters={"temperature": temperature, "max_tokens": max_tokens, "json_mode": json_mode},
-        metadata={"source": "brochure_server"}
-    ) as trace:
-        async with httpx.AsyncClient(timeout=45.0) as client:
-            response = await client.post(
-                GROQ_API_URL,
-                json=payload,
-                headers={
-                    "Authorization": f"Bearer {GROQ_API_KEY}",
-                    "Content-Type": "application/json"
-                }
-            )
-            response.raise_for_status()
-            data = response.json()
-            result = data["choices"][0]["message"]["content"].strip()
-            
-            # Extract token usage
-            usage = None
-            if "usage" in data:
-                usage = {
-                    "prompt_tokens": data["usage"].get("prompt_tokens", 0),
-                    "completion_tokens": data["usage"].get("completion_tokens", 0),
-                    "total_tokens": data["usage"].get("total_tokens", 0)
-                }
-            
-            trace.update(
-                output=result,
-                usage=usage,
-                metadata={"success": True, "response_length": len(result)}
-            )
-            return result
+    This is a thin wrapper that delegates to the centralized LLM service,
+    which handles:
+    - Rate limiting (sliding window)
+    - Provider failover (GROQ → Gemini)
+    - Telemetry
+    - NO duplicate retry logic
+    """
+    return await _llm_service.call_with_messages_async(
+        messages=messages,
+        max_tokens=max_tokens,
+        temperature=temperature,
+        json_mode=json_mode,
+        trace_name=trace_name
+    )
 
 
 async def extract_subject_with_llm(user_prompt: str) -> str:

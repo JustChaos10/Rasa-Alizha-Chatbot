@@ -37,14 +37,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from visualization_tool import create_chart_from_config, parse_sql_result_to_data
 
-# Import llm_utils directly to avoid triggering architecture/__init__.py
+# Import GlobalLLMService directly
 import importlib.util
-_llm_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'architecture', 'llm_utils.py')
-_spec = importlib.util.spec_from_file_location('llm_utils', _llm_utils_path)
-_llm_utils = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_llm_utils)
-MultiProviderLLM = _llm_utils.MultiProviderLLM
-get_llm = _llm_utils.get_llm
+_shared_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'shared_utils.py')
+_spec = importlib.util.spec_from_file_location('shared_utils', _shared_utils_path)
+_shared_utils = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_shared_utils)
+get_global_llm_service = _shared_utils.get_global_llm_service
 
 
 def setup_logging():
@@ -124,13 +123,9 @@ class SQLServer:
         # Ensure charts directory exists
         Path(self.charts_dir).mkdir(parents=True, exist_ok=True)
 
-        # Initialize Multi-Provider LLM
-        self.llm = MultiProviderLLM(
-            groq_model=config.llm_model,
-            temperature=config.temperature,
-            max_tokens=1024
-        )
-        logger.info(f"✅ MultiProviderLLM initialized")
+        # Use GlobalLLMService for all LLM calls
+        self.llm = get_global_llm_service()
+        logger.info(f"✅ GlobalLLMService initialized")
         logger.info(f"   LLM Status: {self.llm.get_status()}")
 
         # ====================================================================
@@ -401,16 +396,13 @@ JSON Response:"""
         
         prompt = self.sql_prompt.format(schema=schema, question=question)
         
-        # Call LLM (with automatic failover)
-        response = await self.llm.invoke(prompt)
+        # Call LLM via GlobalLLMService
+        sql = await self.llm.call_async(prompt, trace_name="sql-generate")
         
-        if not response.success:
-            raise Exception(f"SQL generation failed: {response.error}")
-        
-        sql = response.content.strip()
+        sql = sql.strip()
         sql = sql.replace("```sql", "").replace("```", "").strip()
         
-        logger.info(f"✅ SQL generated via {response.provider.value}: {sql[:100]}...")
+        logger.info(f"✅ SQL generated: {sql[:100]}...")
         return sql
 
     async def execute_sql(self, sql: str) -> str:
@@ -423,21 +415,6 @@ JSON Response:"""
         finally:
             await self.release_connection(db)
 
-    async def _check_chart_requested_llm(self, query: str) -> bool:
-        """Use LLM to understand if visualization is requested (language-agnostic)."""
-        prompt = f"""Does the user want a chart, graph, visualization, or table?
-
-User Query: {query}
-
-Respond with ONLY: YES or NO"""
-        try:
-            response = await self.llm.invoke(prompt)
-            if response.success:
-                return response.content.strip().upper().startswith('YES')
-        except Exception as e:
-            logger.warning(f"LLM chart detection failed: {e}")
-        return self._check_chart_requested_keywords(query)
-    
     def _check_chart_requested_keywords(self, query: str) -> bool:
         """Fallback: Check for chart keywords (supports English and Arabic)."""
         query_lower = query.lower()
@@ -459,7 +436,8 @@ Respond with ONLY: YES or NO"""
         Returns:
             Tuple of (summary_text, visualization_config or None)
         """
-        chart_requested = await self._check_chart_requested_llm(question)
+        # Use keyword detection ONLY (no LLM call) - saves 1 LLM call per query
+        chart_requested = self._check_chart_requested_keywords(question)
         
         # Build visualization instruction based on whether chart was requested
         if chart_requested:
@@ -474,16 +452,16 @@ Respond with ONLY: YES or NO"""
             viz_instruction=viz_instruction
         )
         
-        # Call LLM (with automatic failover)
-        response = await self.llm.invoke(prompt)
-        
-        if not response.success:
-            logger.warning(f"Analysis LLM call failed: {response.error}")
+        # Call LLM via GlobalLLMService
+        try:
+            content = await self.llm.call_async(prompt, trace_name="sql-analyze")
+        except Exception as e:
+            logger.warning(f"Analysis LLM call failed: {e}")
             # Fallback: return truncated result as summary
             return self._create_fallback_summary(result), None
         
         # Parse JSON response
-        return self._parse_analysis_response(response.content, result)
+        return self._parse_analysis_response(content, result)
 
     def _parse_analysis_response(self, content: str, raw_result: str) -> Tuple[str, Optional[Dict]]:
         """

@@ -420,31 +420,27 @@ class RBACService:
 
 
 # =============================================================================
-# LLM SERVICE - Simple response generation
+# LLM SERVICE - Uses GlobalLLMService
 # =============================================================================
 
+# Import GlobalLLMService
+import importlib.util
+_shared_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'shared_utils.py')
+_spec = importlib.util.spec_from_file_location('shared_utils', _shared_utils_path)
+_shared_utils = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_shared_utils)
+get_global_llm_service = _shared_utils.get_global_llm_service
+
+
 class LLMService:
-    """Simple LLM service with fallback responses."""
+    """LLM service that delegates to GlobalLLMService."""
     
     def __init__(self):
-        self.groq_client = None
-        self._initialize_client()
-    
-    def _initialize_client(self):
-        """Initialize Groq client if available."""
-        api_key = os.environ.get('GROQ_API_KEY', '')
-        if api_key:
-            try:
-                from groq import Groq
-                self.groq_client = Groq(api_key=api_key)
-            except ImportError:
-                pass
+        self._global_llm = get_global_llm_service()
     
     def generate(self, query: str, context: str) -> str:
-        """Generate response using LLM or fallback."""
-        if self.groq_client:
-            try:
-                prompt = f"""Based on the following context, answer the question.
+        """Generate response using GlobalLLMService."""
+        prompt = f"""Based on the following context, answer the question.
 If the information is not in the context, say so clearly.
 
 Context:
@@ -453,21 +449,15 @@ Context:
 Question: {query}
 
 Answer:"""
-                
-                response = self.groq_client.chat.completions.create(
-                    model="llama-3.3-70b-versatile",
-                    messages=[{"role": "user", "content": prompt}],
-                    temperature=0.3,
-                    max_tokens=500
-                )
-                return response.choices[0].message.content
-            except Exception as e:
-                logger.warning(f"LLM call failed: {e}")
         
-        # Fallback: return context summary
-        if context:
-            return f"Based on available information: {context[:500]}..."
-        return "I don't have enough information to answer that question."
+        try:
+            return self._global_llm.call(prompt, trace_name="secure-rag-generate")
+        except Exception as e:
+            logger.warning(f"LLM call failed: {e}")
+            # Fallback: return context summary
+            if context:
+                return f"Based on available information: {context[:500]}..."
+            return "I don't have enough information to answer that question."
 
 
 # =============================================================================

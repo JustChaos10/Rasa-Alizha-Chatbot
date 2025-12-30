@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import io
 import json
@@ -75,7 +76,534 @@ class Config:
     IMAGE_SEARCH_MAX_RESULTS = int(os.getenv("IMAGE_SEARCH_MAX_RESULTS", "3") or 3)
     IMAGE_SEARCH_TIMEOUT = float(os.getenv("IMAGE_SEARCH_TIMEOUT", "4.0") or 4.0)
     IMAGE_SEARCH_CACHE_TTL = int(os.getenv("IMAGE_SEARCH_CACHE_TTL", "900") or 900)
- 
+
+# =============================================================================
+# GLOBAL RATE LIMITER - Import from standalone module
+# =============================================================================
+from rate_limiter import GlobalRateLimiter, get_global_rate_limiter
+
+
+# =============================================================================
+# GLOBAL LLM SERVICE - THE ONLY WAY TO CALL LLMs IN THIS PROJECT
+# =============================================================================
+# All servers, plugins, routers MUST use this service for LLM calls.
+# This ensures:
+# 1. Centralized rate limiting (sliding window)
+# 2. Automatic provider failover (GROQ → Gemini)
+# 3. NO duplicate retry logic in individual servers
+# 4. All calls are counted and traced
+# =============================================================================
+
+class GlobalLLMService:
+    """
+    Centralized LLM Service - THE ONLY WAY TO CALL LLMs.
+    
+    Features:
+    - Works both SYNC and ASYNC
+    - Automatic failover: GROQ → Gemini
+    - Centralized rate limiting (sliding window)
+    - NO retry logic - fails fast, tries next provider
+    - All calls counted against global rate limit
+    - Telemetry integration
+    
+    Usage (Sync):
+        llm = get_global_llm_service()
+        response = llm.call("Your prompt here")
+        
+    Usage (Async):
+        llm = get_global_llm_service()
+        response = await llm.call_async("Your prompt here")
+        
+    Usage with messages:
+        response = llm.call_with_messages([
+            {"role": "system", "content": "You are helpful"},
+            {"role": "user", "content": "Hello"}
+        ])
+    """
+    _instance = None
+    
+    def __new__(cls):
+        if cls._instance is None:
+            cls._instance = super().__new__(cls)
+            cls._instance._initialized = False
+        return cls._instance
+    
+    def _ensure_initialized(self):
+        """Lazy initialization."""
+        if self._initialized:
+            return
+            
+        self._rate_limiter = get_global_rate_limiter()
+        
+        # Provider configuration
+        self._groq_api_key = os.getenv("GROQ_API_KEY", "").strip()
+        self._gemini_api_key = (
+            os.getenv("GEMINI_API_KEY") or 
+            os.getenv("GOOGLE_API_KEY") or 
+            os.getenv("GOOGLE_GEMINI_API_KEY") or ""
+        ).strip()
+        
+        # Models
+        self._groq_model = os.getenv("GROQ_MODEL", "llama-3.3-70b-versatile")
+        self._gemini_model = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+        
+        # API URLs
+        self._groq_url = "https://api.groq.com/openai/v1/chat/completions"
+        self._gemini_url_template = "https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
+        
+        # Track provider health (reset after 3 consecutive failures)
+        self._groq_failures = 0
+        self._gemini_failures = 0
+        self._max_failures = 3
+        
+        # Default settings
+        self._default_temperature = 0.7
+        self._default_max_tokens = 1000
+        self._default_timeout = 30.0
+        
+        self._initialized = True
+        
+        # Log initialization
+        groq_status = "✅" if self._groq_api_key else "❌"
+        gemini_status = "✅" if self._gemini_api_key else "❌"
+        logger.info(f"🤖 GlobalLLMService initialized: GROQ {groq_status}, Gemini {gemini_status}")
+    
+    def _get_provider_order(self) -> list:
+        """Get providers in order of preference, skipping ones that are failing."""
+        self._ensure_initialized()
+        providers = []
+        
+        # GROQ first (primary) if available and not failing too much
+        if self._groq_api_key and self._groq_failures < self._max_failures:
+            providers.append("groq")
+        
+        # Gemini as fallback
+        if self._gemini_api_key and self._gemini_failures < self._max_failures:
+            providers.append("gemini")
+        
+        # If all failing, reset and try again
+        if not providers:
+            logger.warning("🔄 All LLM providers failing, resetting failure counts...")
+            self._groq_failures = 0
+            self._gemini_failures = 0
+            if self._groq_api_key:
+                providers.append("groq")
+            if self._gemini_api_key:
+                providers.append("gemini")
+        
+        return providers
+    
+    def _call_groq_sync(
+        self, 
+        messages: list, 
+        max_tokens: int, 
+        temperature: float,
+        timeout: float,
+        json_mode: bool = False
+    ) -> str:
+        """Synchronous GROQ API call."""
+        payload = {
+            "model": self._groq_model,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+        }
+        if json_mode:
+            payload["response_format"] = {"type": "json_object"}
+        
+        response = requests.post(
+            self._groq_url,
+            json=payload,
+            headers={
+                "Authorization": f"Bearer {self._groq_api_key}",
+                "Content-Type": "application/json"
+            },
+            timeout=timeout
+        )
+        response.raise_for_status()
+        data = response.json()
+        self._groq_failures = max(0, self._groq_failures - 1)  # Reduce on success
+        return data["choices"][0]["message"]["content"].strip()
+    
+    async def _call_groq_async(
+        self, 
+        messages: list, 
+        max_tokens: int, 
+        temperature: float,
+        timeout: float,
+        json_mode: bool = False
+    ) -> str:
+        """Asynchronous GROQ API call."""
+        import httpx
+        
+        payload = {
+            "model": self._groq_model,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+        }
+        if json_mode:
+            payload["response_format"] = {"type": "json_object"}
+        
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.post(
+                self._groq_url,
+                json=payload,
+                headers={
+                    "Authorization": f"Bearer {self._groq_api_key}",
+                    "Content-Type": "application/json"
+                }
+            )
+            response.raise_for_status()
+            data = response.json()
+            self._groq_failures = max(0, self._groq_failures - 1)
+            return data["choices"][0]["message"]["content"].strip()
+    
+    def _call_gemini_sync(
+        self, 
+        messages: list, 
+        max_tokens: int, 
+        temperature: float,
+        timeout: float
+    ) -> str:
+        """Synchronous Gemini API call."""
+        # Convert messages to single prompt
+        prompt = self._messages_to_prompt(messages)
+        
+        url = f"{self._gemini_url_template.format(model=self._gemini_model)}?key={self._gemini_api_key}"
+        
+        # Gemini 2.5 uses "thinking" tokens internally, add buffer
+        effective_max_tokens = max(max_tokens + 100, 200)
+        
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": temperature,
+                "maxOutputTokens": effective_max_tokens,
+            }
+        }
+        
+        response = requests.post(url, json=payload, timeout=timeout)
+        response.raise_for_status()
+        data = response.json()
+        self._gemini_failures = max(0, self._gemini_failures - 1)
+        return self._extract_gemini_text(data)
+    
+    async def _call_gemini_async(
+        self, 
+        messages: list, 
+        max_tokens: int, 
+        temperature: float,
+        timeout: float
+    ) -> str:
+        """Asynchronous Gemini API call."""
+        import httpx
+        
+        prompt = self._messages_to_prompt(messages)
+        url = f"{self._gemini_url_template.format(model=self._gemini_model)}?key={self._gemini_api_key}"
+        
+        effective_max_tokens = max(max_tokens + 100, 200)
+        
+        payload = {
+            "contents": [{"parts": [{"text": prompt}]}],
+            "generationConfig": {
+                "temperature": temperature,
+                "maxOutputTokens": effective_max_tokens,
+            }
+        }
+        
+        async with httpx.AsyncClient(timeout=timeout) as client:
+            response = await client.post(url, json=payload)
+            response.raise_for_status()
+            data = response.json()
+            self._gemini_failures = max(0, self._gemini_failures - 1)
+            return self._extract_gemini_text(data)
+    
+    def _messages_to_prompt(self, messages: list) -> str:
+        """Convert OpenAI-style messages to single prompt for Gemini."""
+        parts = []
+        for msg in messages:
+            role = msg.get("role", "user")
+            content = msg.get("content", "")
+            if role == "system":
+                parts.append(f"Instructions: {content}")
+            else:
+                parts.append(content)
+        return "\n\n".join(parts)
+    
+    def _extract_gemini_text(self, data: dict) -> str:
+        """Extract text from Gemini response, handling various formats."""
+        candidates = data.get("candidates", [])
+        if not candidates:
+            raise ValueError("No candidates in Gemini response")
+        
+        content = candidates[0].get("content", {})
+        parts = content.get("parts", [])
+        
+        if not parts:
+            finish_reason = candidates[0].get("finishReason", "UNKNOWN")
+            if finish_reason == "MAX_TOKENS":
+                raise ValueError("Gemini hit MAX_TOKENS before generating content")
+            raise ValueError(f"No parts in Gemini response (finish_reason: {finish_reason})")
+        
+        return parts[0].get("text", "").strip()
+    
+    # =========================================================================
+    # PUBLIC API - Use these methods for all LLM calls
+    # =========================================================================
+    
+    def call(
+        self,
+        prompt: str,
+        max_tokens: int = None,
+        temperature: float = None,
+        timeout: float = None,
+        json_mode: bool = False,
+        trace_name: str = "global-llm"
+    ) -> str:
+        """
+        SYNC: Call LLM with automatic failover.
+        
+        Args:
+            prompt: Simple text prompt
+            max_tokens: Max response tokens (default: 1000)
+            temperature: Sampling temperature (default: 0.7)
+            timeout: Request timeout seconds (default: 30)
+            json_mode: Request JSON response format (GROQ only)
+            trace_name: Name for telemetry trace
+            
+        Returns:
+            LLM response text
+            
+        Raises:
+            Exception if all providers fail
+        """
+        messages = [{"role": "user", "content": prompt}]
+        return self.call_with_messages(
+            messages=messages,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            timeout=timeout,
+            json_mode=json_mode,
+            trace_name=trace_name
+        )
+    
+    def call_with_messages(
+        self,
+        messages: list,
+        max_tokens: int = None,
+        temperature: float = None,
+        timeout: float = None,
+        json_mode: bool = False,
+        trace_name: str = "global-llm"
+    ) -> str:
+        """
+        SYNC: Call LLM with message list and automatic failover.
+        
+        Args:
+            messages: List of {"role": "...", "content": "..."} dicts
+            max_tokens: Max response tokens
+            temperature: Sampling temperature
+            timeout: Request timeout
+            json_mode: Request JSON format
+            trace_name: Telemetry trace name
+            
+        Returns:
+            LLM response text
+        """
+        self._ensure_initialized()
+        
+        max_tokens = max_tokens or self._default_max_tokens
+        temperature = temperature if temperature is not None else self._default_temperature
+        timeout = timeout or self._default_timeout
+        
+        providers = self._get_provider_order()
+        if not providers:
+            raise ValueError("No LLM API keys configured")
+        
+        last_error = None
+        
+        for provider in providers:
+            # Rate limit check BEFORE each attempt
+            self._rate_limiter.wait_if_needed()
+            
+            logger.info(f"🤖 [{trace_name}] Calling {provider.upper()}...")
+            
+            try:
+                with trace_llm_call(
+                    name=trace_name,
+                    model=f"{provider}/{self._groq_model if provider == 'groq' else self._gemini_model}",
+                    input_data={"messages": messages},
+                    model_parameters={"temperature": temperature, "max_tokens": max_tokens},
+                    metadata={"source": "GlobalLLMService", "provider": provider}
+                ) as trace:
+                    if provider == "groq":
+                        result = self._call_groq_sync(messages, max_tokens, temperature, timeout, json_mode)
+                    else:
+                        result = self._call_gemini_sync(messages, max_tokens, temperature, timeout)
+                    
+                    # Record successful call
+                    self._rate_limiter.record_call()
+                    
+                    logger.info(f"✅ [{trace_name}] {provider.upper()} succeeded")
+                    trace.update(output=result[:500], metadata={"success": True, "provider": provider})
+                    return result
+                    
+            except requests.HTTPError as e:
+                self._rate_limiter.record_call()  # Count failed attempts too
+                
+                if e.response.status_code == 429:
+                    logger.warning(f"⚠️ [{trace_name}] {provider.upper()} rate limited (429)")
+                    if provider == "groq":
+                        self._groq_failures += 1
+                    else:
+                        self._gemini_failures += 1
+                    last_error = e
+                    continue
+                raise
+                
+            except Exception as e:
+                self._rate_limiter.record_call()
+                logger.warning(f"⚠️ [{trace_name}] {provider.upper()} failed: {e}")
+                if provider == "groq":
+                    self._groq_failures += 1
+                else:
+                    self._gemini_failures += 1
+                last_error = e
+                continue
+        
+        raise Exception(f"All LLM providers failed. Last error: {last_error}")
+    
+    async def call_async(
+        self,
+        prompt: str,
+        max_tokens: int = None,
+        temperature: float = None,
+        timeout: float = None,
+        json_mode: bool = False,
+        trace_name: str = "global-llm"
+    ) -> str:
+        """
+        ASYNC: Call LLM with automatic failover.
+        
+        Same as call() but for async contexts.
+        """
+        messages = [{"role": "user", "content": prompt}]
+        return await self.call_with_messages_async(
+            messages=messages,
+            max_tokens=max_tokens,
+            temperature=temperature,
+            timeout=timeout,
+            json_mode=json_mode,
+            trace_name=trace_name
+        )
+    
+    async def call_with_messages_async(
+        self,
+        messages: list,
+        max_tokens: int = None,
+        temperature: float = None,
+        timeout: float = None,
+        json_mode: bool = False,
+        trace_name: str = "global-llm"
+    ) -> str:
+        """
+        ASYNC: Call LLM with message list and automatic failover.
+        
+        Same as call_with_messages() but for async contexts.
+        """
+        self._ensure_initialized()
+        
+        max_tokens = max_tokens or self._default_max_tokens
+        temperature = temperature if temperature is not None else self._default_temperature
+        timeout = timeout or self._default_timeout
+        
+        providers = self._get_provider_order()
+        if not providers:
+            raise ValueError("No LLM API keys configured")
+        
+        last_error = None
+        
+        for provider in providers:
+            # Rate limit check BEFORE each attempt
+            await self._rate_limiter.wait_for_slot_async()
+            
+            logger.info(f"🤖 [{trace_name}] Calling {provider.upper()}...")
+            
+            try:
+                with trace_llm_call(
+                    name=trace_name,
+                    model=f"{provider}/{self._groq_model if provider == 'groq' else self._gemini_model}",
+                    input_data={"messages": messages},
+                    model_parameters={"temperature": temperature, "max_tokens": max_tokens},
+                    metadata={"source": "GlobalLLMService", "provider": provider}
+                ) as trace:
+                    if provider == "groq":
+                        result = await self._call_groq_async(messages, max_tokens, temperature, timeout, json_mode)
+                    else:
+                        result = await self._call_gemini_async(messages, max_tokens, temperature, timeout)
+                    
+                    # Record successful call
+                    self._rate_limiter.record_call()
+                    
+                    logger.info(f"✅ [{trace_name}] {provider.upper()} succeeded")
+                    trace.update(output=result[:500], metadata={"success": True, "provider": provider})
+                    return result
+                    
+            except Exception as e:
+                self._rate_limiter.record_call()
+                
+                error_str = str(e).lower()
+                is_rate_limit = "429" in error_str or "rate" in error_str
+                
+                if is_rate_limit:
+                    logger.warning(f"⚠️ [{trace_name}] {provider.upper()} rate limited")
+                else:
+                    logger.warning(f"⚠️ [{trace_name}] {provider.upper()} failed: {e}")
+                
+                if provider == "groq":
+                    self._groq_failures += 1
+                else:
+                    self._gemini_failures += 1
+                last_error = e
+                continue
+        
+        raise Exception(f"All LLM providers failed. Last error: {last_error}")
+    
+    def get_status(self) -> dict:
+        """Get current status of all providers."""
+        self._ensure_initialized()
+        return {
+            "groq": {
+                "available": bool(self._groq_api_key),
+                "model": self._groq_model,
+                "failures": self._groq_failures
+            },
+            "gemini": {
+                "available": bool(self._gemini_api_key),
+                "model": self._gemini_model,
+                "failures": self._gemini_failures
+            },
+            "rate_limiter": self._rate_limiter.get_stats()
+        }
+
+
+# Global singleton instance
+_global_llm_service = None
+
+
+def get_global_llm_service() -> GlobalLLMService:
+    """
+    Get the global LLM service singleton.
+    
+    USE THIS FOR ALL LLM CALLS IN THE PROJECT.
+    """
+    global _global_llm_service
+    if _global_llm_service is None:
+        _global_llm_service = GlobalLLMService()
+    return _global_llm_service
+
+
 # Secure RAG JSONL logger helper
 def _sr_log(entry: Dict[str, Any]) -> None:
     try:
@@ -122,168 +650,62 @@ def get_service_manager():
     return ServiceManager()
  
 class LLMService:
+    """
+    Legacy LLM Service - Now delegates to GlobalLLMService.
+    
+    This class is kept for backward compatibility. All calls are
+    routed through the centralized GlobalLLMService.
+    """
     def __init__(self):
-        # Try to load API key, but don't hard-fail: enable graceful fallback
-        try:
-            self._api_key = self._get_api_key()
-        except Exception as e:
-            logger.warning(f"GROQ_API_KEY not configured; enabling fallback mode ({e})")
-            self._api_key = ""
- 
-        # Build headers (omit Authorization if no key)
-        self._headers = {"Content-Type": "application/json"}
-        if self._api_key:
-            self._headers["Authorization"] = f"Bearer {self._api_key}"
- 
+        # Use the global LLM service for all calls
+        self._global_llm = get_global_llm_service()
+        
         # Lazy init for Secure RAG components
         self._input_guard = None
         self._output_guard = None
         self._rbac = None
+        
     def _get_api_key(self):
+        """Legacy method - kept for compatibility."""
         api_key = os.getenv("GROQ_API_KEY")
         if not api_key or len(api_key.strip()) < 20:
             raise ValueError("GROQ_API_KEY not configured properly")
         return api_key.strip()
+    
     def generate_text(self, messages, model=None, trace_name: str = "shared-llm-call", **kwargs):
-        """Generate text via Groq HTTP API; fallback to secure_rag GroqService if unavailable.
- 
-        messages: list of {role, content}. We will extract the latest user prompt and any system
-        context for fallback mode.
         """
-        used_model = model or Config.DEFAULT_TEXT_MODEL
+        Generate text using GlobalLLMService.
         
-        # Extract query preview for telemetry
-        query_preview = ""
-        for msg in messages:
-            if isinstance(msg, dict) and msg.get("role") == "user":
-                query_preview = msg.get("content", "")[:100]
-                break
+        All calls are routed through the centralized service which handles:
+        - Rate limiting
+        - Provider failover (GROQ → Gemini)
+        - Telemetry
+        """
+        # Delegate to GlobalLLMService
+        json_mode = kwargs.get('response_format', {}).get('type') == 'json_object' if kwargs.get('response_format') else False
         
-        # If API key is missing, go straight to fallback
-        if not self._api_key:
-            return self._generate_text_fallback(messages, model=model, trace_name=trace_name, **kwargs)
- 
-        payload = {
-            "model": used_model,
-            "messages": messages,
-            "max_tokens": kwargs.get('max_tokens', Config.DEFAULT_MAX_TOKENS),
-            "temperature": kwargs.get('temperature', Config.DEFAULT_TEMPERATURE)
-        }
-        if 'response_format' in kwargs and kwargs['response_format']:
-            payload["response_format"] = kwargs['response_format']
- 
-        # Telemetry: trace this LLM call
-        with trace_llm_call(
-            name=trace_name,
-            model=f"groq/{used_model}",
-            input_data={"messages": messages},
-            model_parameters={"temperature": payload["temperature"], "max_tokens": payload["max_tokens"]},
-            metadata={"source": "shared_utils.LLMService"}
-        ) as trace:
-            try:
-                response = requests.post(
-                    Config.GROQ_API_URL,
-                    json=payload,
-                    headers=self._headers,
-                    timeout=kwargs.get('timeout', Config.DEFAULT_TIMEOUT)
-                )
-                response.raise_for_status()
-                response_data = response.json()
-                result = response_data["choices"][0]["message"]["content"]
-                
-                # Extract token usage
-                usage = None
-                if "usage" in response_data:
-                    usage = {
-                        "prompt_tokens": response_data["usage"].get("prompt_tokens", 0),
-                        "completion_tokens": response_data["usage"].get("completion_tokens", 0),
-                        "total_tokens": response_data["usage"].get("total_tokens", 0)
-                    }
-                
-                trace.update(
-                    output=result,
-                    usage=usage,
-                    metadata={"success": True, "provider": "groq"}
-                )
-                return result
-            except Exception as e:
-                logger.warning(f"Groq HTTP call failed; using fallback ({e})")
-                log_llm_event("groq-http-fallback", {"error": str(e)}, level="WARNING")
-                trace.update(
-                    output=f"Fallback triggered: {e}",
-                    metadata={"success": False, "fallback": True}
-                )
-                return self._generate_text_fallback(messages, model=model, trace_name=f"{trace_name}-fallback", **kwargs)
- 
-    def _generate_text_fallback(self, messages, model=None, trace_name: str = "shared-llm-fallback", **kwargs) -> str:
-        """Use Gemini as fallback when GROQ fails."""
-        try:
-            # Try Gemini as primary fallback
-            import google.generativeai as genai
-            
-            gemini_key = os.getenv('GEMINI_API_KEY') or os.getenv('GOOGLE_API_KEY')
-            if not gemini_key:
-                raise ValueError("No Gemini API key configured for fallback")
-            
-            genai.configure(api_key=gemini_key)
-            gemini_model = genai.GenerativeModel(Config.GEMINI_MODEL)
-            
-            # Convert messages to Gemini format
-            prompt_parts = []
-            for m in (messages or []):
-                if isinstance(m, dict):
-                    role = m.get("role", "user")
-                    content = m.get("content", "")
-                    if role == "system":
-                        prompt_parts.insert(0, f"Instructions: {content}\n")
-                    else:
-                        prompt_parts.append(content)
-            
-            full_prompt = "\n".join(prompt_parts)
-            
-            # Telemetry: trace fallback call
-            with trace_llm_call(
-                name=trace_name,
-                model=f"gemini/{Config.GEMINI_MODEL}",
-                input_data={"prompt": full_prompt[:500]},
-                model_parameters={"temperature": kwargs.get('temperature', Config.DEFAULT_TEMPERATURE)},
-                metadata={"source": "shared_utils.LLMService.fallback"}
-            ) as trace:
-                response = gemini_model.generate_content(
-                    full_prompt,
-                    generation_config=genai.types.GenerationConfig(
-                        temperature=kwargs.get('temperature', Config.DEFAULT_TEMPERATURE),
-                        max_output_tokens=kwargs.get('max_tokens', Config.DEFAULT_MAX_TOKENS),
-                    )
-                )
-                result = response.text if response.text else ""
-                
-                trace.update(
-                    output=result[:500],
-                    metadata={"success": True, "fallback_provider": "gemini"}
-                )
-                logger.info(f"✅ Fallback to Gemini successful")
-                return result
-        except Exception as e:
-            logger.error(f"Fallback generation failed: {e}")
-            log_llm_event("fallback-generation-failed", {"error": str(e)}, level="ERROR")
-            return "I'm sorry, I'm unable to generate a response right now."
+        return self._global_llm.call_with_messages(
+            messages=messages,
+            max_tokens=kwargs.get('max_tokens', Config.DEFAULT_MAX_TOKENS),
+            temperature=kwargs.get('temperature', Config.DEFAULT_TEMPERATURE),
+            timeout=kwargs.get('timeout', Config.DEFAULT_TIMEOUT),
+            json_mode=json_mode,
+            trace_name=trace_name
+        )
  
     # --- Secure RAG integration wrappers ---
     def _init_secure_services(self):
         if self._input_guard is None or self._output_guard is None or self._rbac is None:
             try:
-                from secure_rag.input_guard_service import InputGuardService
-                from secure_rag.output_guard_service import OutputGuardService
-                from secure_rag.rbac_service import RBACService, AccessLevel
-                self._InputGuardServiceCls = InputGuardService
-                self._OutputGuardServiceCls = OutputGuardService
+                from mcp_servers.secure_rag_system.secure_rag import InputGuard, OutputGuard, RBACService, AccessLevel
+                self._InputGuardCls = InputGuard
+                self._OutputGuardCls = OutputGuard
                 self._RBACServiceCls = RBACService
                 self._AccessLevelCls = AccessLevel
-                # Create instances (verbose False to reduce console noise in prod)
-                self._input_guard = self._InputGuardServiceCls(verbose=False)
-                self._output_guard = self._OutputGuardServiceCls(verbose=False)
-                self._rbac = self._RBACServiceCls(verbose=False)
+                # Create instances
+                self._input_guard = self._InputGuardCls()
+                self._output_guard = self._OutputGuardCls()
+                self._rbac = self._RBACServiceCls()
  
                 # Seed RBAC with a minimal document set if empty, so context building is useful
                 try:
@@ -380,15 +802,14 @@ class LLMService:
             return self.generate_text(messages, model=model, **kwargs)
  
         # 1) Input guard
-        scan = self._input_guard.scan_input(user_text or "")
-        scan_results = getattr(scan, "scanner_results", {}) if scan else {}
-        sanitized_prompt = getattr(scan, "sanitized_prompt", user_text)
+        scan = self._input_guard.scan(user_text or "")
+        sanitized_prompt = scan.sanitized_prompt if scan else user_text
         sanitized_changed = sanitized_prompt != user_text
  
-        invalid_scanners = [name for name, ok in scan_results.items() if not ok]
+        # Admin override for false positives
         admin_override = False
-        if not getattr(scan, "is_valid", True):
-            if (user_role or "").strip().lower() == "admin" and invalid_scanners and all(name.lower().startswith("anonymize") for name in invalid_scanners):
+        if not scan.is_valid:
+            if (user_role or "").strip().lower() == "admin":
                 admin_override = True
             else:
                 try:
@@ -396,10 +817,7 @@ class LLMService:
                         "timestamp": datetime.now().isoformat(),
                         "stage": "input_guard",
                         "result": "blocked",
-                        "scanner_results": scan_results,
-                        "scanner_scores": getattr(scan, 'scanner_scores', {}),
-                        "warnings": getattr(scan, 'warnings', []),
-                        "errors": getattr(scan, 'errors', [])
+                        "warnings": scan.warnings
                     })
                 except Exception:
                     pass
@@ -418,10 +836,7 @@ class LLMService:
                 "timestamp": datetime.now().isoformat(),
                 "stage": "input_guard",
                 "result": "ok",
-                "scanner_results": scan_results,
-                "scanner_scores": getattr(scan, 'scanner_scores', {}),
-                "warnings": getattr(scan, 'warnings', []),
-                "errors": getattr(scan, 'errors', []),
+                "warnings": scan.warnings,
                 "sanitized": sanitized_changed
             })
         except Exception:
@@ -429,17 +844,18 @@ class LLMService:
  
         # 2) RBAC context (admin gets FULL, user LIMITED)
         user_id_for_rbac = self._map_role_to_user_id(user_role)
-        access = self._rbac.check_access(user_id_for_rbac, sanitized_prompt)
+        rbac_user = self._rbac.get_user(user_id_for_rbac, db_role=(user_role or "user").strip().lower())
+        access = self._rbac.check_access(rbac_user, sanitized_prompt)
         # Build context from accessible docs (only when relevant)
         include_docs = self._should_include_rbac_context(sanitized_prompt)
         rbac_context = ""
-        if include_docs and access and getattr(access, "filtered_documents", None):
+        if include_docs and access and access.filtered_documents:
             ctx_parts = []
             for doc in access.filtered_documents:
-                part = f"Document: {doc.page_content}"
-                cat = doc.metadata.get('category') if isinstance(doc.metadata, dict) else None
-                if cat:
-                    part += f" (Category: {cat})"
+                # Documents are dicts with 'text' and 'category' keys
+                text = doc.get('text', '')
+                category = doc.get('category', 'general')
+                part = f"Document: {text} (Category: {category})"
                 ctx_parts.append(part)
             rbac_context = "\n\n".join(ctx_parts)
  
@@ -484,31 +900,27 @@ class LLMService:
         except Exception:
             pass
  
-        # 4) Output guard with role-based enforcement
+        # 4) Output guard (filters sensitive data like SSN, credit cards, passwords)
         try:
-            out = self._output_guard.scan_output(sanitized_prompt, raw, access_level=level)
-            if not getattr(out, "is_valid", True):
+            out = self._output_guard.scan(raw)
+            if not out.is_valid:
                 try:
                     _sr_log({
                         "timestamp": datetime.now().isoformat(),
                         "stage": "output_guard",
                         "result": "blocked",
-                        "warnings": getattr(out, 'warnings', []),
-                        "errors": getattr(out, 'errors', []),
-                        "quality": getattr(out, 'quality_score', None)
+                        "warnings": out.warnings
                     })
                 except Exception:
                     pass
                 return "The response was blocked by security policy. Please try a different question."
-            final = getattr(out, "sanitized_response", raw) or raw
+            final = out.sanitized_response or raw
             try:
                 _sr_log({
                     "timestamp": datetime.now().isoformat(),
                     "stage": "output_guard",
                     "result": "ok",
-                    "warnings": getattr(out, 'warnings', []),
-                    "errors": getattr(out, 'errors', []),
-                    "quality": getattr(out, 'quality_score', None),
+                    "warnings": out.warnings,
                     "final_len": len(final or "")
                 })
             except Exception:
@@ -1391,7 +1803,11 @@ Arabic:"""
             return f"[Translation Error] {arabic_text}"
    
     def translate_english_to_arabic(self, english_text: str) -> str:
-        """Translate English text to Arabic while preserving links (Markdown and HTML)."""
+        """
+        Translate English text to Arabic while preserving links (Markdown and HTML).
+        
+        OPTIMIZED: Uses batched translation to reduce API calls.
+        """
         if not english_text or not english_text.strip():
             return english_text
 
@@ -1400,82 +1816,67 @@ Arabic:"""
             return cached_translation
 
         try:
-            # Pattern for Markdown links: [text](url)
-            md_pattern = re.compile(r'^(\d+)\.\s\[(.+?)\]\((https?://[^\s)]+)\)(.*)$')
             # Pattern for HTML links: <a href='url'>text</a>
             html_link_pattern = re.compile(r"<a\s+href=['\"]([^'\"]+)['\"][^>]*>([^<]+)</a>", re.IGNORECASE)
             
             lines_en = english_text.splitlines()
-            
-            # Check if text contains HTML links
             has_html_links = bool(html_link_pattern.search(english_text))
-            use_md_structured = any(md_pattern.match(line.strip()) for line in lines_en)
 
             if has_html_links:
-                # Handle HTML links - translate text parts only, preserve links
-                translated_lines: List[str] = []
-                for line in lines_en:
+                # OPTIMIZED: Collect all texts to translate, then batch translate
+                texts_to_translate: List[str] = []
+                line_mapping: List[Tuple[int, str, Any]] = []  # (line_idx, type, extra_data)
+                
+                for idx, line in enumerate(lines_en):
                     stripped = line.strip()
                     if not stripped:
-                        translated_lines.append('')
+                        line_mapping.append((idx, "empty", None))
                         continue
                     
-                    # Check if line has HTML link
+                    if stripped == "---MESSAGE_SPLIT---":
+                        line_mapping.append((idx, "split", None))
+                        continue
+                    
+                    # Extract HTML links and surrounding text
                     html_match = html_link_pattern.search(stripped)
                     if html_match:
-                        # Extract parts before, the link, and after
-                        # Translate the link text only
-                        def translate_link_text(match):
-                            url = match.group(1)
-                            link_text = match.group(2)
-                            # Translate the link text
-                            translated_text = self._translate_plain_en_to_ar(link_text)
-                            return f"<a href='{url}' target='_blank' style='color: #29b6f6; font-weight: bold; text-decoration: none;'>{translated_text}</a>"
-                        
-                        # Replace HTML links with translated versions
-                        translated_line = html_link_pattern.sub(translate_link_text, stripped)
-                        
-                        # Also translate the prefix (like "1. ")
-                        prefix_match = re.match(r'^(\d+)\.\s*', translated_line)
-                        if prefix_match:
-                            # Keep the number prefix as-is
-                            pass
-                        
-                        translated_lines.append(translated_line)
-                    elif stripped.startswith("Source:") or "Source:" in stripped:
-                        # Translate source line
-                        translated_lines.append(self._translate_plain_en_to_ar(stripped))
-                    elif stripped == "---MESSAGE_SPLIT---":
-                        translated_lines.append(stripped)
+                        # Get link text to translate
+                        link_text = html_match.group(2)
+                        url = html_match.group(1)
+                        texts_to_translate.append(link_text)
+                        line_mapping.append((idx, "html_link", {"url": url, "original": stripped, "text_idx": len(texts_to_translate) - 1}))
                     else:
-                        # Translate other lines (descriptions, etc.)
-                        translated_lines.append(self._translate_plain_en_to_ar(stripped))
+                        texts_to_translate.append(stripped)
+                        line_mapping.append((idx, "text", {"text_idx": len(texts_to_translate) - 1}))
                 
-                translation = "\n".join(line for line in translated_lines if line is not None)
+                # Batch translate all collected texts
+                if texts_to_translate:
+                    translations = self._batch_translate_en_to_ar(texts_to_translate)
+                else:
+                    translations = []
                 
-            elif use_md_structured:
-                translated_lines: List[str] = []
-                for line in lines_en:
-                    stripped = line.strip()
-                    if not stripped:
-                        translated_lines.append('')
-                        continue
-                    match = md_pattern.match(stripped)
-                    if match:
-                        index, label, url, remainder = match.groups()
-                        arabic_label = self._translate_plain_en_to_ar(label)
-                        arabic_label = self._sanitize_markdown_label(arabic_label, label)
-                        translated_lines.append(f"{index}. {arabic_label}")
-                        translated_lines.append(f"الرابط: <{url}>")
-                        translated_lines.append('')
-                        remainder = remainder.strip()
-                        if remainder:
-                            arabic_extra = self._translate_plain_en_to_ar(remainder)
-                            translated_lines.append(arabic_extra)
-                    else:
-                        translated_lines.append(self._translate_plain_en_to_ar(stripped))
-                translation = "\n".join(line for line in translated_lines if line is not None)
+                # Reconstruct lines
+                translated_lines: List[str] = [""] * len(lines_en)
+                for idx, line_type, data in line_mapping:
+                    if line_type == "empty":
+                        translated_lines[idx] = ""
+                    elif line_type == "split":
+                        translated_lines[idx] = "---MESSAGE_SPLIT---"
+                    elif line_type == "html_link":
+                        url = data["url"]
+                        text_idx = data["text_idx"]
+                        translated_text = translations[text_idx] if text_idx < len(translations) else data.get("original", "")
+                        # Preserve number prefix if present
+                        prefix_match = re.match(r'^(\d+)\.\s*', data["original"])
+                        prefix = prefix_match.group(0) if prefix_match else ""
+                        translated_lines[idx] = f"{prefix}<a href='{url}' target='_blank' style='color: #29b6f6; font-weight: bold; text-decoration: none;'>{translated_text}</a>"
+                    elif line_type == "text":
+                        text_idx = data["text_idx"]
+                        translated_lines[idx] = translations[text_idx] if text_idx < len(translations) else lines_en[idx]
+                
+                translation = "\n".join(translated_lines)
             else:
+                # For simple text without links, translate as single block
                 translation = self._translate_plain_en_to_ar(english_text)
 
             translation = self._normalize_arabic_digits(translation)
@@ -1515,12 +1916,8 @@ Arabic:"""
         """
         Translate all text content in an Adaptive Card from English to Arabic.
         
-        This recursively walks the card JSON structure and translates:
-        - TextBlock "text" fields
-        - Action "title" fields
-        - Input "label" and "placeholder" fields
-        - FactSet "title" and "value" fields
-        - Column/Container items recursively
+        OPTIMIZED: Uses BATCHED translation (ONE LLM call) instead of per-field calls.
+        This reduces API calls from 10-20 down to 1-2.
         
         Returns a new card dict with translated content.
         """
@@ -1531,8 +1928,6 @@ Arabic:"""
         translated_card = deepcopy(card)
         
         # Text fields that should be translated
-        # Note: "value" is excluded to protect Input.Choice, Input.Date, etc.
-        # FactSet values are handled explicitly.
         TEXT_FIELDS = {"text", "title", "label", "placeholder", "altText", "fallbackText"}
         # Fields that should NOT be translated (URLs, IDs, types, etc.)
         SKIP_FIELDS = {"type", "url", "id", "$schema", "version", "style", "size", "weight", 
@@ -1542,71 +1937,173 @@ Arabic:"""
                        "requires", "lang", "speak", "selectAction", "refresh", "authentication"}
         
         def should_translate(text: str) -> bool:
-            """Check if text should be translated (not a URL, number-only, or too short)"""
+            """Check if text should be translated"""
             if not text or not isinstance(text, str):
                 return False
             text = text.strip()
             if len(text) < 2:
                 return False
-            # Skip URLs
             if text.startswith(("http://", "https://", "data:", "mailto:")):
                 return False
-            # Skip if already Arabic
             arabic_chars = sum(1 for c in text if '\u0600' <= c <= '\u06FF')
             if arabic_chars > len(text) * 0.3:
                 return False
-            # Skip pure numbers/dates
             if re.match(r'^[\d\s\-\/\:\.\,\$\%]+$', text):
                 return False
             return True
         
-        def translate_value(value: str) -> str:
-            """Translate a single text value"""
-            if not should_translate(value):
-                return value
-            try:
-                translated = self._translate_plain_en_to_ar(value)
-                return translated if translated else value
-            except Exception as e:
-                logger.warning(f"Failed to translate card text '{value[:30]}...': {e}")
-                return value
+        # STEP 1: Extract all translatable texts with their paths
+        texts_to_translate: List[Tuple[str, List]] = []  # (text, path)
         
-        def translate_node(node: Any) -> Any:
-            """Recursively translate a node in the card structure"""
+        def extract_texts(node: Any, path: List) -> None:
+            """Recursively extract texts and their paths"""
             if isinstance(node, dict):
-                result = {}
                 for key, val in node.items():
                     if key in SKIP_FIELDS:
-                        result[key] = val
-                    elif key in TEXT_FIELDS and isinstance(val, str):
-                        result[key] = translate_value(val)
+                        continue
+                    elif key in TEXT_FIELDS and isinstance(val, str) and should_translate(val):
+                        texts_to_translate.append((val, path + [key]))
                     elif key == "facts" and isinstance(val, list):
-                        # FactSet facts need special handling
-                        result[key] = [
-                            {
-                                "title": translate_value(f.get("title", "")) if isinstance(f.get("title"), str) else f.get("title"),
-                                "value": translate_value(f.get("value", "")) if isinstance(f.get("value"), str) else f.get("value")
-                            } if isinstance(f, dict) else f
-                            for f in val
-                        ]
+                        for i, fact in enumerate(val):
+                            if isinstance(fact, dict):
+                                if isinstance(fact.get("title"), str) and should_translate(fact["title"]):
+                                    texts_to_translate.append((fact["title"], path + [key, i, "title"]))
+                                if isinstance(fact.get("value"), str) and should_translate(fact["value"]):
+                                    texts_to_translate.append((fact["value"], path + [key, i, "value"]))
                     elif key in ("body", "items", "columns", "actions", "card", "inlines"):
-                        result[key] = translate_node(val)
+                        extract_texts(val, path + [key])
                     else:
-                        result[key] = translate_node(val)
-                return result
+                        extract_texts(val, path + [key])
             elif isinstance(node, list):
-                return [translate_node(item) for item in node]
-            else:
-                return node
+                for i, item in enumerate(node):
+                    extract_texts(item, path + [i])
         
-        translated_card = translate_node(translated_card)
+        extract_texts(translated_card, [])
         
-        # Add RTL lang attribute to the card for proper rendering
+        if not texts_to_translate:
+            logger.info("✅ No texts to translate in Adaptive Card")
+            return translated_card
+        
+        # STEP 2: Batch translate ALL texts in ONE LLM call
+        logger.info(f"🔄 Batched translation: {len(texts_to_translate)} texts in 1 LLM call")
+        
+        # Build batch prompt
+        texts_only = [t[0] for t in texts_to_translate]
+        translations = self._batch_translate_en_to_ar(texts_only)
+        
+        # STEP 3: Apply translations back to card
+        def set_nested(obj, path: List, value):
+            """Set a value in a nested dict/list using a path"""
+            for key in path[:-1]:
+                obj = obj[key]
+            obj[path[-1]] = value
+        
+        for (original_text, path), translated in zip(texts_to_translate, translations):
+            try:
+                set_nested(translated_card, path, translated)
+            except (KeyError, IndexError) as e:
+                logger.warning(f"Failed to set translation at path {path}: {e}")
+        
+        # Add RTL lang attribute
         if "lang" not in translated_card:
             translated_card["lang"] = "ar"
         
-        logger.info("✅ Adaptive Card translated to Arabic")
+        logger.info("✅ Adaptive Card translated to Arabic (batched)")
         return translated_card
+    
+    def _batch_translate_en_to_ar(self, texts: List[str]) -> List[str]:
+        """
+        Translate multiple texts in ONE LLM call to save API quota.
+        Returns list of translations in same order as input.
+        """
+        if not texts:
+            return []
+        
+        # Check cache first - return cached ones, only translate uncached
+        uncached_indices = []
+        results = [""] * len(texts)
+        
+        for i, text in enumerate(texts):
+            # Check common phrases
+            lower_text = text.lower().strip().strip(".,!?:;")
+            if lower_text in self.COMMON_PHRASES:
+                results[i] = self.COMMON_PHRASES[lower_text]
+                continue
+            
+            # Check cache
+            cached = self._get_cached_translation(text, "en_to_ar_plain")
+            if cached:
+                results[i] = cached
+            else:
+                uncached_indices.append(i)
+        
+        if not uncached_indices:
+            logger.info(f"✅ All {len(texts)} texts found in cache")
+            return results
+        
+        # Build batch prompt for uncached texts
+        uncached_texts = [texts[i] for i in uncached_indices]
+        
+        # Format: numbered list for easy parsing
+        numbered_input = "\n".join(f"{i+1}. {text}" for i, text in enumerate(uncached_texts))
+        
+        prompt = f"""You are a professional English to Arabic translator.
+Translate each numbered English line to Arabic. Return ONLY the Arabic translations, one per line, keeping the same numbering.
+
+English texts:
+{numbered_input}
+
+Arabic translations (same numbering):"""
+        
+        messages = [{"role": "user", "content": prompt}]
+        
+        try:
+            response = self._get_llm_service().generate_text(
+                messages=messages,
+                model=Config.TRANSLATION_MODEL,
+                max_tokens=min(1500, len(uncached_texts) * 100),  # Reasonable limit
+                temperature=0.1,
+                timeout=Config.TRANSLATION_TIMEOUT + 10
+            )
+            
+            # Parse response - extract numbered lines
+            lines = response.strip().split("\n")
+            translations = {}
+            
+            for line in lines:
+                line = line.strip()
+                if not line:
+                    continue
+                # Match "1. translation" or "1- translation" or "1) translation"
+                match = re.match(r'^(\d+)[.\-\)]\s*(.+)$', line)
+                if match:
+                    idx = int(match.group(1)) - 1  # 0-based
+                    trans = match.group(2).strip()
+                    if 0 <= idx < len(uncached_texts):
+                        translations[idx] = trans
+            
+            # Apply translations and cache them
+            for local_idx, original_idx in enumerate(uncached_indices):
+                if local_idx in translations:
+                    trans = translations[local_idx]
+                    trans = self._strip_reasoning(trans, "ar")
+                    results[original_idx] = trans
+                    # Cache for future use
+                    self._cache_translation(texts[original_idx], trans, "en_to_ar_plain")
+                else:
+                    # Fallback: keep original if parsing failed
+                    results[original_idx] = texts[original_idx]
+                    logger.warning(f"Batch translation missing index {local_idx}")
+            
+            logger.info(f"✅ Batch translated {len(uncached_indices)} texts in 1 LLM call")
+            return results
+            
+        except Exception as e:
+            logger.error(f"Batch translation failed: {e}")
+            # Fallback: return originals
+            for i in uncached_indices:
+                results[i] = texts[i]
+            return results
    
     def clear_cache(self):
         """Clear translation cache"""

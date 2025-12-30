@@ -38,14 +38,13 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from visualization_tool import SmartVisualizationTool, create_chart_from_config, parse_sql_result_to_data
 
-# Import llm_utils directly to avoid triggering architecture/__init__.py
+# Import GlobalLLMService directly
 import importlib.util
-_llm_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'architecture', 'llm_utils.py')
-_spec = importlib.util.spec_from_file_location('llm_utils', _llm_utils_path)
-_llm_utils = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(_llm_utils)
-MultiProviderLLM = _llm_utils.MultiProviderLLM
-get_llm = _llm_utils.get_llm
+_shared_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'shared_utils.py')
+_spec = importlib.util.spec_from_file_location('shared_utils', _shared_utils_path)
+_shared_utils = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_shared_utils)
+get_global_llm_service = _shared_utils.get_global_llm_service
 
 
 def setup_logging():
@@ -327,13 +326,9 @@ class RAGSystem:
         # Ensure charts directory exists
         Path(self.charts_dir).mkdir(parents=True, exist_ok=True)
 
-        # Initialize Multi-Provider LLM
-        self.llm = MultiProviderLLM(
-            groq_model=config.llm_model,
-            temperature=config.temperature,
-            max_tokens=1024
-        )
-        logger.info(f"✅ MultiProviderLLM initialized")
+        # Use GlobalLLMService for all LLM calls
+        self.llm = get_global_llm_service()
+        logger.info(f"✅ GlobalLLMService initialized")
         logger.info(f"   LLM Status: {self.llm.get_status()}")
         
         # Initialize SmartVisualizationTool for automatic chart decisions
@@ -367,9 +362,8 @@ User Query: {query}
 
 Respond with ONLY: YES or NO"""
         try:
-            response = await self.llm.invoke(prompt)
-            if response.success:
-                return response.content.strip().upper().startswith('YES')
+            content = await self.llm.call_async(prompt, trace_name="kb-viz-check")
+            return content.strip().upper().startswith('YES')
         except Exception as e:
             logger.warning(f"LLM visualization detection failed: {e}")
         return self._check_visualization_requested_keywords(query)
@@ -451,15 +445,14 @@ Respond with ONLY: YES or NO"""
                 query=query
             )
             
-            # Call LLM (with automatic failover)
-            response = await self.llm.invoke(prompt)
-            
-            if not response.success:
-                logger.warning(f"LLM call failed: {response.error}")
+            # Call LLM via GlobalLLMService
+            try:
+                answer = await self.llm.call_async(prompt, trace_name="kb-answer")
+                answer = answer.strip()
+                logger.info(f"✅ KB answer generated")
+            except Exception as e:
+                logger.warning(f"LLM call failed: {e}")
                 return self._create_fallback_answer(context), None
-            
-            answer = response.content.strip()
-            logger.info(f"✅ KB answer generated via {response.provider.value}")
             
             # Step 3: Use SmartVisualizationTool to decide and create visualization
             # Pass both the query and the answer for intelligent chart decision

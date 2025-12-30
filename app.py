@@ -30,6 +30,7 @@ from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 
 from shared_utils import get_service_manager, MessageFormatter, logger
+from rate_limiter import get_global_rate_limiter
 from auth.models import db, User
 from auth.routes import auth_bp
 from auth.rbac import role_required
@@ -1112,6 +1113,24 @@ def health():
 @app.route('/healthz')
 def healthz():
     return jsonify({'ok': True}), 200
+
+
+@app.route('/api/rate-limit-stats')
+def rate_limit_stats():
+    """Get current rate limiter statistics for debugging."""
+    try:
+        rate_limiter = get_global_rate_limiter()
+        stats = rate_limiter.get_stats()
+        return jsonify({
+            'success': True,
+            'rate_limiter': stats,
+            'timestamp': datetime.now().isoformat()
+        })
+    except Exception as e:
+        return jsonify({
+            'success': False,
+            'error': str(e)
+        }), 500
 
 
 @app.route('/clear_chat', methods=['POST'])

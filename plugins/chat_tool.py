@@ -17,12 +17,13 @@ import httpx
 from architecture.base_tool import BaseTool, ToolSchema
 from architecture.telemetry import trace_llm_call, log_llm_event
 
-# Import the shared ImageSearchService
+# Import the shared ImageSearchService and Rate Limiter
 try:
-    from shared_utils import get_service_manager
+    from shared_utils import get_service_manager, get_global_rate_limiter
     IMAGE_SERVICE_AVAILABLE = True
 except ImportError:
     IMAGE_SERVICE_AVAILABLE = False
+    get_global_rate_limiter = None
 
 logger = logging.getLogger(__name__)
 
@@ -53,6 +54,12 @@ class ChatTool(BaseTool):
         self._tavily_api_key = os.getenv("TAVILY_API_KEY", "")
         self._tavily_url = "https://api.tavily.com/search"
         
+        # Initialize rate limiter
+        try:
+            self.rate_limiter = get_global_rate_limiter() if get_global_rate_limiter else None
+        except:
+            self.rate_limiter = None
+
         # Use ImageSearchService from shared_utils
         self._image_service = None
         if IMAGE_SERVICE_AVAILABLE:
@@ -345,6 +352,10 @@ class ChatTool(BaseTool):
         try:
             client = await self._get_client()
             
+            # Rate Limit Check
+            if self.rate_limiter:
+                await self.rate_limiter.wait_for_slot_async()
+            
             prompt = f"""Based on this Q&A, generate exactly 3 related follow-up questions the user might want to ask.
 
 User Question: {message}
@@ -379,6 +390,10 @@ JSON array:"""
                 )
                 response.raise_for_status()
                 
+                # Record successful call
+                if self.rate_limiter:
+                    self.rate_limiter.record_call()
+
                 data = response.json()
                 content = data["choices"][0]["message"]["content"].strip()
                 
@@ -529,6 +544,10 @@ JSON array:"""
         try:
             client = await self._get_client()
             
+            # Rate Limit Check
+            if self.rate_limiter:
+                await self.rate_limiter.wait_for_slot_async()
+
             # Telemetry: trace this main chat LLM call
             with trace_llm_call(
                 name="chat-main-response",
@@ -553,6 +572,10 @@ JSON array:"""
                 )
                 response.raise_for_status()
                 
+                # Record successful call
+                if self.rate_limiter:
+                    self.rate_limiter.record_call()
+
                 data = response.json()
                 assistant_message = data["choices"][0]["message"]["content"]
                 

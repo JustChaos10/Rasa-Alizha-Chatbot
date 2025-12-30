@@ -26,6 +26,14 @@ from architecture.mcp_host import MCPHost, get_mcp_host
 from architecture.code_executor import CodeExecutor
 from architecture.telemetry import trace_llm_call, log_llm_event, is_telemetry_enabled
 
+# Import GlobalLLMService for all LLM calls
+import importlib.util
+_shared_utils_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'shared_utils.py')
+_spec = importlib.util.spec_from_file_location('shared_utils', _shared_utils_path)
+_shared_utils = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_shared_utils)
+get_global_llm_service = _shared_utils.get_global_llm_service
+
 # Try to import Global Input Guard from consolidated module
 try:
     from mcp_servers.secure_rag_system.secure_rag import InputGuard
@@ -173,10 +181,8 @@ class LLMRouter:
         self._code_executor: Optional[CodeExecutor] = None
         self._mcp_initialized = False
         
-        # Load balancing counter for alternating between providers
-        self._llm_call_counter = 0
-        self._groq_failures = 0
-        self._gemini_failures = 0
+        # Use GlobalLLMService for all LLM calls
+        self._global_llm = get_global_llm_service()
         
         mode = "code-first" if self.config.code_first_mode else "legacy"
         providers = []
@@ -235,118 +241,6 @@ class LLMRouter:
             self._client = httpx.AsyncClient(timeout=30.0)
         return self._client
     
-    async def _call_groq(
-        self,
-        messages: List[Dict[str, str]],
-        model: Optional[str] = None,
-        temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None,
-        response_format: Optional[Dict] = None
-    ) -> LLMResult:
-        """
-        Call Groq API for LLM completion (internal - use _call_llm for load balancing).
-        Returns LLMResult with content and usage data.
-        """
-        if not self.config.groq_api_key:
-            raise ValueError("GROQ_API_KEY not configured")
-        
-        client = await self._get_client()
-        used_model = model or self.config.routing_model
-        
-        payload = {
-            "model": used_model,
-            "messages": messages,
-            "temperature": temperature if temperature is not None else self.config.routing_temperature,
-            "max_tokens": max_tokens or self.config.routing_max_tokens,
-        }
-        
-        if response_format:
-            payload["response_format"] = response_format
-        
-        headers = {
-            "Authorization": f"Bearer {self.config.groq_api_key}",
-            "Content-Type": "application/json"
-        }
-        
-        response = await client.post(
-            self.config.groq_api_url,
-            json=payload,
-            headers=headers,
-            timeout=self.config.routing_timeout
-        )
-        response.raise_for_status()
-        
-        data = response.json()
-        content = data["choices"][0]["message"]["content"]
-        
-        # Extract usage data
-        usage = None
-        if "usage" in data:
-            usage = {
-                "prompt_tokens": data["usage"].get("prompt_tokens", 0),
-                "completion_tokens": data["usage"].get("completion_tokens", 0),
-                "total_tokens": data["usage"].get("total_tokens", 0)
-            }
-        
-        return LLMResult(content=content, usage=usage, provider="groq", model=used_model)
-    
-    async def _call_gemini(
-        self,
-        messages: List[Dict[str, str]],
-        temperature: Optional[float] = None,
-        max_tokens: Optional[int] = None,
-    ) -> LLMResult:
-        """
-        Call Gemini API for LLM completion.
-        Returns LLMResult with content and usage data.
-        """
-        if not self.config.gemini_api_key:
-            raise ValueError("GEMINI_API_KEY not configured")
-        
-        client = await self._get_client()
-        
-        # Convert messages to Gemini format
-        contents = []
-        for msg in messages:
-            role = "user" if msg["role"] == "user" else "model"
-            if msg["role"] == "system":
-                # Gemini doesn't have system role, prepend to first user message
-                contents.append({"role": "user", "parts": [{"text": msg["content"]}]})
-                contents.append({"role": "model", "parts": [{"text": "Understood."}]})
-            else:
-                contents.append({"role": role, "parts": [{"text": msg["content"]}]})
-        
-        payload = {
-            "contents": contents,
-            "generationConfig": {
-                "temperature": temperature if temperature is not None else self.config.routing_temperature,
-                "maxOutputTokens": max_tokens or self.config.routing_max_tokens,
-            }
-        }
-        
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{self.config.gemini_model}:generateContent?key={self.config.gemini_api_key}"
-        
-        response = await client.post(
-            url,
-            json=payload,
-            timeout=self.config.routing_timeout + 10  # Gemini can be slower
-        )
-        response.raise_for_status()
-        
-        data = response.json()
-        content = data["candidates"][0]["content"]["parts"][0]["text"]
-        
-        # Extract usage data from Gemini response
-        usage = None
-        if "usageMetadata" in data:
-            usage = {
-                "prompt_tokens": data["usageMetadata"].get("promptTokenCount", 0),
-                "completion_tokens": data["usageMetadata"].get("candidatesTokenCount", 0),
-                "total_tokens": data["usageMetadata"].get("totalTokenCount", 0)
-            }
-        
-        return LLMResult(content=content, usage=usage, provider="gemini", model=self.config.gemini_model)
-    
     async def _call_llm(
         self,
         messages: List[Dict[str, str]],
@@ -354,112 +248,28 @@ class LLMRouter:
         temperature: Optional[float] = None,
         max_tokens: Optional[int] = None,
         response_format: Optional[Dict] = None,
-        prefer_provider: Optional[str] = None,  # "groq" or "gemini"
-        is_small_request: bool = False,  # Small requests go to GROQ, large to Gemini
-        trace_name: str = "router-llm-call"  # Telemetry trace name
+        prefer_provider: Optional[str] = None,
+        is_small_request: bool = False,
+        trace_name: str = "router-llm-call"
     ) -> str:
         """
-        Load-balanced LLM call with automatic failover between GROQ and Gemini.
+        LLM call using GlobalLLMService.
         
-        Strategy:
-        - Small requests (routing, simple queries) -> GROQ (faster)
-        - Large requests (code gen, long context) -> Gemini (higher limits)
-        - Automatic failover on 429 errors
-        - Alternates between providers to distribute load
+        All routing, rate limiting, and failover is handled by GlobalLLMService.
         """
-        self._llm_call_counter += 1
+        # Use json_mode if response_format requests JSON
+        json_mode = response_format and response_format.get("type") == "json_object"
         
-        # Determine provider order based on request size and recent failures
-        groq_available = bool(self.config.groq_api_key)
-        gemini_available = bool(self.config.gemini_api_key)
+        result = await self._global_llm.call_with_messages_async(
+            messages=messages,
+            max_tokens=max_tokens or self.config.routing_max_tokens,
+            temperature=temperature if temperature is not None else self.config.routing_temperature,
+            timeout=self.config.routing_timeout,
+            json_mode=json_mode,
+            trace_name=trace_name
+        )
         
-        if not groq_available and not gemini_available:
-            raise ValueError("No LLM API keys configured (need GROQ_API_KEY or GEMINI_API_KEY)")
-        
-        # Choose primary provider
-        if prefer_provider == "groq" and groq_available:
-            providers = ["groq", "gemini"] if gemini_available else ["groq"]
-        elif prefer_provider == "gemini" and gemini_available:
-            providers = ["gemini", "groq"] if groq_available else ["gemini"]
-        elif is_small_request and groq_available and self._groq_failures < 3:
-            # Small requests prefer GROQ (faster)
-            providers = ["groq", "gemini"] if gemini_available else ["groq"]
-        elif gemini_available and self._gemini_failures < 3:
-            # Large requests or GROQ failing - use Gemini
-            providers = ["gemini", "groq"] if groq_available else ["gemini"]
-        elif groq_available:
-            providers = ["groq", "gemini"] if gemini_available else ["groq"]
-        else:
-            providers = ["gemini"]
-        
-        last_error = None
-        retry_count = 0
-        max_retries = 3
-        used_model = model or self.config.routing_model
-        
-        # Extract query for telemetry (from user message)
-        query_preview = ""
-        for msg in messages:
-            if msg.get("role") == "user":
-                query_preview = msg.get("content", "")[:100]
-                break
-        
-        while retry_count < max_retries:
-            for provider in providers:
-                try:
-                    # Telemetry: trace this LLM call
-                    with trace_llm_call(
-                        name=trace_name,
-                        model=f"{provider}/{used_model}" if provider == "groq" else f"{provider}/{self.config.gemini_model}",
-                        input_data={"messages": messages},
-                        model_parameters={"temperature": temperature, "max_tokens": max_tokens},
-                        metadata={"provider": provider, "retry_count": retry_count}
-                    ) as trace:
-                        if provider == "groq":
-                            result = await self._call_groq(messages, model, temperature, max_tokens, response_format)
-                            self._groq_failures = max(0, self._groq_failures - 1)
-                        else:  # gemini
-                            result = await self._call_gemini(messages, temperature, max_tokens)
-                            self._gemini_failures = max(0, self._gemini_failures - 1)
-                        
-                        # Update telemetry with result including token usage
-                        trace.update(
-                            output=result.content,
-                            usage=result.usage,
-                            metadata={"provider_used": result.provider, "model": result.model, "success": True}
-                        )
-                        return result.content
-                        
-                except httpx.HTTPStatusError as e:
-                    if e.response.status_code == 429:
-                        logger.warning(f"⚠️ {provider.upper()} rate limited (429), trying fallback...")
-                        log_llm_event("rate-limit-hit", {"provider": provider, "retry": retry_count}, level="WARNING")
-                        if provider == "groq":
-                            self._groq_failures += 1
-                        else:
-                            self._gemini_failures += 1
-                        last_error = e
-                        continue
-                    raise
-                except Exception as e:
-                    logger.warning(f"⚠️ {provider.upper()} failed: {e}, trying fallback...")
-                    log_llm_event("provider-error", {"provider": provider, "error": str(e)}, level="ERROR")
-                    if provider == "groq":
-                        self._groq_failures += 1
-                    else:
-                        self._gemini_failures += 1
-                    last_error = e
-                    continue
-            
-            # All providers failed this round - wait and retry
-            retry_count += 1
-            if retry_count < max_retries:
-                wait_time = 5  # Always wait 5 seconds before retry
-                logger.info(f"⏳ All providers rate limited, waiting {wait_time}s before retry {retry_count}/{max_retries}...")
-                await asyncio.sleep(wait_time)
-        
-        # All retries exhausted
-        raise last_error or ValueError("All LLM providers failed after retries")
+        return result
     
     def _build_routing_prompt(self, query: str, available_tools: List[str], mcp_tools: List[Dict] = None) -> str:
         """
