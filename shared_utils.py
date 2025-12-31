@@ -558,6 +558,8 @@ class GlobalLLMService:
                 
                 if is_rate_limit:
                     logger.warning(f"⚠️ [{trace_name}] {provider.upper()} rate limited")
+                    # Wait before trying next provider (API needs cooldown)
+                    await asyncio.sleep(2.0)
                 else:
                     logger.warning(f"⚠️ [{trace_name}] {provider.upper()} failed: {e}")
                 
@@ -568,6 +570,9 @@ class GlobalLLMService:
                 last_error = e
                 continue
         
+        # All providers failed - wait and raise
+        logger.error(f"❌ [{trace_name}] All providers failed, waiting 5s before allowing retry...")
+        await asyncio.sleep(5.0)
         raise Exception(f"All LLM providers failed. Last error: {last_error}")
     
     def get_status(self) -> dict:

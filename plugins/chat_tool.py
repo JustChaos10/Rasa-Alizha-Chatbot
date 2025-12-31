@@ -17,13 +17,15 @@ import httpx
 from architecture.base_tool import BaseTool, ToolSchema
 from architecture.telemetry import trace_llm_call, log_llm_event
 
-# Import the shared ImageSearchService and Rate Limiter
+# Import the shared services - GlobalLLMService is the ONLY way to call LLMs
 try:
-    from shared_utils import get_service_manager, get_global_rate_limiter
-    IMAGE_SERVICE_AVAILABLE = True
+    from shared_utils import get_service_manager, get_global_rate_limiter, get_global_llm_service
+    SHARED_UTILS_AVAILABLE = True
 except ImportError:
-    IMAGE_SERVICE_AVAILABLE = False
+    SHARED_UTILS_AVAILABLE = False
     get_global_rate_limiter = None
+    get_global_llm_service = None
+    get_service_manager = None
 
 logger = logging.getLogger(__name__)
 
@@ -33,7 +35,7 @@ class ChatTool(BaseTool):
     Primary chat tool with integrated web search fallback.
     
     Features:
-    - LLM-powered conversational responses via Groq
+    - LLM-powered conversational responses via GlobalLLMService (GROQ → Gemini failover)
     - Automatic web search for current events/real-time queries
     - Image fetching via ImageSearchService (shared_utils.py)
     - Related questions generation for follow-up engagement
@@ -45,8 +47,8 @@ class ChatTool(BaseTool):
     """
     
     def __init__(self):
-        self._api_key = os.getenv("GROQ_API_KEY", "")
-        self._api_url = "https://api.groq.com/openai/v1/chat/completions"
+        # Use GlobalLLMService for ALL LLM calls (centralized rate limiting + failover)
+        self._global_llm = None
         self._model = "llama-3.3-70b-versatile"
         self._client: Optional[httpx.AsyncClient] = None
         
@@ -54,15 +56,9 @@ class ChatTool(BaseTool):
         self._tavily_api_key = os.getenv("TAVILY_API_KEY", "")
         self._tavily_url = "https://api.tavily.com/search"
         
-        # Initialize rate limiter
-        try:
-            self.rate_limiter = get_global_rate_limiter() if get_global_rate_limiter else None
-        except:
-            self.rate_limiter = None
-
         # Use ImageSearchService from shared_utils
         self._image_service = None
-        if IMAGE_SERVICE_AVAILABLE:
+        if SHARED_UTILS_AVAILABLE and get_service_manager:
             try:
                 self._image_service = get_service_manager().get_image_service()
                 if self._image_service and self._image_service.is_enabled():
@@ -77,11 +73,18 @@ class ChatTool(BaseTool):
         else:
             logger.info("ℹ️ ChatTool: Web search fallback disabled (no TAVILY_API_KEY)")
     
+    def _get_global_llm(self):
+        """Get GlobalLLMService (centralized rate limiting + failover)."""
+        if self._global_llm is None:
+            if SHARED_UTILS_AVAILABLE and get_global_llm_service:
+                self._global_llm = get_global_llm_service()
+        return self._global_llm
+    
     @property
     def schema(self) -> ToolSchema:
         return ToolSchema(
             name="chat",
-            description="General conversation and questions. Use for greetings, general knowledge, explanations, creative writing, coding help, and any query that doesn't require external data.",
+            description="General conversation, knowledge questions, and explanations. Use for greetings, general world knowledge (NOT company-specific), science, technology, history, coding help, creative writing, math, explanations of concepts, and any query that is NOT about internal company data/employees/policies.",
             parameters={
                 "type": "object",
                 "properties": {
@@ -97,21 +100,67 @@ class ChatTool(BaseTool):
                 "required": ["message"]
             },
             examples=[
+                # Greetings
                 "Hello",
                 "Hi there",
+                "Good morning",
+                # General knowledge - What is X?
                 "What is Python?",
+                "What is machine learning?",
+                "What is artificial intelligence?",
+                "What is quantum computing?",
+                "What is blockchain?",
+                "What is cloud computing?",
+                "What are neural networks?",
+                "What is deep learning?",
+                # Explanations - Explain X
                 "Explain quantum computing",
-                "Write a poem about the ocean",
+                "Explain machine learning",
+                "Explain how databases work",
+                "Explain the internet",
+                "Explain neural networks",
+                # How does X work?
+                "How does Python work?",
+                "How does machine learning work?",
+                "How do computers work?",
+                "How does the internet work?",
+                "How do databases store data?",
+                "How does AI work?",
+                # Tell me about/more about
+                "Tell me about Python",
+                "Tell me more about machine learning",
+                "Tell me about neural networks",
+                "Tell me more about databases",
+                "Tell me about cloud computing",
+                # Benefits/advantages
+                "What are the benefits of exercise?",
+                "What are the advantages of Python?",
+                "What are the benefits of machine learning?",
+                # Coding help
                 "How do I sort a list in Python?",
+                "Write a Python function",
+                "Help me with JavaScript",
+                "Debug this code",
+                # Creative and misc
+                "Write a poem about the ocean",
                 "What's 2 + 2?",
                 "Tell me a joke",
                 "Who wrote Romeo and Juliet?",
-                "What are the benefits of exercise?"
+                # Follow-up style questions (related questions)
+                "Can you explain that further?",
+                "Tell me more",
+                "What else should I know?",
+                "How is this used in practice?",
+                "What are the applications?",
+                "Give me an example",
+                "Why is this important?"
             ],
             input_examples=[
                 {"message": "Hello, how are you?"},
                 {"message": "Explain machine learning in simple terms"},
-                {"message": "Write a haiku about coding"}
+                {"message": "Write a haiku about coding"},
+                {"message": "What is Python and how does it work?"},
+                {"message": "Tell me more about neural networks"}
             ],
             defer_loading=False,  # Always available
             always_loaded=True    # This is the fallback
@@ -345,16 +394,15 @@ class ChatTool(BaseTool):
     
     async def _generate_related_questions(self, message: str, response_text: str) -> List[Dict[str, str]]:
         """
-        Generate related follow-up questions using the LLM.
+        Generate related follow-up questions using GlobalLLMService.
         
         Returns list of dicts with 'title' and 'prompt' keys.
         """
         try:
-            client = await self._get_client()
-            
-            # Rate Limit Check
-            if self.rate_limiter:
-                await self.rate_limiter.wait_for_slot_async()
+            llm = self._get_global_llm()
+            if not llm:
+                logger.warning("GlobalLLMService not available - skipping related questions")
+                return []
             
             prompt = f"""Based on this Q&A, generate exactly 3 related follow-up questions the user might want to ask.
 
@@ -366,70 +414,34 @@ Example: [{{"title": "How does it work?", "prompt": "How does photosynthesis wor
 
 JSON array:"""
 
-            # Telemetry: trace this LLM call
-            with trace_llm_call(
-                name="chat-related-questions",
-                model="groq/llama-3.1-8b-instant",
-                input_data={"messages": [{"role": "user", "content": prompt}]},
-                model_parameters={"temperature": 0.5, "max_tokens": 300},
-                metadata={"source": "chat_tool._generate_related_questions"}
-            ) as trace:
-                response = await client.post(
-                    self._api_url,
-                    json={
-                        "model": "llama-3.1-8b-instant",  # Fast model for this
-                        "messages": [{"role": "user", "content": prompt}],
-                        "temperature": 0.5,
-                        "max_tokens": 300
-                    },
-                    headers={
-                        "Authorization": f"Bearer {self._api_key}",
-                        "Content-Type": "application/json"
-                    },
-                    timeout=8.0
-                )
-                response.raise_for_status()
-                
-                # Record successful call
-                if self.rate_limiter:
-                    self.rate_limiter.record_call()
-
-                data = response.json()
-                content = data["choices"][0]["message"]["content"].strip()
-                
-                # Extract token usage
-                usage = None
-                if "usage" in data:
-                    usage = {
-                        "prompt_tokens": data["usage"].get("prompt_tokens", 0),
-                        "completion_tokens": data["usage"].get("completion_tokens", 0),
-                        "total_tokens": data["usage"].get("total_tokens", 0)
-                    }
-                
-                # Try to parse JSON from response
-                # Handle cases where LLM adds extra text
-                json_match = re.search(r'\[.*\]', content, re.DOTALL)
-                if json_match:
-                    import json
-                    questions = json.loads(json_match.group())
-                    # Validate structure
-                    valid_questions = []
-                    for q in questions[:3]:
-                        if isinstance(q, dict) and "title" in q and "prompt" in q:
-                            valid_questions.append({
-                                "title": str(q["title"])[:50],
-                                "prompt": str(q["prompt"])[:200]
-                            })
-                    
-                    trace.update(
-                        output=content,
-                        usage=usage,
-                        metadata={"success": True, "questions_count": len(valid_questions)}
-                    )
-                    return valid_questions
-                
-                trace.update(output="No valid JSON found", usage=usage, metadata={"success": False})
-                return []
+            messages = [{"role": "user", "content": prompt}]
+            
+            # Use GlobalLLMService (handles rate limiting + failover automatically)
+            content = await llm.call_with_messages_async(
+                messages=messages,
+                max_tokens=300,
+                temperature=0.5,
+                timeout=10.0,
+                trace_name="chat-related-questions"
+            )
+            
+            # Try to parse JSON from response
+            # Handle cases where LLM adds extra text
+            json_match = re.search(r'\[.*\]', content, re.DOTALL)
+            if json_match:
+                import json
+                questions = json.loads(json_match.group())
+                # Validate structure
+                valid_questions = []
+                for q in questions[:3]:
+                    if isinstance(q, dict) and "title" in q and "prompt" in q:
+                        valid_questions.append({
+                            "title": str(q["title"])[:50],
+                            "prompt": str(q["prompt"])[:200]
+                        })
+                return valid_questions
+            
+            return []
             
         except Exception as e:
             logger.warning(f"Failed to generate related questions: {e}")
@@ -463,10 +475,11 @@ JSON array:"""
             - related_questions: Optional list of follow-up questions
             - sources: Optional list of web sources used
         """
-        if not self._api_key:
+        llm = self._get_global_llm()
+        if not llm:
             return {
                 "success": False,
-                "error": "Groq API key not configured (GROQ_API_KEY)"
+                "error": "GlobalLLMService not available - check API keys"
             }
         
         # Check if this is a knowledge question
@@ -542,57 +555,15 @@ JSON array:"""
         messages.append({"role": "user", "content": user_message})
         
         try:
-            client = await self._get_client()
-            
-            # Rate Limit Check
-            if self.rate_limiter:
-                await self.rate_limiter.wait_for_slot_async()
-
-            # Telemetry: trace this main chat LLM call
-            with trace_llm_call(
-                name="chat-main-response",
-                model=f"groq/{self._model}",
-                input_data={"messages": messages},
-                model_parameters={"temperature": 0.7, "max_tokens": 1000},
-                metadata={"source": "chat_tool.execute", "has_conversation_history": bool(conversation_history)}
-            ) as trace:
-                # Main LLM call for the response
-                response = await client.post(
-                    self._api_url,
-                    json={
-                        "model": self._model,
-                        "messages": messages,
-                        "temperature": 0.7,
-                        "max_tokens": 1000
-                    },
-                    headers={
-                        "Authorization": f"Bearer {self._api_key}",
-                        "Content-Type": "application/json"
-                    }
-                )
-                response.raise_for_status()
-                
-                # Record successful call
-                if self.rate_limiter:
-                    self.rate_limiter.record_call()
-
-                data = response.json()
-                assistant_message = data["choices"][0]["message"]["content"]
-                
-                # Extract token usage
-                usage = None
-                if "usage" in data:
-                    usage = {
-                        "prompt_tokens": data["usage"].get("prompt_tokens", 0),
-                        "completion_tokens": data["usage"].get("completion_tokens", 0),
-                        "total_tokens": data["usage"].get("total_tokens", 0)
-                    }
-                
-                trace.update(
-                    output=assistant_message,
-                    usage=usage,
-                    metadata={"success": True, "response_length": len(assistant_message)}
-                )
+            # Use GlobalLLMService for the main chat response
+            # Handles rate limiting, failover (GROQ → Gemini), and telemetry automatically
+            assistant_message = await llm.call_with_messages_async(
+                messages=messages,
+                max_tokens=1000,
+                temperature=0.7,
+                timeout=30.0,
+                trace_name="chat-main-response"
+            )
             
             result = {
                 "success": True,
@@ -617,17 +588,11 @@ JSON array:"""
             
             return result
             
-        except httpx.HTTPError as e:
-            logger.error(f"Chat API error: {e}")
+        except Exception as e:
+            logger.error(f"Chat LLM error: {e}")
             return {
                 "success": False,
                 "error": f"Failed to get response: {str(e)}"
-            }
-        except Exception as e:
-            logger.error(f"Unexpected chat error: {e}")
-            return {
-                "success": False,
-                "error": f"Unexpected error: {str(e)}"
             }
     
     def format_response(self, result: Dict[str, Any]) -> str:

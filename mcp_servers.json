@@ -2,6 +2,24 @@
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "description": "MCP Server Configuration for RASA Chatbot",
     "servers": {
+        "adaptive_card": {
+            "transport": "stdio",
+            "command": ".venv/bin/python",
+            "args": ["mcp_servers/adaptive_card_server.py"],
+            "description": "Create custom Adaptive Cards from natural language descriptions. Use for designing dashboards, profiles, notifications, forms, and any visual card layouts.",
+            "enabled": true,
+            "routing_keywords": ["create card", "design card", "build card", "make card", "generate card", "adaptive card", "dashboard card", "profile card", "notification card", "form card", "visual card", "card layout", "card design"],
+            "tool_metadata": {
+                "generate_adaptive_card": {
+                    "system_instruction": "Use adaptive_card.generate_adaptive_card when user wants to CREATE, DESIGN, BUILD, or MAKE any kind of visual card including: dashboards, profiles, notifications, forms, articles. Pass the user's description and optional tone (professional/friendly/bold/minimal).",
+                    "code_example": "result = await call_tool('adaptive_card.generate_adaptive_card', {'description': 'quarterly sales dashboard with revenue metrics', 'tone': 'professional'})"
+                },
+                "get_card_template": {
+                    "system_instruction": "Use adaptive_card.get_card_template to show available card types and features.",
+                    "code_example": "result = await call_tool('adaptive_card.get_card_template', {})"
+                }
+            }
+        },
         "leave": {
             "transport": "stdio",
             "command": ".venv/bin/python",
@@ -62,9 +80,10 @@
             "transport": "stdio",
             "command": ".venv/bin/python",
             "args": ["mcp_servers/sql_server.py"],
-            "description": "DATABASE QUERIES - Use for ALL questions about business data: sales, products, customers, employees, orders, invoices, inventory, revenue analytics. Converts natural language to SQL and executes against PostgreSQL database. NOT for budget speech, tax structure, or government policy questions.",
+            "description": "DATABASE QUERIES - Use for retrieving/querying existing business data: sales, products, customers, employees, orders, invoices, inventory, revenue analytics. Converts natural language to SQL and executes against PostgreSQL database. NOT for creating cards/dashboards/forms (use adaptive_card), NOT for budget speech, tax structure, or government policy questions.",
             "enabled": true,
-            "routing_keywords": ["sales", "product", "products", "customer", "customers", "employee", "employees", "order", "orders", "invoice", "invoices", "profit", "inventory", "stock", "quantity", "price", "discount", "total", "count", "average", "sum", "top", "best", "worst", "highest", "lowest", "most", "least", "how many", "list all", "find", "database", "query", "report", "analytics", "KPI", "metrics", "performance", "target", "actual", "year", "month", "quarter", "region", "category", "department", "manager", "salesperson", "vendor", "supplier", "purchase", "transaction", "adventureworks", "production", "humanresources"],
+            "routing_keywords": ["sales data", "product data", "customer data", "employee data", "order data", "invoice data", "profit data", "inventory data", "stock data", "quantity data", "price data", "total sales", "how many orders", "list all products", "find customers", "database query", "query database", "sales report", "top products", "best sellers", "adventureworks", "production data", "humanresources data", "show me sales", "get sales", "fetch data", "retrieve data"],
+            "exclude_keywords": ["create", "design", "build", "generate", "make a card", "dashboard card", "form card", "profile card", "adaptive card"],
             "tool_metadata": {
                 "sql_query": {
                     "system_instruction": "Use sql.sql_query for ALL questions about BUSINESS DATABASE DATA including: sales figures, product information, customer details, employee records, orders, invoices, inventory levels, revenue reports, performance metrics, AND VISUALIZATIONS (pie charts, bar charts, line graphs, tables). Keywords: sales, products, customers, employees, orders, invoices, revenue, profit, how many, top 10, best sellers, total, average, count, chart, pie chart, bar chart, visualize, graph. The tool handles chart generation INTERNALLY - just pass your natural language query and the tool will return both data AND visualization. DO NOT use matplotlib or plt in your code - the sql_query tool handles all visualization internally.",
@@ -84,11 +103,11 @@
             "transport": "stdio",
             "command": ".venv/bin/python",
             "args": ["mcp_servers/secure_rag_server.py"],
-            "description": "Secure RAG pipeline with RBAC, input/output guards, and LLM integration",
+            "description": "INTERNAL COMPANY DATA ONLY: Query employee records, HR policies, company documents. NOT for general knowledge questions like 'What is Python?' - those go to chat. NOT for collecting user's personal details like 'collect my info' - those go to contact_form.",
             "enabled": true,
             "tool_metadata": {
                 "secure_query": {
-                    "system_instruction": "Use secure_rag.secure_query to FIND information about employees (like Akash, Arpan), policies, or data. ALWAYS provide 'user_id' of the person ASKING (e.g., 'emp1', 'hr_admin'). Do NOT use check_user_access for finding info.",
+                    "system_instruction": "Use secure_rag.secure_query ONLY for INTERNAL COMPANY DATA: employees (like Akash, Arpan), HR policies, company documents. DO NOT use for general knowledge questions (What is Python?, How does ML work?) - those should use the chat tool instead. ALWAYS provide 'user_id' of the person ASKING (e.g., 'emp1', 'hr_admin').",
                     "code_example": "result = await call_tool('secure_rag.secure_query', {'query': 'What is the role of Akash?', 'user_id': 'emp1'})"
                 },
                 "check_user_access": {

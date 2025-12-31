@@ -230,8 +230,12 @@ class LeaveFormHandler(FormHandler):
         # Call the MCP tool
         result = await execute_tool("leave.validate_leave", params)
         
+        logger.info(f"📦 Leave form handler result keys: {list(result.keys()) if isinstance(result, dict) else type(result)}")
+        logger.info(f"📦 Result success: {result.get('success')}")
+        
         if result.get("success"):
             data = result.get("data", {})
+            logger.info(f"📦 Data type: {type(data)}, keys: {list(data.keys()) if isinstance(data, dict) else 'N/A'}")
             
             # Handle string data
             if isinstance(data, str):
@@ -242,13 +246,15 @@ class LeaveFormHandler(FormHandler):
                     pass
             
             if isinstance(data, dict) and data.get("type") == "adaptive_card":
+                card = data.get("card")
+                logger.info(f"✅ Found adaptive_card! Card present: {card is not None}")
                 return FormHandlerResult(
                     success=True,
                     tool_name="leave.validate_leave",
                     params=params,
                     result=data,
                     response=data.get("message", "Leave request processed."),
-                    card=data.get("card")
+                    card=card
                 )
             else:
                 return FormHandlerResult(

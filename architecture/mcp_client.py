@@ -57,6 +57,8 @@ class MCPServerConfig:
     tool_metadata: Optional[Dict[str, Dict[str, str]]] = None
     # Routing keywords for improved tool selection
     routing_keywords: Optional[List[str]] = None
+    # Exclude keywords - if query matches these, DON'T select this server
+    exclude_keywords: Optional[List[str]] = None
 
 
 @dataclass

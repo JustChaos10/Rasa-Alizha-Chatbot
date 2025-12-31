@@ -322,7 +322,21 @@ def chat():
         
         # Language detection and translation
         translation_service = get_service_manager().get_translation_service()
-        detected_language, confidence = translation_service.detect_language(message)
+        
+        # DEBUG: Log incoming metadata for language debugging
+        logger.info(f"📨 Incoming message: {message}")
+        logger.info(f"📨 Metadata keys: {list(metadata.keys())}")
+        if "language" in metadata:
+            logger.info(f"📨 Metadata language: {metadata['language']}")
+        
+        # Check if language is explicitly provided in metadata (e.g. from adaptive card submission)
+        provided_language = metadata.get("language")
+        if provided_language in ["ar", "en"]:
+             detected_language = provided_language
+             confidence = 1.0
+             logger.info(f"🌍 Using provided language from metadata: {detected_language}")
+        else:
+             detected_language, confidence = translation_service.detect_language(message)
         
         metadata["original_language"] = detected_language
         metadata["original_message"] = message
@@ -331,10 +345,13 @@ def chat():
         metadata["text_direction"] = direction
         
         # Translate Arabic input to English for processing
+        # BUT: Do NOT translate slash commands (form submissions like /submit_leave_form)
         processed_message = message
-        if detected_language == "ar":
+        if detected_language == "ar" and not message.startswith("/"):
             processed_message = translation_service.translate_arabic_to_english(message)
             logger.info(f"🔄 Translated AR→EN: {message[:50]}... → {processed_message[:50]}...")
+        elif message.startswith("/"):
+            logger.info(f"📝 Slash command detected, skipping translation: {message}")
         
         # Route through Hybrid Router (Rasa for small talk, LLM for tools)
         router = get_router()
@@ -349,10 +366,17 @@ def chat():
         if not isinstance(result_data, dict):
             result_data = {}
         
+        # DEBUG: Log result structure for card extraction
+        logger.info(f"🔍 Result keys: {list(result.keys())}")
+        logger.info(f"🔍 Result type field: {result.get('type')}")
+        logger.info(f"🔍 Result_data keys: {list(result_data.keys()) if isinstance(result_data, dict) else 'N/A'}")
+        logger.info(f"🔍 Result_data type field: {result_data.get('type') if isinstance(result_data, dict) else 'N/A'}")
+        
         # Check for adaptive card in different result formats
         if result.get("type") == "card":
-            # Legacy format
+            # Legacy format (from form handler)
             adaptive_card = result.get("payload", {})
+            logger.info(f"✅ Found card via result.type=card, payload present: {bool(adaptive_card)}")
         elif result_data.get("type") == "adaptive_card":
             # MCP tool format - direct response
             adaptive_card = result_data.get("card")
@@ -398,7 +422,9 @@ def chat():
             if adaptive_card:
                 try:
                     logger.info("🔄 Translating Adaptive Card to Arabic...")
+                    logger.info(f"   Card before translation (preview): {str(adaptive_card)[:200]}")
                     adaptive_card = translation_service.translate_adaptive_card(adaptive_card)
+                    logger.info(f"   Card after translation (preview): {str(adaptive_card)[:200]}")
                 except Exception as trans_err:
                     logger.warning(f"Failed to translate adaptive card: {trans_err}")
             
@@ -546,8 +572,9 @@ def chat():
             
             # Return card payload for frontend rendering
             # Frontend expects: custom.payload === 'adaptiveCard' and custom.data contains the card
+            # NO TEXT - just the card (user requested: card speaks for itself)
             responses.append({
-                "text": None,  # No text - only show the card
+                "text": "",  # Empty text - card is the response
                 "custom": {
                     "payload": "adaptiveCard",  # This triggers the AdaptiveCard component
                     "data": adaptive_card,  # The actual card JSON

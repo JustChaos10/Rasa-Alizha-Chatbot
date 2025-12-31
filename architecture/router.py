@@ -330,7 +330,40 @@ Rules:
    - Extract time references into the "when" parameter (e.g., "today", "tomorrow", "next week", "in 3 days")
    - If no time is mentioned, don't include "when" (defaults to current weather)
 7. For search queries, extract the search terms into the "query" parameter
-8. Return valid JSON only
+8. **HIGHEST PRIORITY - CONTACT_FORM vs SECURE_RAG**:
+   - Use "contact_form" when user wants to PROVIDE/GIVE/SUBMIT their OWN personal details:
+     * "Collect my info" = contact_form (user is GIVING their details)
+     * "Take my info" = contact_form (user is GIVING their details)
+     * "Gather my information" = contact_form (user is GIVING their details)
+     * "Save my personal data" = contact_form (user is PROVIDING their details)
+     * "Store my details" = contact_form (user is PROVIDING their details)
+     * Key pattern: "MY info/details/data" + verbs like collect/take/gather/save/store/register
+   - Use "secure_rag" ONLY for QUERYING existing company documents/employee records:
+     * "What info do you have about John?" = secure_rag (ASKING for info about someone else)
+     * "Find info on employee X" = secure_rag (SEARCHING for info)
+     * "Who is [name]?" = secure_rag (QUERYING about a person)
+     * Key pattern: Asking ABOUT something/someone, searching, finding existing data
+9. CRITICAL - Distinguish between CHAT and SECURE_RAG/KNOWLEDGEBASE:
+   - Use "chat" for: General knowledge questions (What is Python?), explanations, how things work in general, 
+     science, technology, history, geography, concepts, definitions, creative writing, coding help, math, jokes
+   - Use "secure_rag" ONLY for: Internal company data, employee information, company policies, internal documents,
+     questions about specific people in the organization (like "Who is Akash?", "What is Arpan's role?")
+   - If the question is about general world knowledge (not company-specific), ALWAYS use "chat"
+   - Questions like "What is machine learning?", "How does Python work?", "Explain quantum computing" = chat
+   - Questions like "What are the company policies?", "Who is employee X?" = secure_rag
+10. Return valid JSON only
+11. CRITICAL - ADAPTIVE_CARD vs SQL vs CONTACT_FORM:
+   - Use "adaptive_card" for: Creating/designing/building/generating VISUAL CARDS, dashboards, forms, profiles,
+     invitations, notifications, product showcases, event cards, meeting summaries, article previews
+   - Key trigger words for adaptive_card: "create a card", "design a card", "build a card", "generate a card",
+     "dashboard card", "registration card", "profile card", "invitation card", "notification card", "form card"
+   - Use "sql" for: Querying DATABASE data, getting records, statistics, counts, reports FROM existing data
+   - Use "contact_form" ONLY for: Collecting the USER'S OWN personal contact details (name, phone, address)
+   - NEVER confuse "registration form card" (adaptive_card) with "contact form" (contact_form)
+   - "Create a dashboard" = adaptive_card (creating visual card)
+   - "Show sales data" = sql (querying existing data)
+   - "Collect my info" = contact_form (user providing their own details)
+12. When routing to adaptive_card, ALWAYS include "description" param with the FULL user request
 
 User query: "{query}"
 
@@ -347,7 +380,29 @@ Examples:
 - "Is it going to rain in Delhi today?" -> {{"tool": "weather", "params": {{"city": "Delhi", "when": "today"}}, "confidence": 0.95, "reasoning": "weather query for Delhi today"}}
 - "Temperature in Paris in 3 days" -> {{"tool": "weather", "params": {{"city": "Paris", "when": "in 3 days"}}, "confidence": 0.95, "reasoning": "weather forecast for Paris in 3 days"}}
 - "Search for Python tutorials" -> {{"tool": "chat", "params": {{"message": "Search for Python tutorials"}}, "confidence": 0.9, "reasoning": "search request - chat has integrated web search"}}
-- "Hello there" -> {{"tool": "chat", "params": {{"message": "Hello there"}}, "confidence": 1.0, "reasoning": "greeting - general conversation"}}"""""
+- "Hello there" -> {{"tool": "chat", "params": {{"message": "Hello there"}}, "confidence": 1.0, "reasoning": "greeting - general conversation"}}
+- "Collect my info" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Take my info" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Take my information" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Collect my contact information" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Gather my info" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Store my personal info" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "Save my personal data" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to store their personal details"}}
+- "Show my contact card" -> {{"tool": "contact_form", "params": {{"action": "show"}}, "confidence": 0.95, "reasoning": "user wants to see their stored contact card"}}
+- "Gather my information" -> {{"tool": "contact_form", "params": {{"action": "start"}}, "confidence": 0.95, "reasoning": "user wants to provide their personal contact details"}}
+- "What is Python?" -> {{"tool": "chat", "params": {{"message": "What is Python?"}}, "confidence": 0.95, "reasoning": "general knowledge question about a programming language"}}
+- "How does machine learning work?" -> {{"tool": "chat", "params": {{"message": "How does machine learning work?"}}, "confidence": 0.95, "reasoning": "general knowledge question about ML concepts"}}
+- "Explain quantum computing" -> {{"tool": "chat", "params": {{"message": "Explain quantum computing"}}, "confidence": 0.95, "reasoning": "general knowledge explanation request"}}
+- "What are the benefits of exercise?" -> {{"tool": "chat", "params": {{"message": "What are the benefits of exercise?"}}, "confidence": 0.95, "reasoning": "general knowledge health question"}}
+- "Tell me more about neural networks" -> {{"tool": "chat", "params": {{"message": "Tell me more about neural networks"}}, "confidence": 0.95, "reasoning": "general knowledge follow-up about AI concepts"}}
+- "How do databases store data?" -> {{"tool": "chat", "params": {{"message": "How do databases store data?"}}, "confidence": 0.95, "reasoning": "general knowledge about database concepts"}}
+- "Create a quarterly business performance dashboard" -> {{"tool": "adaptive_card", "params": {{"description": "Create a quarterly business performance dashboard showing revenue growth, customer acquisition metrics, and key KPIs", "card_type": "dashboard"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual dashboard card"}}
+- "Design an event registration card" -> {{"tool": "adaptive_card", "params": {{"description": "Design an event registration card for a tech conference with speaker lineup, session schedule, and registration form", "card_type": "form"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual event registration card"}}
+- "Build a product launch card" -> {{"tool": "adaptive_card", "params": {{"description": "Build a product launch card for an AI assistant featuring hero image, capabilities, pricing, and demo request", "card_type": "general"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual product showcase card"}}
+- "Make a team profile card" -> {{"tool": "adaptive_card", "params": {{"description": "Make a team profile card showing team member info", "card_type": "profile"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual profile card"}}
+- "Generate a meeting summary card" -> {{"tool": "adaptive_card", "params": {{"description": "Generate a meeting summary card with agenda, attendees, and action items", "card_type": "general"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual meeting summary card"}}
+- "Create a notification card for system alerts" -> {{"tool": "adaptive_card", "params": {{"description": "Create a notification card for system alerts", "card_type": "notification"}}, "confidence": 0.98, "reasoning": "user wants to CREATE a visual notification card"}}
+- "Show sales report from database" -> {{"tool": "sql", "params": {{"query": "sales report"}}, "confidence": 0.9, "reasoning": "user wants to QUERY existing sales data from database"}}"""""
     
     async def route(self, query: str, context: Optional[Dict] = None) -> Dict[str, Any]:
         """
@@ -1136,8 +1191,13 @@ GENERAL TOOL SELECTION RULES:
 4. For DATABASE queries (sales, products, customers, employees, orders, inventory, revenue): Use "sql.sql_query"
 5. For news: Use "news" tool
 6. For surveys/feedback/questionnaires: Use "survey" tool with action="start"
-7. For collecting user info (name, phone, address): Use "contact_form" with action="start"
-8. For showing stored user info: Use "contact_form" with action="show"
+7. **COLLECTING user info** - Use "contact_form" with action="start" for:
+   - "collect my info", "take my info", "gather my information", "save my details", "store my contact"
+   - This STARTS a conversation to ASK the user for their name, phone, address
+   - IMPORTANT: action="start" does NOT show existing info - it asks questions!
+8. **SHOWING stored info** - Use "contact_form" with action="show" for:
+   - "show my info", "show my contact card", "view my stored details", "display my contact"
+   - This DISPLAYS the previously saved contact card as an adaptive card
 9. For general greetings, small talk, general questions NOT about budget/database: Use "chat" tool
 10. If result["data"] has type="adaptive_card", just print the message field - the card will be shown automatically
 11. If this is a follow-up to a previous leave request (check conversation history), include relevant context in the query
@@ -1146,6 +1206,12 @@ GENERAL TOOL SELECTION RULES:
 14. IMPORTANT: For secure_rag.secure_query ONLY use for: security threats, malicious content, weapons, bombs, hacking, confidential data access. Do NOT use for general questions about uploaded files.
 15. IMPORTANT: For questions about uploaded files, documents, images, PDFs, summaries of uploaded content: Use "file" tool with action="followup" and question parameter
 16. IMPORTANT: If the user asks "where does she work", "what is her role", "who is this person" after uploading a file, use "file" tool NOT secure_rag
+17. CRITICAL - adaptive_card vs sql.sql_query:
+    - Use "adaptive_card" for: CREATING/DESIGNING/BUILDING/GENERATING visual cards, dashboards, forms, templates, layouts
+    - Use "sql.sql_query" for: QUERYING/RETRIEVING existing database data (sales, products, customers)
+    - Key words for adaptive_card: create, design, build, generate, make, show me a card, dashboard template, visual card, adaptive card
+    - If user says "create a dashboard" or "design a card" -> adaptive_card (NOT sql)
+    - If user says "show sales data" or "top products" -> sql.sql_query
 
 CODE EXAMPLES:
 {dynamic_examples_section}
@@ -1184,16 +1250,15 @@ else:
 
 ```python
 # Adaptive Card example - for dashboards, forms, profiles, notifications
-# IMPORTANT: ALWAYS pass the 'description' parameter - it's REQUIRED!
-result = await call_tool("adaptive_card", {{
+# IMPORTANT: Use MCP server adaptive_card.generate_adaptive_card
+# The card is automatically rendered - NO print needed!
+result = await call_tool("adaptive_card.generate_adaptive_card", {{
     "description": "Create a quarterly business performance dashboard with sales metrics, revenue charts, and KPIs",
-    "tone": "professional",
-    "card_type": "dashboard"
+    "tone": "professional"
 }})
-if result["success"]:
-    data = result["data"]
-    print(data.get("message", "Here is your adaptive card."))
-else:
+# Card renders automatically - no print statement needed
+# The result contains type="adaptive_card" which triggers frontend rendering
+if not result.get("success", True):
     print(f"Error: {{result.get('error')}}")
 ```
 
@@ -1239,12 +1304,23 @@ else:
 ```
 
 ```python
-# Contact form example - collect user info through back-and-forth conversation
-# Use action="start" to begin collecting name, phone, address
-# Use action="show" to display stored info as an adaptive card
+# Contact form - START COLLECTION (ask user for name, phone, address)
+# Use action="start" when user says: "collect my info", "take my info", "gather my information"
+# This ASKS questions - it does NOT show existing info!
 result = await call_tool("contact_form", {{"action": "start"}})
 if result["success"]:
     print(result.get("data", "Let's collect your info!"))
+else:
+    print(f"Error: {{result.get('error')}}")
+```
+
+```python
+# Contact form - SHOW STORED INFO (display contact card)
+# Use action="show" when user says: "show my info", "show my contact card", "view my details"
+# This DISPLAYS the saved card - use only when user wants to SEE existing info
+result = await call_tool("contact_form", {{"action": "show"}})
+if result["success"]:
+    print(result.get("data", "Here's your contact info!"))
 else:
     print(f"Error: {{result.get('error')}}")
 ```
@@ -1301,7 +1377,11 @@ RULES:
 8. For ANY leave/vacation/time-off/PTO request, use leave.analyze_leave_request with the user's query
 9. For chat tool: ALWAYS use {{"message": "..."}} NOT {{"query": "..."}}
 10. For adaptive_card tool: ALWAYS include "description" parameter with the user's request - it's REQUIRED
-11. For contact info collection: use contact_form with action="start", for viewing: action="show"
+11. **CRITICAL - contact_form actions**:
+    - "collect my info" / "take my info" / "gather my information" → action="start" (asks questions)
+    - "show my info" / "show my contact card" / "view my details" → action="show" (displays card)
+    - When user wants to PROVIDE their info → action="start"
+    - When user wants to SEE stored info → action="show"
 12. For TAX/BUDGET questions: ALWAYS use knowledgebase.knowledgebase_query, NEVER chat or sql
 13. For DATABASE questions (sales, products, customers): ALWAYS use sql.sql_query, NEVER knowledgebase
 

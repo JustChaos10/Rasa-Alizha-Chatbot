@@ -134,7 +134,8 @@ class MCPHost:
                     description=server_config.get("description", ""),
                     enabled=server_config.get("enabled", True),
                     tool_metadata=server_config.get("tool_metadata"),  # Distributed prompting
-                    routing_keywords=server_config.get("routing_keywords", [])  # For improved routing
+                    routing_keywords=server_config.get("routing_keywords", []),  # For improved routing
+                    exclude_keywords=server_config.get("exclude_keywords", [])  # Keywords to exclude from matching
                 )
             
             logger.info(f"📋 Loaded {len(self._server_configs)} MCP server configs")
@@ -271,14 +272,19 @@ class MCPHost:
         query_words = set(query_lower.split())
         results = []
         
-        # Build a map of server -> routing_keywords and description
+        # Build a map of server -> routing_keywords, exclude_keywords, and description
         server_keywords = {}
+        server_exclude_keywords = {}
         server_descriptions = {}
         for name, config in self._server_configs.items():
             if config.routing_keywords:
                 server_keywords[name] = [kw.lower() for kw in config.routing_keywords]
             else:
                 server_keywords[name] = []
+            if config.exclude_keywords:
+                server_exclude_keywords[name] = [kw.lower() for kw in config.exclude_keywords]
+            else:
+                server_exclude_keywords[name] = []
             server_descriptions[name] = config.description.lower()
         
         for full_name, tool in self._all_tools.items():
@@ -288,7 +294,21 @@ class MCPHost:
             
             # Get server-level keywords and description
             srv_keywords = server_keywords.get(server_name, [])
+            srv_exclude_keywords = server_exclude_keywords.get(server_name, [])
             srv_desc = server_descriptions.get(server_name, "")
+            
+            # =====================================================================
+            # FIRST: Check exclude_keywords - if ANY match, skip this server entirely
+            # This prevents SQL from being selected for "create dashboard" queries
+            # =====================================================================
+            excluded = False
+            for exclude_kw in srv_exclude_keywords:
+                if exclude_kw in query_lower:
+                    excluded = True
+                    break
+            
+            if excluded:
+                continue  # Skip this server entirely
             
             score = 0.0
             

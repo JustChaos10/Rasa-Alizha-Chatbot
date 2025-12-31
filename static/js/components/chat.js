@@ -481,8 +481,13 @@ function renderAdaptiveCardPayload(rawPayload) {
             });
           } else if (submitType === "submit_leave_form" || submitType === "leave_form_submit" || submitType === "leave_calculator_submit") {
             // Handle leave form submission - send with / prefix so RASA recognizes it as intent
-            setUserResponse("Leave request submitted");
-            console.log("Sending leave form submission to RASA:", merged);
+            // Detect if card is in Arabic by checking the card text content
+            const cardText = JSON.stringify(cardData);
+            const isArabicCard = containsArabicChars(cardText);
+            console.log(`🔍 Card Arabic check: length=${cardText.length}, isArabic=${isArabicCard}`);
+            const submitMessage = isArabicCard ? "تم إرسال طلب الإجازة" : "Leave request submitted";
+            setUserResponse(submitMessage);
+            console.log("Sending leave form submission to RASA:", merged, "isArabic:", isArabicCard);
            
             // Use employee_id from merged data, which should include card metadata
             let employeeId = merged.employee_id;
@@ -491,7 +496,7 @@ function renderAdaptiveCardPayload(rawPayload) {
               employeeId = '1'; // Only fallback if absolutely no other source
             }
            
-            sendLeaveSubmission(employeeId, merged);
+            sendLeaveSubmission(employeeId, merged, isArabicCard ? "ar" : "en");
           } else {
             console.log("Generic form submission:", submitType);
             const summaryText = merged.summary || merged.title || "Adaptive card submitted";
@@ -513,14 +518,15 @@ function renderAdaptiveCardPayload(rawPayload) {
     };
 
     // Helper function to send leave submission
-    function sendLeaveSubmission(employeeId, merged) {
+    function sendLeaveSubmission(employeeId, merged, language = "en") {
       console.log("=== FRONTEND LEAVE SUBMISSION DEBUG ===");
       console.log("Final leave submission data:", {
         employee_id: employeeId,
         start_date: merged.start_date,
         end_date: merged.end_date,
         leave_type: merged.leave_type,
-        merged: merged
+        merged: merged,
+        language: language
       });
      
       const submissionPayload = {
@@ -530,6 +536,7 @@ function renderAdaptiveCardPayload(rawPayload) {
         end_date: merged.end_date,
         leave_type: merged.leave_type,
         data: merged,
+        language: language
       };
      
       console.log("Payload being sent to RASA:", submissionPayload);
@@ -759,7 +766,8 @@ function setBotResponse(response) {
         const direction = (response[i] && response[i].metadata && response[i].metadata.direction === 'rtl') ? 'rtl' : 'ltr';
         // check if the response contains "text"
         if (Object.hasOwnProperty.call(response[i], "text")) {
-          if (response[i].text != null) {
+          // Skip empty text (e.g., adaptive cards that don't need text)
+          if (response[i].text != null && response[i].text.trim() !== "") {
             // convert the text to mardown format using showdown.js(https://github.com/showdownjs/showdown);
             let botResponse;
             let html = converter.makeHtml(response[i].text);

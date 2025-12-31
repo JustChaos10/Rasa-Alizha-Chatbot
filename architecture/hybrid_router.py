@@ -187,28 +187,36 @@ class ConversationSession:
         """Check if there's an active sticky context (alias)."""
         return self.has_sticky_context()
     
-    def start_sticky_context(self, tool_name: str, initial_state: Dict[str, Any]) -> None:
+    def start_sticky_context(self, tool_name: str, initial_state: Dict[str, Any], language: str = None) -> None:
         """Start a sticky context session for a local plugin."""
         self.sticky_context = {
             "tool_name": tool_name,
             "state": initial_state,
+            "language": language,  # Store language from the start
             "started_at": time.time(),
             "last_activity": time.time()
         }
-        logger.info(f"📌 Started sticky context for: {tool_name}")
+        logger.info(f"📌 Started sticky context for: {tool_name} (language: {language})")
     
     def update_sticky_context(self, new_context: Dict[str, Any]) -> None:
         """Update the sticky context with new state."""
         if new_context:
             tool_name = new_context.get("tool_name") or new_context.get("tool")
             state = new_context.get("state") or new_context
+            
+            # PRESERVE LANGUAGE: Get language from new context or keep existing
+            language = new_context.get("language")
+            if not language and self.sticky_context:
+                language = self.sticky_context.get("language")
+            
             self.sticky_context = {
                 "tool_name": tool_name,
                 "state": state,
+                "language": language,  # Preserve language across updates
                 "started_at": self.sticky_context.get("started_at", time.time()) if self.sticky_context else time.time(),
                 "last_activity": time.time()
             }
-            logger.debug(f"Updated sticky context for: {tool_name}")
+            logger.debug(f"Updated sticky context for: {tool_name} (language: {language})")
     
     def end_sticky_context(self, reason: str = "") -> None:
         """End the current sticky context session."""
@@ -526,6 +534,13 @@ class HybridRouter:
     ) -> Optional[Dict[str, Any]]:
         """
         Handle follow-up messages in an active sticky context (survey, contact form, etc.).
+        
+        NOTE: For data collection (contact_form, survey), we use the ORIGINAL message
+        (not translated) to preserve user input like names and addresses in their 
+        original language/script.
+        
+        LANGUAGE PRESERVATION: The sticky_context stores the language from when the
+        conversation started, so numeric inputs (phone numbers) don't reset the language.
         """
         if not session.sticky_context:
             return None
@@ -533,6 +548,13 @@ class HybridRouter:
         sticky = session.sticky_context
         tool_name = sticky.get("tool_name")
         state = sticky.get("state", {})
+        
+        # LANGUAGE PRESERVATION: Use language from sticky_context if available
+        # This ensures that entering a phone number (digits only) doesn't switch to English
+        sticky_language = sticky.get("language")
+        if sticky_language:
+            merged_context["original_language"] = sticky_language
+            logger.debug(f"📌 Using sticky context language: {sticky_language}")
         
         logger.info(f"📌 Sticky context follow-up: {tool_name}")
         
@@ -546,11 +568,23 @@ class HybridRouter:
                 session.end_sticky_context("tool not found")
                 return None
             
+            # For data collection tools, use the ORIGINAL message to preserve
+            # user input in its original language/script (e.g., Arabic names)
+            # The translated message is used for routing, but actual user data
+            # should be stored as provided.
+            user_response = message  # Default to the (possibly translated) message
+            if tool_name in ("contact_form", "survey"):
+                # Use original message for data collection to preserve Arabic/non-English input
+                original_message = merged_context.get("original_message")
+                if original_message:
+                    user_response = original_message
+                    logger.debug(f"Using original message for {tool_name}: {user_response[:50]}...")
+            
             # Prepare parameters for collect action
             # Include the user's response and the current state
             params = {
                 "action": "collect",
-                "user_response": message,
+                "user_response": user_response,
                 "sender_id": merged_context.get("_sender_id", "anonymous"),
                 **state  # Include state fields (current_index, questions, answers, etc.)
             }
