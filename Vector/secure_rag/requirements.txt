@@ -1,0 +1,8 @@
+fastapi
+uvicorn[standard]
+numpy
+qdrant-client
+python-dotenv
+requests
+pydantic
+llm-guard

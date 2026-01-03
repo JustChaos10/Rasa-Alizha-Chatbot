@@ -1,0 +1,6 @@
+{
+  "Conversation Quality Evaluation": {
+    "suite": "Conversation Quality Evaluation",
+    "error": "Evaluation failed: 2 validation errors for Knowledge\ndata.data.str\n  Input should be a valid string [type=string_type, input_value={'Favorite Color': 'blue'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/string_type\ndata.data.list[str]\n  Input should be a valid list [type=list_type, input_value={'Favorite Color': 'blue'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.12/v/list_type"
+  }
+}

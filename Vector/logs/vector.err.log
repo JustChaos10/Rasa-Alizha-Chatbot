@@ -1,0 +1,8 @@
+C:\Code\RASA V2\Vector\secure_rag\qdrant_store.py:29: UserWarning: Api key is used with an insecure connection.
+  self.client = QdrantClient(
+INFO:     Started server process [55348]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
+2026-01-03 12:41:11,379 INFO request complete | request_id=1093a9c0e6c54210b6dfd684ebbd06e6 path=/health status=200 duration_ms=1.81
+INFO:secure_rag:request complete | request_id=1093a9c0e6c54210b6dfd684ebbd06e6 path=/health status=200 duration_ms=1.81

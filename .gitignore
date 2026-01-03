@@ -1,0 +1,54 @@
+# Environment variables
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# DeepEval cache
+.deepeval/
+
+# Uploads and temporary files
+API/state/uploads/*
+!API/state/uploads/.gitkeep
+API/state/documents/*
+!API/state/documents/.gitkeep
+
+# Results (optional - comment out if you want to track results)
+AI/benchmarks/results/
+
+# Charts
+Web/charts/*.png
+!Web/charts/.gitkeep
+

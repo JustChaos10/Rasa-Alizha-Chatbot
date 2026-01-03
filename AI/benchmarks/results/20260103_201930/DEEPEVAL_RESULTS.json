@@ -1,0 +1,107 @@
+{
+  "RAG Evaluation": {
+    "suite": "RAG Evaluation",
+    "runs": [
+      {
+        "name": "KB Query - Budget Speech",
+        "status_code": 200,
+        "tools_called": [
+          "knowledgebase.knowledgebase_query"
+        ],
+        "retrieval_context_len": 5
+      },
+      {
+        "name": "KB Query - Tax Structure",
+        "status_code": 200,
+        "tools_called": [
+          "knowledgebase.knowledgebase_query"
+        ],
+        "retrieval_context_len": 5
+      }
+    ],
+    "cases": [
+      {
+        "name": "KB Query - Tax Structure",
+        "success": false,
+        "input": "What is the revised tax structure?",
+        "actual_output": "The revised tax structure is as follows: \n0-4 lakh rupees Nil \n4-8 lakh rupees 5 per cent \n8-12 lakh rupees 10 per cent \n12-16 lakh rupees 15 per cent \n16-20 lakh rupees 20 per cent \n20-24 lakh rupees 25 per cent \nAbove 24 lakh rupees 30 per cent",
+        "additional_metadata": null,
+        "metrics": [
+          {
+            "name": "Faithfulness",
+            "score": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "reason": "The score is 1.00 because there are no contradictions, indicating that the actual output perfectly aligns with the retrieval context.",
+            "error": null
+          },
+          {
+            "name": "Contextual Precision",
+            "score": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "reason": "The score is 1.00 because the first four nodes are correctly ranked as 'yes', indicating relevance to the input 'What is the revised tax structure?', while the fifth node is correctly ranked as 'no', indicating irrelevance, due to its focus on the fuel or energy sector.",
+            "error": null
+          },
+          {
+            "name": "Contextual Recall",
+            "score": 0.7142857142857143,
+            "threshold": 0.7,
+            "passed": true,
+            "reason": "The score is 0.71 because the contextual information is mostly accurate, with specific tax rates and slabs attributed to the 1st node in the retrieval context, but there are some minor discrepancies, as indicated by the unsupportive reasons for sentences 5 and 6.",
+            "error": null
+          },
+          {
+            "name": "Contextual Relevancy",
+            "score": 0.6428571428571429,
+            "threshold": 0.7,
+            "passed": false,
+            "reason": "The score is 0.64 because the retrieval context contains irrelevant information such as 'on of 75,000' and focuses on tax reforms, while the input is about the revised tax structure. The relevant statements in the retrieval context, such as 'Substantial relief is proposed under the new tax regime with new slabs and tax rates...' and 'I propose to revise tax rate structure as follows...', do not provide specific information about the revised tax structure, resulting in a moderate contextual relevancy score.",
+            "error": null
+          }
+        ]
+      },
+      {
+        "name": "KB Query - Budget Speech",
+        "success": false,
+        "input": "Who gave the budget speech?",
+        "actual_output": "Nirmala Sitharaman, the Minister of Finance, gave the budget speech on February 1, 2025.",
+        "additional_metadata": null,
+        "metrics": [
+          {
+            "name": "Faithfulness",
+            "score": 0.3333333333333333,
+            "threshold": 0.7,
+            "passed": false,
+            "reason": "The score is 0.33 because the actual output contradicts the retrieval context by stating the budget speech was given by Nirmala Sitharaman, which is not mentioned in the context, and also provides a specific date (February 1, 2025) that is not present in the context.",
+            "error": null
+          },
+          {
+            "name": "Contextual Precision",
+            "score": 1.0,
+            "threshold": 0.7,
+            "passed": true,
+            "reason": "The score is 1.00 because the first four nodes in the retrieval contexts are correctly ranked as 'yes', indicating that Nirmala Sitharaman is the relevant answer, and the subsequent nodes are correctly ranked as 'no', as they do not provide any information about the budget speech being given by someone other than Nirmala Sitharaman.",
+            "error": null
+          },
+          {
+            "name": "Contextual Recall",
+            "score": 0.9090909090909091,
+            "threshold": 0.7,
+            "passed": true,
+            "reason": "The score is 0.91 because the expected output 'Nirmala Sitharaman' is accurately attributed to the 1st node in the retrieval context, with all other sentences having no corresponding match in the context, resulting in a high contextual recall score.",
+            "error": null
+          },
+          {
+            "name": "Contextual Relevancy",
+            "score": 0.375,
+            "threshold": 0.7,
+            "passed": false,
+            "reason": "The score is 0.38 because the retrieval context contains irrelevant information about the budget, such as specific announcements and quotes, while the relevant statements are general phrases about the budget and the speaker's introduction, which do not provide any information about who gave the budget speech.",
+            "error": null
+          }
+        ]
+      }
+    ]
+  }
+}

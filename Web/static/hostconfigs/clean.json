@@ -1,0 +1,120 @@
+{
+  "spacing": {
+    "small": 6,
+    "default": 10,
+    "medium": 14,
+    "large": 18,
+    "extraLarge": 24,
+    "padding": 18
+  },
+  "separator": {
+    "lineThickness": 1,
+    "lineColor": "#E5E8EB"
+  },
+  "supportsInteractivity": true,
+  "fontTypes": {
+    "default": {
+      "fontFamily": "Open Sans, Segoe UI, sans-serif",
+      "fontSizes": {
+        "small": 12,
+        "default": 14,
+        "medium": 16,
+        "large": 20,
+        "extraLarge": 26,
+        "huge": 30
+      },
+      "fontWeights": {
+        "lighter": 300,
+        "default": 500,
+        "bolder": 700
+      }
+    },
+    "monospace": {
+      "fontFamily": "Cascadia Mono, Consolas, monospace",
+      "fontSizes": {
+        "small": 11,
+        "default": 13,
+        "medium": 14,
+        "large": 16,
+        "extraLarge": 18,
+        "huge": 20
+      },
+      "fontWeights": {
+        "lighter": 300,
+        "default": 400,
+        "bolder": 600
+      }
+    }
+  },
+  "containerStyles": {
+    "default": {
+      "backgroundColor": "#FFFFFF",
+      "foregroundColors": {
+        "default": {
+          "default": "#2F3B4C",
+          "subtle": "#6B7684"
+        },
+        "accent": {
+          "default": "#1F7AE0",
+          "subtle": "#1F7AE0"
+        },
+        "good": {
+          "default": "#0F9153",
+          "subtle": "#0F9153"
+        },
+        "warning": {
+          "default": "#D97A0D",
+          "subtle": "#D97A0D"
+        },
+        "attention": {
+          "default": "#C23830",
+          "subtle": "#C23830"
+        }
+      }
+    },
+    "emphasis": {
+      "backgroundColor": "#F5F7FA",
+      "foregroundColors": {
+        "default": {
+          "default": "#1F2A37",
+          "subtle": "#5B6573"
+        },
+        "accent": {
+          "default": "#2563EB",
+          "subtle": "#2563EB"
+        },
+        "good": {
+          "default": "#0F9153",
+          "subtle": "#0F9153"
+        },
+        "warning": {
+          "default": "#CA8A04",
+          "subtle": "#CA8A04"
+        },
+        "attention": {
+          "default": "#DC2626",
+          "subtle": "#DC2626"
+        }
+      }
+    }
+  },
+  "actions": {
+    "maxActions": 3,
+    "spacing": "Default",
+    "buttonSpacing": 12,
+    "showCard": {
+      "actionMode": "Inline",
+      "inlineTopMargin": 14
+    },
+    "actionsOrientation": "Horizontal",
+    "allowTitleToWrap": true
+  },
+  "imageSizes": {
+    "small": 60,
+    "medium": 140,
+    "large": 280
+  },
+  "adaptiveCard": {
+    "allowCustomStyle": false
+  }
+}

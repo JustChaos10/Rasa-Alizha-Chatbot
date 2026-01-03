@@ -1,0 +1,97 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Leave Calculator",
+            "weight": "Bolder",
+            "size": "Large",
+            "spacing": "None"
+        },
+        {
+            "type": "TextBlock",
+            "text": "View your available leave balance. Your associated employee ID will be used.",
+            "wrap": true,
+            "size": "Small",
+            "isSubtle": true,
+            "spacing": "Small"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Select the leave window you want to evaluate",
+            "weight": "Bolder",
+            "size": "Default",
+            "wrap": true,
+            "spacing": "Medium"
+        },
+        {
+            "type": "ColumnSet",
+            "spacing": "Small",
+            "columns": [
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Input.Date",
+                            "id": "start_date",
+                            "placeholder": "Start Date",
+                            "value": "${start_date}"
+                        }
+                    ]
+                },
+                {
+                    "type": "Column",
+                    "width": "stretch",
+                    "items": [
+                        {
+                            "type": "Input.Date",
+                            "id": "end_date",
+                            "placeholder": "End Date",
+                            "value": "${end_date}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "leave_type",
+            "style": "compact",
+            "placeholder": "Leave Type",
+            "value": "${leave_type}",
+            "spacing": "Small",
+            "choices": [
+                {
+                    "title": "Sick Leave",
+                    "value": "sick leave"
+                },
+                {
+                    "title": "Vacation Leave",
+                    "value": "vacation leave"
+                },
+                {
+                    "title": "Annual Leave",
+                    "value": "annual leave"
+                },
+                {
+                    "title": "Flexi Leave",
+                    "value": "flexi leave"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Calculate Leave Impact",
+            "style": "positive",
+            "data": {
+                "submit": "leave_calculator_submit",
+                "intent": "submit_leave_form"
+            }
+        }
+    ]
+}

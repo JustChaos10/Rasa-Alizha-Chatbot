@@ -1,0 +1,114 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "description": "MCP Server Configuration for RASA Chatbot",
+    "servers": {
+        "leave": {
+            "transport": "stdio",
+            "command": "../.venv/bin/python",
+            "args": ["mcp_servers/leave_server.py"],
+            "description": "Employee leave validation and balance checking",
+            "enabled": true,
+            "tool_metadata": {
+                "analyze_leave_request": {
+                    "system_instruction": "For ANY leave/vacation/time-off/PTO request, ALWAYS use leave.analyze_leave_request with the user's full message. This tool intelligently extracts dates and leave type, then either shows a pre-filled form (if info is missing) or validates directly (if all info provided).",
+                    "code_example": "result = await call_tool('leave.analyze_leave_request', {'query': 'I want sick leave from Dec 4 to Dec 12'})"
+                },
+                "validate_leave": {
+                    "system_instruction": "Use leave.validate_leave ONLY when processing form submissions with explicit employee_id, dates, and leave_type already extracted.",
+                    "code_example": "result = await call_tool('leave.validate_leave', {'employee_id': 1, 'leave_type': 'vacation leave', 'start_date': '2025-12-01', 'end_date': '2025-12-05'})"
+                },
+                "get_leave_balance": {
+                    "system_instruction": "Use leave.get_leave_balance when user asks about remaining leave days, PTO balance, or how many days off they have.",
+                    "code_example": "result = await call_tool('leave.get_leave_balance', {'employee_id': 1})"
+                }
+            }
+        },
+        "brochure": {
+            "transport": "stdio",
+            "command": "../.venv/bin/python",
+            "args": ["mcp_servers/brochure_server.py"],
+            "description": "Professional brochure content generation with images using LLM and Google Image Search",
+            "enabled": true,
+            "tool_metadata": {
+                "generate_brochure": {
+                    "system_instruction": "Use brochure.generate_brochure ONCE when user wants to create a brochure. Pass ONLY a simple string as the 'topic' parameter (e.g., 'Hampi' or 'Riyadh Season'). Do NOT pass dict/object. Do NOT call this tool with previous results. The tool returns an adaptive_card that renders automatically.",
+                    "code_example": "result = await call_tool('brochure.generate_brochure', {'topic': 'Hampi'})"
+                },
+                "get_brochure_template": {
+                    "system_instruction": "Use brochure.get_brochure_template when user asks what a brochure contains or wants to see the brochure structure.",
+                    "code_example": "result = await call_tool('brochure.get_brochure_template', {})"
+                }
+            }
+        },
+        "knowledgebase": {
+            "transport": "stdio",
+            "command": "../.venv/bin/python",
+            "args": ["mcp_servers/knowledgebase_server.py"],
+            "description": "INDIAN BUDGET SPEECH Q&A - Use for questions about Indian Union Budget, tax structure, tax slabs, tax brackets, Finance Minister speech, government fiscal policies, ministry allocations, schemes, and budget documents. NOT for database/sales/employee queries.",
+            "enabled": true,
+            "routing_keywords": ["budget", "indian budget", "union budget", "finance minister", "nirmala", "sitharaman", "crore", "lakh", "fiscal", "ministry", "allocation", "scheme", "government", "gdp", "deficit", "tax", "tax structure", "tax slab", "tax slabs", "tax bracket", "tax brackets", "revised tax", "new tax", "income tax slab", "gst", "income tax", "capital expenditure", "revenue", "subsidy", "welfare", "infrastructure", "education budget", "health budget", "defence budget", "agriculture budget", "rural development", "PM", "pradhan mantri", "yojana", "atal", "ayushman", "swachh", "make in india", "digital india", "startup india", "atmanirbhar", "budget speech", "speech", "announcements", "policy", "policies"],
+            "tool_metadata": {
+                "knowledgebase_query": {
+                    "system_instruction": "Use knowledgebase.knowledgebase_query ONLY for questions about INDIAN BUDGET SPEECH and GOVERNMENT DOCUMENTS. This includes: Union Budget allocations, Finance Minister announcements, ministry-wise expenditure, government schemes (PM Yojana, Ayushman Bharat, etc.), fiscal deficit, GDP targets, tax policies, infrastructure spending, welfare programs. DO NOT use for database queries about sales, products, customers, employees, or business data - use sql.sql_query for those instead.",
+                    "code_example": "result = await call_tool('knowledgebase.knowledgebase_query', {'query': 'What is the budget allocation for education sector?', 'state_id': 'session123'})\ndata = json.loads(result)\nprint(data.get('answer', 'No answer found'))"
+                },
+                "knowledgebase_health": {
+                    "system_instruction": "Use knowledgebase.knowledgebase_health to check the status of the knowledge base system.",
+                    "code_example": "result = await call_tool('knowledgebase.knowledgebase_health', {})"
+                }
+            }
+        },
+        "sql": {
+            "transport": "stdio",
+            "command": "../.venv/bin/python",
+            "args": ["mcp_servers/sql_server.py"],
+            "description": "DATABASE QUERIES - Use for ALL questions about business data: sales, products, customers, employees, orders, invoices, inventory, revenue analytics. Converts natural language to SQL and executes against PostgreSQL database. NOT for budget speech, tax structure, or government policy questions.",
+            "enabled": true,
+            "routing_keywords": ["sales", "product", "products", "customer", "customers", "employee", "employees", "order", "orders", "invoice", "invoices", "profit", "inventory", "stock", "quantity", "price", "discount", "total", "count", "average", "sum", "top", "best", "worst", "highest", "lowest", "most", "least", "how many", "list all", "find", "database", "query", "report", "analytics", "KPI", "metrics", "performance", "target", "actual", "year", "month", "quarter", "region", "category", "department", "manager", "salesperson", "vendor", "supplier", "purchase", "transaction", "adventureworks", "production", "humanresources"],
+            "tool_metadata": {
+                "sql_query": {
+                    "system_instruction": "Use sql.sql_query for ALL questions about BUSINESS DATABASE DATA including: sales figures, product information, customer details, employee records, orders, invoices, inventory levels, revenue reports, performance metrics, AND VISUALIZATIONS (pie charts, bar charts, line graphs, tables). Keywords: sales, products, customers, employees, orders, invoices, revenue, profit, how many, top 10, best sellers, total, average, count, chart, pie chart, bar chart, visualize, graph. The tool handles chart generation INTERNALLY - just pass your natural language query and the tool will return both data AND visualization. DO NOT use matplotlib or plt in your code - the sql_query tool handles all visualization internally.",
+                    "code_example": "# For data queries AND visualizations (charts, graphs, etc.)\nresult = await call_tool('sql.sql_query', {'query': 'Create a pie chart of all product categories', 'state_id': 'session123'})\nif result['success']:\n    data = result['data']\n    print(data.get('answer', 'Query completed'))\nelse:\n    print(f\"Error: {result.get('error')}\")"
+                },
+                "sql_schema": {
+                    "system_instruction": "Use sql.sql_schema to get database schema information including table names and column definitions.",
+                    "code_example": "result = await call_tool('sql.sql_schema', {})"
+                },
+                "sql_health": {
+                    "system_instruction": "Use sql.sql_health to check the database connection status.",
+                    "code_example": "result = await call_tool('sql.sql_health', {})"
+                }
+            }
+        },
+        "secure_rag": {
+            "transport": "stdio",
+            "command": "../.venv/bin/python",
+            "args": ["mcp_servers/secure_rag_server.py"],
+            "description": "Secure RAG pipeline with RBAC, input/output guards, and LLM integration",
+            "enabled": true,
+            "tool_metadata": {
+                "secure_query": {
+                    "system_instruction": "Use secure_rag.secure_query to FIND information about employees (like Akash, Arpan), policies, or data. ALWAYS provide 'user_id' of the person ASKING (e.g., 'emp1', 'hr_admin'). Do NOT use check_user_access for finding info.",
+                    "code_example": "result = await call_tool('secure_rag.secure_query', {'query': 'What is the role of Akash?', 'user_id': 'emp1'})"
+                },
+                "check_user_access": {
+                    "system_instruction": "Use secure_rag.check_user_access ONLY to debug permissions of a SYSTEM USER (hr_admin, emp1). Do NOT use this to find info about people mentioned in documents.",
+                    "code_example": "result = await call_tool('secure_rag.check_user_access', {'user_id': 'emp1'})"
+                },
+                "ingest_documents": {
+                    "system_instruction": "Use secure_rag.ingest_documents to add new documents to the knowledge base with security metadata (owner_ids, shared, category, sensitivity_level, department).",
+                    "code_example": "result = await call_tool('secure_rag.ingest_documents', {'documents': [{'text': 'Document content', 'category': 'public', 'shared': true}]})"
+                },
+                "list_users": {
+                    "system_instruction": "Use secure_rag.list_users to see all available users and their roles in the RBAC system.",
+                    "code_example": "result = await call_tool('secure_rag.list_users', {})"
+                },
+                "get_system_stats": {
+                    "system_instruction": "Use secure_rag.get_system_stats to get statistics about users, documents, and access rules.",
+                    "code_example": "result = await call_tool('secure_rag.get_system_stats', {})"
+                }
+            }
+        }
+    },
+    "_comment": "Set 'enabled': true for servers you want to use. Environment variables like ${VAR} will be expanded from your .env file."
+}

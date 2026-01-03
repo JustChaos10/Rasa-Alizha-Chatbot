@@ -1,0 +1,298 @@
+C:\Code\RASA V2\.venv\Lib\site-packages\langfuse\api\core\pydantic_utilities.py:10: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  import pydantic.v1 as pydantic_v1  # type: ignore  # nopycln: import
+\u26a0\ufe0f Langfuse import failed: unable to infer type for attribute "description". Telemetry disabled.
+INFO:core.error_handlers:\u2705 Centralized error handlers registered
+INFO:shared_utils:Web server: database tables ensured
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.0.189:5001
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:41:07] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:41:08] "GET /health HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:45:56] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:45:57] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:45:57] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:45:57] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:14] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:48:15] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:49:25] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:50:31] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:51:36] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:51:45] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:52:54] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:54:03] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:55:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:56:21] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:56:29] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:57:38] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:57:46] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:58:55] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:59:03] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:00:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:00:20] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:01:29] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:01:38] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:02:52] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:03:00] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:04:09] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:04:17] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:05:28] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:05:36] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:06:45] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:06:53] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:08:04] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:08:12] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:15] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:16] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:16] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:16] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:21] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:29] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:33] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:10:41] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:10:42] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:10:50] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:11:47] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:12:00] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:12:08] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:13:00] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:13:36] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:13:45] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:14:05] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:14:54] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:15:03] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:15:14] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:16:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:16:20] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:16:23] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:17:30] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:17:32] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:17:38] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:18:41] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:18:47] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:18:55] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:19:51] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:20:04] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:20:13] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:20:13] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:20:21] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:20:57] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:21:30] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:21:38] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:22:02] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:22:48] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:22:56] "POST /clear_chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:23:08] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:24:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:24:36] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:25:46] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:26:55] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:26:55] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:28:04] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:29:13] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:33:00] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:33:01] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:33:01] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:33:01] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:34:14] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:46:56] "GET /auth/login HTTP/1.1" 200 -
+INFO:flask_wtf.csrf:The CSRF token is missing.
+ERROR:core.error_handlers:Unhandled exception: 400 Bad Request: The CSRF token is missing.
+Traceback (most recent call last):
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 261, in protect
+    validate_csrf(self._get_csrf_token())
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 100, in validate_csrf
+    raise ValidationError("The CSRF token is missing.")
+wtforms.validators.ValidationError: The CSRF token is missing.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 229, in csrf_protect
+    self.protect()
+    ~~~~~~~~~~~~^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 264, in protect
+    self._error_response(e.args[0])
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 307, in _error_response
+    raise CSRFError(reason)
+flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF token is missing.
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:46:56] "[35m[1mPOST /auth/register HTTP/1.1[0m" 500 -
+INFO:flask_wtf.csrf:The CSRF token is missing.
+ERROR:core.error_handlers:Unhandled exception: 400 Bad Request: The CSRF token is missing.
+Traceback (most recent call last):
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 261, in protect
+    validate_csrf(self._get_csrf_token())
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 100, in validate_csrf
+    raise ValidationError("The CSRF token is missing.")
+wtforms.validators.ValidationError: The CSRF token is missing.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask\app.py", line 915, in full_dispatch_request
+    rv = self.preprocess_request()
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask\app.py", line 1291, in preprocess_request
+    rv = self.ensure_sync(before_func)()
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 229, in csrf_protect
+    self.protect()
+    ~~~~~~~~~~~~^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 264, in protect
+    self._error_response(e.args[0])
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "C:\Code\RASA V2\.venv\Lib\site-packages\flask_wtf\csrf.py", line 307, in _error_response
+    raise CSRFError(reason)
+flask_wtf.csrf.CSRFError: 400 Bad Request: The CSRF token is missing.
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:46:56] "[35m[1mPOST /auth/login HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:46:56] "[32mPOST /chat HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:46:56] "GET /auth/login?next=/chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:47:12] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:47:31] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:47:31] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:47:31] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:48:04] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:48:04] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:48:05] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:48:05] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:48:44] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:49:17] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:35] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:35] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:36] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:36] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:36] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:53:49] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:54:58] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:56:07] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:57:16] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:58:22] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:58:22] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:58:22] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:58:22] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:59:27] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:59:31] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:00:45] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:00:53] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:01:50] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:02:02] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:02:56] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:03:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:04:02] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:04:21] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:05:08] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:06:13] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:07:19] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:08:25] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:08:25] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:08:41] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:08:42] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:08:42] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:31] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:31] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:31] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:31] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:52] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:09:52] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:11:02] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:11:44] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:11:45] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:11:45] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:12:54] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:13:23] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:14:29] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:15:35] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:16:46] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:16:46] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:16:46] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:17:55] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:19:01] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:20:06] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:21:12] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:22:20] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:23:31] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:24:23] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:24:24] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:24:24] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:24:40] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:25:33] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:26:39] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:27:44] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:28:50] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:29:58] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:31:06] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:15] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:37] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:38] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:38] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:38] "[31m[1mPOST /upload HTTP/1.1[0m" 400 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:59] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:32:59] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:00] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:23] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:23] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:23] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:53] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:53] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:33:53] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:34:53] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:35:02] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:35:19] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:35:19] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:35:20] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:36:29] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:36:49] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:36:49] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:36:49] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:38:00] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:38:16] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:38:16] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:38:17] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:39:27] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:40:32] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:40:47] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:40:48] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:40:48] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:41:57] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:20] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:20] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:21] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:56] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:56] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:42:56] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:44:16] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:44:46] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:46:16] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:46:16] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:46:17] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:47:30] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:49:06] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:49:06] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:49:06] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:50:18] "POST /chat HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:50:48] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:50:49] "POST /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:50:49] "POST /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:51:58] "POST /chat HTTP/1.1" 200 -

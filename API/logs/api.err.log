@@ -1,0 +1,44 @@
+C:\Code\RASA V2\.venv\Lib\site-packages\langfuse\api\core\pydantic_utilities.py:10: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+  import pydantic.v1 as pydantic_v1  # type: ignore  # nopycln: import
+\u26a0\ufe0f Langfuse import failed: unable to infer type for attribute "description". Telemetry disabled.
+INFO:core.error_handlers:\u2705 Centralized error handlers registered
+INFO:shared_utils:API server: database tables ensured
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5002
+ * Running on http://192.168.0.189:5002
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+WARNING:shared_utils:GROQ_API_KEY not configured; enabling fallback mode (GROQ_API_KEY not configured properly)
+C:\Code\RASA V2\AI\plugins\adaptive_card_tool.py:249: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+INFO:plugins.chat_tool:\u2139\ufe0f ChatTool: ImageSearchService not configured
+INFO:plugins.chat_tool:\u2139\ufe0f ChatTool: Web search fallback disabled (no TAVILY_API_KEY)
+WARNING:plugins.web_search_tool:\u26a0\ufe0f WebSearchTool: No TAVILY_API_KEY - web search disabled
+INFO:architecture.registry:\u2705 ToolRegistry initialized with 9 tools: ['adaptive_card', 'chat', 'contact_form', 'file', 'news', 'survey', 'vector_search', 'weather', 'web_search']
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:41:08] "GET /health HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:41:09] "GET /health HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 12:46:05] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:09:24] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:36] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 13:52:36] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:57:34] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:57:50] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:57:50] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 14:57:50] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 16:55:58] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 16:55:58] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 16:55:58] "GET /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 17:08:07] "GET /api/models HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 17:08:07] "POST /api/model_preference HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [03/Jan/2026 18:44:38] "GET /healthz HTTP/1.1" 200 -

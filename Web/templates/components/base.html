@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>RASA Chatbot Widget</title>
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+  <meta content="utf-8" http-equiv="encoding" />
+
+  <!-- CSRF Token for AJAX requests -->
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
+
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway:500&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet" />
+
+  <!--Import Font Awesome Icon Font-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+
+  <!--Import materialize.css-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/materialize.min.css') }}" />
+
+  <!--Main css-->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+  <!-- Navigation Bar -->
+  <nav class="nav-wrapper indigo">
+    <div class="container">
+      <!-- Brand removed per request -->
+      <a href="#" data-target="mobile-nav" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+      <ul class="right hide-on-med-and-down">
+        {% if current_user.is_authenticated %}
+        <li>
+          <a href="#" style="color: #fff !important; cursor: default;">
+            {% if current_user.is_admin() %}
+            Welcome, {{ current_user.email }}
+            {% else %}
+            Welcome, {{ current_user.email.split('@')[0] }}
+            {% endif %}
+          </a>
+        </li>
+        <li><a href="{{ url_for('index') }}"><i class="material-icons left">chat</i>Chat</a></li>
+        {% if current_user.is_admin() %}
+        <li><a href="{{ url_for('admin_dashboard') }}"><i class="material-icons left">admin_panel_settings</i>Admin</a>
+        </li>
+        {% endif %}
+        <li><a href="#" id="logoutBtn"><i class="material-icons left">logout</i>Logout</a></li>
+        {% else %}
+        <li><a href="{{ url_for('auth.login') }}"><i class="material-icons left">login</i>Login</a></li>
+        <li><a href="{{ url_for('auth.register') }}"><i class="material-icons left">person_add</i>Register</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Mobile Navigation -->
+  <ul class="sidenav" id="mobile-nav">
+    {% if current_user.is_authenticated %}
+    <li>
+      <div class="user-view">
+        <div class="background indigo"></div>
+        <a href="#user"><i class="material-icons circle">account_circle</i></a>
+        <a href="#name"><span class="white-text name">
+            {% if current_user.is_admin() %}
+            {{ current_user.email }}
+            {% else %}
+            {{ current_user.email.split('@')[0] }}
+            {% endif %}
+          </span></a>
+        <a href="#email"><span class="white-text email">{{ current_user.role }}</span></a>
+      </div>
+    </li>
+    <li><a href="{{ url_for('index') }}"><i class="material-icons">chat</i>Chat</a></li>
+    {% if current_user.is_admin() %}
+    <li><a href="{{ url_for('admin_dashboard') }}"><i class="material-icons">admin_panel_settings</i>Admin</a></li>
+    {% endif %}
+    <li>
+      <div class="divider"></div>
+    </li>
+    <li><a href="#" id="mobileLogoutBtn"><i class="material-icons">logout</i>Logout</a></li>
+    {% else %}
+    <li><a href="{{ url_for('auth.login') }}"><i class="material-icons">login</i>Login</a></li>
+    <li><a href="{{ url_for('auth.register') }}"><i class="material-icons">person_add</i>Register</a></li>
+    {% endif %}
+  </ul>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Chat Sessions Sidebar - ChatGPT Style -->
+  <div class="sessions-sidebar" id="sessionsSidebar">
+    <div class="sessions-header">
+      <h6>Chat History</h6>
+      <button class="sessions-close" id="closeSidebar" title="Close sidebar">
+        <i class="material-icons">chevron_left</i>
+      </button>
+    </div>
+    <div class="sessions-actions">
+      <button id="newChatBtn">
+        <i class="material-icons">add</i>
+        New Chat
+      </button>
+    </div>
+    <div class="sessions-list" id="sessionsList">
+      <!-- Sessions will be populated here via JavaScript -->
+      <div class="session-loading">
+        <div class="preloader-wrapper small active">
+          <div class="spinner-layer spinner-blue-only">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div>
+            <div class="gap-patch">
+              <div class="circle"></div>
+            </div>
+            <div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Toggle Button -->
+  <button class="sessions-toggle-btn" id="toggleSidebar" title="Chat History">
+    <i class="material-icons">history</i>
+  </button>
+
+  <div class="container">
+    <!-- Modal for rendering the charts, declare this if you want to render charts,
+         else you remove the modal -->
+    <div id="modal1" class="modal">
+      <canvas id="modal-chart"></canvas>
+    </div>
+
+    <!--chatbot widget -->
+    <div class="widget is-open">
+      <div class="chat_header">
+        <div class="chat_header-left">
+          <img src="{{ url_for('static', filename='images/aliza-icon.jpg') }}" alt="Alizha avatar"
+            class="chat_header_avatar" />
+          <div class="chat_header_text">
+            <span class="chat_header_title">ALIZHA</span>
+            <span class="chat_header_subtitle">Adaptive Experience Designer</span>
+          </div>
+        </div>
+
+        <!-- LLM Model Selector -->
+        <div class="chat_header-controls">
+          <div class="model-selector-container">
+            <select id="modelSelector" class="model-selector" title="Select LLM Model">
+              <option value="auto">🤖 Auto-Select</option>
+            </select>
+          </div>
+          <button class="dropdown-trigger chat_header_menu" type="button" data-target="dropdown1"
+            aria-label="Conversation menu">
+            <i class="material-icons" aria-hidden="true">more_vert</i>
+          </button>
+        </div>
+
+        <!-- Dropdown menu-->
+        <ul id="dropdown1" class="dropdown-content">
+          <li><a href="#" id="clear">Clear</a></li>
+          <li><a href="#" id="restart">Restart</a></li>
+          <li><a href="#" id="close">Close</a></li>
+        </ul>
+      </div>
+
+      <!--Chatbot contents goes here -->
+      <div class="chats" id="chats"
+        data-default-greeting="Hello! I'm Alizha, your advanced AI assistant. I can help you collect personal information, analyze images, process documents, generate surveys, or answer any questions you have. What would you like to do?">
+        <div class="clearfix"></div>
+      </div>
+
+      <!--keypad for user to type the message -->
+      <div class="keypad">
+        <button class="attach-btn" title="Attach File/Image">
+          <i class="fa fa-paperclip"></i>
+        </button>
+        <input type="file" id="file-input" style="display: none;" accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.docx,.txt">
+        <div class="textarea-wrapper">
+          <textarea id="userInput" placeholder="Type a message..." class="usrInput"></textarea>
+          <button id="mic-btn" title="Start/Stop Recording">
+            <i class="fa fa-microphone" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div id="sendButton">
+          <i class="fa fa-paper-plane" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+
+    <!--bot profile-->
+    <div class="profile_div" id="profile_div">
+      <img class="imgProfile" src="{{ url_for('static', filename='images/aliza-icon.jpg') }}" />
+    </div>
+
+    <!-- Bot pop-up intro -->
+    <div class="tap-target" data-target="profile_div">
+      <div class="tap-target-content">
+        <h5 class="white-text">Hey there 👋</h5>
+        <p class="white-text">
+          I can help you with information collection, surveys, document analysis, and answer your questions.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--JavaScript at end of body for optimized loading-->
+  <!-- jQuery with robust fallback to avoid `$ is not defined` -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    if (!window.jQuery) {
+      var alt = document.createElement('script');
+      alt.src = 'https://code.jquery.com/jquery-3.6.0.min.js';
+      document.head.appendChild(alt);
+    }
+  </script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/lib/materialize.min.js') }}"></script>
+
+  <!-- Initialize Materialize components and handle auth -->
+  <script>
+    $(document).ready(function () {
+      // Initialize Materialize components (guard if CDN hiccups)
+      if (window.jQuery) {
+        $('.sidenav').sidenav();
+        $('.dropdown-trigger').dropdown();
+        $('.modal').modal();
+
+        // Setup CSRF token for all jQuery AJAX POST requests
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        $.ajaxSetup({
+          beforeSend: function (xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrfToken);
+            }
+          }
+        });
+      }
+
+      async function getCurrentUserSafe() {
+        try {
+          if (window.authManager && window.authManager.currentUser) {
+            return window.authManager.currentUser;
+          }
+          const resp = await fetch('/auth/me');
+          return await resp.json();
+        } catch (e) { return { authenticated: false }; }
+      }
+
+      function adminKeys(email) {
+        return {
+          chat: `adminChat:${email}`,
+          flag: `adminReturnFlag:${email}`
+        };
+      }
+
+      // Handle logout for both desktop and mobile
+      $('#logoutBtn, #mobileLogoutBtn').click(async function (e) {
+        e.preventDefault();
+
+        // Clear admin-scoped chat persistence for this user before logging out
+        try {
+          const me = await getCurrentUserSafe();
+          if (me && me.authenticated && (me.role === 'admin' || me.role === 'Admin')) {
+            const keys = adminKeys(me.email);
+            sessionStorage.removeItem(keys.chat);
+            sessionStorage.removeItem(keys.flag);
+          }
+        } catch (err) { }
+
+        try { sessionStorage.removeItem('autoGreetingShown'); } catch (err) { }
+        try { sessionStorage.removeItem('chat_html'); } catch (err) { }
+
+        try {
+          const response = await fetch('{{ url_for("auth.logout") }}', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': csrfToken
+            },
+            credentials: 'same-origin'
+          });
+
+          const data = await response.json();
+
+          if (data.ok) {
+            // Clear client-side per-user chat cache and sender binding
+            try {
+              sessionStorage.removeItem('chat_html');
+              sessionStorage.removeItem('sender_id');
+            } catch (e) { }
+            M.toast({ html: 'Logged out successfully', classes: 'green' });
+            window.location.href = '{{ url_for("auth.login") }}';
+          } else {
+            M.toast({ html: 'Logout failed', classes: 'red' });
+          }
+
+        } catch (error) {
+          console.error('Logout error:', error);
+          // Fallback: navigate to GET /auth/logout
+          window.location.href = '{{ url_for("auth.logout") }}';
+        }
+      });
+
+      // Admin-only save before navigating to Admin page
+      $(document).on('click', "a[href='{{ url_for('admin_dashboard') }}']", async function () {
+        try {
+          const me = await getCurrentUserSafe();
+          if (me && me.authenticated && (me.role === 'admin' || me.role === 'Admin')) {
+            const chats = document.querySelector('.chats');
+            if (chats) {
+              const keys = adminKeys(me.email);
+              sessionStorage.setItem(keys.chat, chats.innerHTML);
+              sessionStorage.setItem(keys.flag, '1');
+            }
+          }
+        } catch (e) { }
+      });
+
+      // Widget open/close handled centrally in scripts.js to avoid double-binding
+    });
+  </script>
+  <script src="{{ url_for('static', filename='js/lib/uuid.min.js') }}"></script>
+
+  <!-- Adaptive Cards script - Load before other scripts -->
+  <script src="https://unpkg.com/adaptivecards@2.11.3/dist/adaptivecards.min.js"></script>
+  <script>
+    // Verify Adaptive Cards library is loaded
+    window.addEventListener('load', function () {
+      // console.log('AdaptiveCards library loaded:', typeof AdaptiveCards !== 'undefined');
+      if (typeof AdaptiveCards !== 'undefined') {
+        // console.log('AdaptiveCards version:', AdaptiveCards.Version);
+      } else {
+        console.error('AdaptiveCards library failed to load!');
+      }
+    });
+  </script>
+
+  <!--Chart.js Script -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/lib/chart.min.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/lib/showdown.min.js') }}"></script>
+
+  <!-- Main app scripts (loads component bundle via index.js) -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+
+  <!-- LLM Model Selection Script -->
+  <script type="text/javascript">
+    // LLM Model Selection functionality
+    let availableModels = [];
+    let userPreferredModel = 'auto';
+    function getCsrfToken() {
+      const el = document.querySelector('meta[name="csrf-token"]');
+      return el ? (el.getAttribute('content') || '') : '';
+    }
+
+    // Load available models on page load
+    window.addEventListener('load', async function () {
+      // console.log('Loading models and preferences...');
+      await loadAvailableModels();
+      await loadUserPreference();
+
+      // Debug: Check if dropdown exists and is visible
+      const dropdown = document.getElementById('modelSelector');
+      // console.log('Model selector element:', dropdown);
+      // console.log('Model selector computed style:', window.getComputedStyle(dropdown));
+      // console.log('Model selector options count:', dropdown ? dropdown.options.length : 'N/A');
+    });
+
+    async function loadAvailableModels() {
+      try {
+        const response = await fetch('/api/models');
+        const data = await response.json();
+
+        if (data.success) {
+          availableModels = Array.isArray(data.models) ? data.models : [];
+          populateModelSelector();
+        }
+      } catch (error) {
+        console.error('Error loading models:', error);
+      }
+    }
+
+    async function loadUserPreference() {
+      try {
+        const response = await fetch('/api/model_preference');
+        const data = await response.json();
+
+        if (data.success) {
+          userPreferredModel = data.preferred_model;
+          document.getElementById('modelSelector').value = userPreferredModel;
+        }
+      } catch (error) {
+        console.error('Error loading user preference:', error);
+      }
+    }
+
+    function populateModelSelector() {
+      const selector = document.getElementById('modelSelector');
+      selector.innerHTML = '<option value="auto">🤖 Auto-Select</option>';
+      availableModels.forEach(model => {
+        const option = document.createElement('option');
+        option.value = model;
+        option.textContent = getModelDisplayName(model);
+        selector.appendChild(option);
+      });
+    }
+
+    function getModelDisplayName(model) {
+      // Create user-friendly names for models with emojis
+      const modelNames = {
+        'llama-3.1-8b-instant': '🦙 Llama 3.1 8B',
+        'llama-3.3-70b-versatile': '🦙 Llama 3.3 70B',
+        'meta-llama/llama-guard-4-12b': '🛡️ Llama Guard 4 12B',
+        'openai/gpt-oss-120b': '🧠 GPT OSS 120B',
+        'openai/gpt-oss-20b': '🧩 GPT OSS 20B',
+        'moonshotai/kimi-k2-instruct': '✨ Kimi K2',
+        'qwen/qwen3-32b': '🧮 Qwen3-32B'
+      };
+
+      return modelNames[model] || model;
+    }
+
+    // Handle model selection change
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('modelSelector').addEventListener('change', async function (e) {
+        const selectedModel = e.target.value;
+
+        try {
+          const response = await fetch('/api/model_preference', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'X-CSRFToken': getCsrfToken()
+            },
+            body: JSON.stringify({ model: selectedModel })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            userPreferredModel = selectedModel;
+            // console.log('Model preference updated:', selectedModel);
+
+            // Show user feedback
+            showModelSelectionFeedback(selectedModel);
+          }
+        } catch (error) {
+          console.error('Error updating model preference:', error);
+        }
+      });
+    });
+
+    // Fallback stub if chat.js hasn't loaded yet
+    if (typeof window.scrollToBottomOfResults !== 'function') {
+      window.scrollToBottomOfResults = function () {
+        const el = document.getElementById('chats');
+        if (el) el.scrollTop = el.scrollHeight;
+      };
+    }
+
+    function showModelSelectionFeedback(model) {
+      const modelName = model === 'auto' ? 'Auto-Select' : getModelDisplayName(model);
+      const feedbackMsg = `🔧 LLM Model: ${modelName}`;
+
+      // Add a subtle notification to the chat
+      const feedback = `<div class="model-feedback"><small>${feedbackMsg}</small></div>`;
+      $('.chats').append(feedback);
+      setTimeout(() => {
+        $('.model-feedback').fadeOut(1000, function () { $(this).remove(); });
+      }, 2000);
+
+      scrollToBottomOfResults();
+    }
+
+    // Expose function to get current model preference for chat.js
+    window.getCurrentModelPreference = function () {
+      return userPreferredModel;
+    };
+  </script>
+
+  <!-- Dark Mode removed: Light theme only -->
+</body>
+
+</html>

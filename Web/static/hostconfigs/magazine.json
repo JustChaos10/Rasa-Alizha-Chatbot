@@ -1,0 +1,192 @@
+{
+  "spacing": {
+    "small": 8,
+    "default": 12,
+    "medium": 16,
+    "large": 24,
+    "extraLarge": 32,
+    "padding": 20
+  },
+  "separator": {
+    "lineThickness": 1,
+    "lineColor": "#E1DFDD"
+  },
+  "supportsInteractivity": true,
+  "imageBaseUrl": "",
+  "fontTypes": {
+    "default": {
+      "fontFamily": "'Segoe UI Variable', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif",
+      "fontSizes": {
+        "small": 12,
+        "default": 14,
+        "medium": 16,
+        "large": 20,
+        "extraLarge": 26,
+        "huge": 32
+      },
+      "fontWeights": {
+        "lighter": 300,
+        "default": 400,
+        "bolder": 700
+      }
+    },
+    "monospace": {
+      "fontFamily": "'Cascadia Code', 'Consolas', monospace",
+      "fontSizes": {
+        "small": 12,
+        "default": 13,
+        "medium": 15,
+        "large": 17,
+        "extraLarge": 19,
+        "huge": 21
+      },
+      "fontWeights": {
+        "lighter": 300,
+        "default": 400,
+        "bolder": 600
+      }
+    }
+  },
+  "containerStyles": {
+    "default": {
+      "backgroundColor": "#FFFFFF",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "accent": {
+          "default": "#0078D4",
+          "subtle": "#106EBE"
+        },
+        "good": {
+          "default": "#107C10",
+          "subtle": "#0B5A08"
+        },
+        "warning": {
+          "default": "#F7630C",
+          "subtle": "#C44F0C"
+        },
+        "attention": {
+          "default": "#C50F1F",
+          "subtle": "#A80000"
+        }
+      }
+    },
+    "emphasis": {
+      "backgroundColor": "#F3F2F1",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "accent": {
+          "default": "#0063B1",
+          "subtle": "#005A9E"
+        },
+        "good": {
+          "default": "#0B5A08",
+          "subtle": "#094509"
+        },
+        "warning": {
+          "default": "#C44F0C",
+          "subtle": "#8D3707"
+        },
+        "attention": {
+          "default": "#A80000",
+          "subtle": "#750B1C"
+        }
+      }
+    },
+    "accent": {
+      "backgroundColor": "#EBF3FC",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "accent": {
+          "default": "#0078D4",
+          "subtle": "#106EBE"
+        }
+      }
+    },
+    "good": {
+      "backgroundColor": "#DFF6DD",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "good": {
+          "default": "#107C10",
+          "subtle": "#0B5A08"
+        }
+      }
+    },
+    "attention": {
+      "backgroundColor": "#FDE7E9",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "attention": {
+          "default": "#C50F1F",
+          "subtle": "#A80000"
+        }
+      }
+    },
+    "warning": {
+      "backgroundColor": "#FFF4CE",
+      "foregroundColors": {
+        "default": {
+          "default": "#323130",
+          "subtle": "#605E5C"
+        },
+        "warning": {
+          "default": "#F7630C",
+          "subtle": "#C44F0C"
+        }
+      }
+    }
+  },
+  "imageSizes": {
+    "small": 60,
+    "medium": 120,
+    "large": 180
+  },
+  "actions": {
+    "maxActions": 5,
+    "spacing": "Default",
+    "buttonSpacing": 12,
+    "showCard": {
+      "actionMode": "Inline",
+      "inlineTopMargin": 16,
+      "style": "emphasis"
+    },
+    "actionsOrientation": "Horizontal",
+    "actionAlignment": "Left",
+    "allowTitleToWrap": true
+  },
+  "adaptiveCard": {
+    "allowCustomStyle": true
+  },
+  "imageSet": {
+    "imageSize": "Medium",
+    "maxImageHeight": 100
+  },
+  "factSet": {
+    "title": {
+      "size": "Default",
+      "weight": "Bolder",
+      "color": "Default"
+    },
+    "value": {
+      "size": "Default",
+      "weight": "Default",
+      "color": "Default"
+    },
+    "spacing": 8
+  }
+}

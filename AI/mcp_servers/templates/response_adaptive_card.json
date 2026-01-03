@@ -1,0 +1,144 @@
+{
+  "leave_calculator_with_dates_card": {
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "type": "AdaptiveCard",
+    "version": "1.5",
+    "body": [
+      {
+        "type": "Container",
+        "id": "statusContainer",
+        "items": [
+          {
+            "type": "TextBlock",
+            "text": "{status_message} for {requested_days} Day {leave_type}.",
+            "color": "{status_style}",
+            "weight": "Bolder",
+            "size": "Medium",
+            "wrap": true,
+            "spacing": "Small"
+          }
+        ]
+      },
+      {
+        "type": "Container",
+        "id": "dateRangeContainer",
+        "spacing": "Small",
+        "items": [
+          {
+            "type": "RichTextBlock",
+            "inlines": [
+              {
+                "type": "TextRun",
+                "text": "Leave Days : ",
+                "id": "dateLabel"
+              },
+              {
+                "type": "TextRun",
+                "text": "{start_date} to {end_date}",
+                "id": "dateValue"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Container",
+        "id": "balanceInfoContainer",
+        "spacing": "Small",
+        "items": [
+          {
+            "type": "RichTextBlock",
+            "inlines": [
+              {
+                "type": "TextRun",
+                "text": "{leave_type} Balance after Leave: ",
+                "id": "balanceLabel"
+              },
+              {
+                "type": "TextRun",
+                "text": "{remaining_days} Days",
+                "id": "balanceValue"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "Container",
+        "id": "currentBalanceContainer",
+        "spacing": "Medium",
+        "items": [
+          {
+            "type": "TextBlock",
+            "text": "Current Balance",
+            "weight": "Bolder",
+            "size": "Medium",
+            "spacing": "Small"
+          },
+          {
+            "type": "ColumnSet",
+            "spacing": "Small",
+            "columns": [
+              {
+                "type": "Column",
+                "width": "stretch",
+                "items": [
+                  {
+                    "type": "Container",
+                    "style": "emphasis",
+                    "bleed": true,
+                    "items": [
+                      {
+                        "type": "RichTextBlock",
+                        "horizontalAlignment": "Center",
+                        "inlines": [
+                          {
+                            "type": "TextRun",
+                            "text": "Sick Leave : "
+                          },
+                          {
+                            "type": "TextRun",
+                            "text": "{sick_leave_days} Days"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "Column",
+                "width": "stretch",
+                "items": [
+                  {
+                    "type": "Container",
+                    "style": "emphasis",
+                    "bleed": true,
+                    "items": [
+                      {
+                        "type": "RichTextBlock",
+                        "horizontalAlignment": "Center",
+                        "inlines": [
+                          {
+                            "type": "TextRun",
+                            "text": "Vacation Leave : "
+                          },
+                          {
+                            "type": "TextRun",
+                            "text": "{vacation_days} Days"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "actions": []
+  }
+}
+ 

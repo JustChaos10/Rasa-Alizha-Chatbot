@@ -1,0 +1,64 @@
+aiohttp
+boto3
+botocore
+faiss-cpu
+fastapi
+fastmcp
+flask>=3.0
+flask-cors
+flask-login
+flask-migrate
+flask-sqlalchemy>=3.0
+flask-wtf
+google-generativeai
+google-genai
+groq
+httpx
+jsonschema
+langchain
+langchain-community
+langchain-google-genai
+langchain-groq
+langchain-huggingface
+langdetect
+llm-guard
+matplotlib
+mcp
+numpy<2
+packaging
+pandas
+pillow
+psycopg2
+psycopg2-binary
+pydantic
+pypdf2
+pymupdf
+python-docx
+python-dotenv
+qdrant-client
+rasa-sdk>=3.6.0
+redis
+requests
+seaborn
+sentence-transformers
+torch>=2.2.0
+sqlalchemy
+uvicorn
+werkzeug
+langfuse
+deepeval
+
+# SQL Security
+sqlparse
+
+# Rate Limiting
+flask-limiter
+redis
+
+# CSRF Protection & Security Headers
+flask-wtf
+flask-talisman
+
+# File Upload Security
+python-magic-bin  # Windows-compatible version
+pyclamd  # ClamAV virus scanning (optional)

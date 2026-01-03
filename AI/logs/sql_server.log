@@ -1,0 +1,1458 @@
+2025-12-14 16:00:08,587 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-14 16:00:08,587 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-14 16:00:08,593 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-14 16:00:08,594 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 13:20:44,776 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 13:20:44,776 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 13:20:44,783 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 13:20:44,784 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 13:22:20,050 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 13:22:20,051 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 13:22:20,057 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 13:22:20,057 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 13:29:29,881 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 13:29:29,881 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 13:29:29,888 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 13:29:29,889 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 13:29:29,913 | INFO | sql-server | SQL query received: 'List top 5 products by sales' [state_id=smoke]
+2025-12-15 13:29:29,913 | INFO | sql-server | Processing SQL query: List top 5 products by sales... [state_id=smoke]
+2025-12-15 13:29:33,998 | ERROR | sql-server | Error processing query: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-12-15 13:29:33,998 | INFO | sql-server | SQL response [state_id=smoke]: chart=None
+2025-12-15 15:23:14,246 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 15:23:14,247 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 15:23:14,255 | INFO | sql-server | SQL query received: 'How many customers are there?' [state_id=default]
+2025-12-15 15:23:14,255 | INFO | sql-server | Processing SQL query: How many customers are there?... [state_id=default]
+2025-12-15 15:23:18,359 | ERROR | sql-server | Error processing query: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-12-15 15:23:18,359 | INFO | sql-server | SQL response [state_id=default]: chart=None
+2025-12-15 18:38:55,912 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 18:38:55,913 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 18:38:55,921 | INFO | sql-server | SQL query received: 'select 1' [state_id=default]
+2025-12-15 18:38:55,921 | INFO | sql-server | Processing SQL query: select 1... [state_id=default]
+2025-12-15 18:39:00,006 | ERROR | sql-server | Error processing query: connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2025-12-15 18:39:00,007 | INFO | sql-server | SQL response [state_id=default]: chart=None
+2025-12-15 18:39:17,630 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 18:39:17,631 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 19:40:21,913 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 19:40:21,914 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 19:40:21,922 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 19:40:21,923 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 20:01:27,969 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 20:01:27,970 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 20:01:27,974 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 20:01:27,975 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 20:15:34,558 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 20:15:34,559 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 20:15:34,569 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 20:15:34,569 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 22:11:13,278 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 22:11:13,279 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 22:11:13,285 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 22:11:13,286 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 22:17:02,023 | INFO | sql-server | SQL query received: 'How many products are there?' [state_id=default]
+2025-12-15 22:17:02,023 | INFO | sql-server | Processing SQL query: How many products are there?... [state_id=default]
+2025-12-15 22:17:02,097 | ERROR | sql-server | Error processing query: connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+2025-12-15 22:17:02,098 | INFO | sql-server | SQL response [state_id=default]: chart=None
+2025-12-15 22:17:09,450 | INFO | sql-server | SQL query received: 'Create a pie chart of product categories' [state_id=default]
+2025-12-15 22:17:09,450 | INFO | sql-server | Processing SQL query: Create a pie chart of product categories... [state_id=default]
+2025-12-15 22:17:09,514 | ERROR | sql-server | Error processing query: connection to server at "localhost" (::1), port 5432 failed: FATAL:  password authentication failed for user "postgres"
+
+2025-12-15 22:17:09,514 | INFO | sql-server | SQL response [state_id=default]: chart=None
+2025-12-15 22:21:19,233 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 22:21:19,234 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 22:21:19,241 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 22:21:19,241 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 22:43:39,811 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 22:43:39,811 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 22:43:39,819 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 22:43:39,819 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-15 22:56:15,787 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-15 22:56:15,787 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-15 22:56:15,793 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-15 22:56:15,793 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-29 13:38:35,620 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-29 13:38:35,620 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-29 13:38:35,625 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-29 13:38:35,625 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-29 13:55:28,002 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-29 13:55:28,004 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-29 13:55:28,006 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-29 13:55:28,006 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-29 13:57:07,450 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-29 13:57:07,451 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-29 13:57:07,453 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-29 13:57:07,454 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-29 15:54:04,348 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-29 15:54:04,348 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.1-8b-instant', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.0-flash', 'failures': 0}}
+2025-12-29 15:54:04,351 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-29 15:54:04,351 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 01:13:55,441 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 01:13:55,442 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 01:13:55,445 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 01:13:55,445 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 01:24:29,605 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 01:24:29,606 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 01:24:29,608 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 01:24:29,618 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 01:34:46,715 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 01:34:46,715 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 01:34:46,718 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 01:34:46,718 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 01:44:18,393 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 01:44:18,393 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 01:44:18,396 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 01:44:18,396 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 10:30:46,732 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 10:30:46,732 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 10:30:46,734 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 10:30:46,734 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 10:41:45,266 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 10:41:45,266 | INFO | sql-server |    LLM Status: {'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 10:41:45,270 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 10:41:45,270 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:10:12,414 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:10:12,414 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:10:12,417 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:10:12,417 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:10:34,771 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:10:34,771 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:10:34,774 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:10:34,774 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:11:00,124 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:11:00,124 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:11:00,126 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:11:00,126 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:11:24,943 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:11:24,943 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:11:24,945 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:11:24,945 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:12:39,700 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:12:39,700 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:12:39,703 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:12:39,703 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:13:01,054 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:13:01,054 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:13:01,056 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:13:01,056 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:13:18,758 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:13:18,758 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:13:18,760 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:13:18,760 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:13:47,562 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:13:47,562 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:13:47,564 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:13:47,564 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:17:56,741 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:17:56,741 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:17:56,744 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:17:56,744 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:18:19,602 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:18:19,602 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:18:19,604 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:18:19,604 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:18:37,144 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:18:37,144 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:18:37,147 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:18:37,147 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:19:03,195 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:19:03,195 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:19:03,197 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:19:03,197 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:21:58,255 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:21:58,255 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:21:58,257 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:21:58,258 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:22:18,757 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:22:18,757 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:22:18,759 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:22:18,759 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:22:36,793 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:22:36,793 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:22:36,796 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:22:36,796 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:23:16,096 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:23:16,096 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:23:16,098 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:23:16,098 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:27:26,141 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:27:26,141 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:27:26,144 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:27:26,144 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:27:44,177 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:27:44,177 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:27:44,179 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:27:44,179 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:28:01,160 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:28:01,160 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:28:01,163 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:28:01,163 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:28:25,078 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:28:25,078 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:28:25,080 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:28:25,080 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:30:06,472 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:30:06,473 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:30:06,475 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:30:06,475 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:30:25,955 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:30:25,955 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:30:25,958 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:30:25,958 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:30:41,324 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:30:41,324 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:30:41,327 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:30:41,327 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:31:05,198 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:31:05,198 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:31:05,200 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:31:05,200 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:33:34,782 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:33:34,782 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:33:34,786 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:33:34,786 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:33:57,819 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:33:57,819 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:33:57,822 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:33:57,822 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:34:15,842 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:34:15,842 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:34:15,844 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:34:15,845 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:34:39,916 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:34:39,916 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:34:39,918 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:34:39,918 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:36:40,794 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:36:40,794 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:36:40,796 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:36:40,796 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:37:04,787 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:37:04,787 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:37:04,790 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:37:04,790 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:37:25,629 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:37:25,629 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:37:25,632 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:37:25,633 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:37:52,937 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:37:52,937 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:37:52,940 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:37:52,940 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:43:15,344 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:43:15,344 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:43:15,346 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:43:15,346 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:43:41,561 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:43:41,561 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:43:41,564 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:43:41,564 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:43:58,926 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:43:58,926 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:43:58,930 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:43:58,930 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:44:25,353 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:44:25,353 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:44:25,356 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:44:25,356 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:48:26,299 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:48:26,299 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:48:26,301 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:48:26,302 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:48:49,170 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:48:49,171 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:48:49,174 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:48:49,174 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:49:07,985 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:49:07,986 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:49:07,988 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:49:07,988 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:49:34,627 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:49:34,628 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:49:34,630 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:49:34,631 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:53:28,346 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:53:28,346 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:53:28,349 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:53:28,349 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:53:52,511 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:53:52,511 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:53:52,513 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:53:52,513 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:54:12,304 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:54:12,304 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:54:12,306 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:54:12,306 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 11:54:44,883 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 11:54:44,883 | INFO | sql-server |    LLM Status: {'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 11:54:44,885 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 11:54:44,885 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:24,544 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:24,544 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:24,546 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:24,547 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:28,777 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:28,777 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:28,779 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:28,780 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:35,232 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:35,232 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:35,235 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:35,235 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:38,684 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:38,684 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:38,686 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:38,686 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:43,068 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:43,068 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:43,071 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:43,072 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:49,302 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:49,302 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:49,307 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:49,307 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:55,298 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:55,298 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:55,301 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:55,301 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:50:58,410 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:50:58,411 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:50:58,414 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:50:58,414 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:19,947 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:19,949 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:19,953 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:19,953 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:28,459 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:28,459 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:28,463 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:28,463 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:33,481 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:33,481 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:33,485 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:33,485 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:38,575 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:38,575 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:38,578 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:38,578 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:43,756 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:43,756 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:43,760 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:43,761 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:52:53,476 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:52:53,477 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:52:53,481 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:52:53,481 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:53:07,448 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:53:07,448 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:53:07,450 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:53:07,451 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:53:11,796 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:53:11,796 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:53:11,801 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:53:11,801 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:08,732 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:08,732 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:08,735 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:08,735 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:14,210 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:14,211 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:14,214 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:14,214 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:19,406 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:19,406 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:19,410 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:19,411 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:24,333 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:24,333 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:24,337 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:24,337 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:29,449 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:29,449 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:29,452 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:29,452 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:38,703 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:38,704 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:38,706 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:38,706 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:51,237 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:51,237 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:51,241 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:51,241 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 12:59:55,679 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 12:59:55,679 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 12:59:55,682 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 12:59:55,682 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:11:09,241 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:11:09,241 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:11:09,245 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:11:09,245 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:36:57,028 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:36:57,040 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:36:57,043 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:36:57,043 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:42:33,796 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:42:33,796 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:42:33,799 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:42:33,799 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:48:20,180 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:48:20,180 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:48:20,184 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:48:20,184 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:52:17,460 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:52:17,460 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:52:17,462 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:52:17,462 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:54:37,887 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:54:37,887 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:54:37,890 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:54:37,890 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:54:41,872 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:54:41,872 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:54:41,875 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:54:41,875 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:54:45,449 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:54:45,449 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:54:45,451 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:54:45,451 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:54:49,026 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:54:49,026 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:54:49,028 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:54:49,028 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:54:52,685 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:54:52,685 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:54:52,687 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:54:52,687 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:55:00,146 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:55:00,146 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:55:00,148 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:55:00,148 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:55:10,621 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:55:10,621 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:55:10,623 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:55:10,624 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 13:55:13,503 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 13:55:13,503 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 13:55:13,505 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 13:55:13,505 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:00:14,793 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:00:14,793 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:00:14,799 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:00:14,800 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:00:18,953 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:00:18,954 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:00:18,956 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:00:18,956 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:00:22,233 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:00:22,233 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:00:22,235 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:00:22,236 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:00:25,650 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:00:25,651 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': False, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:00:25,653 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:00:25,653 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:30:42,950 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:30:42,950 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:30:42,953 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:30:42,953 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:30:48,035 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:30:48,035 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:30:48,038 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:30:48,038 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:30:52,386 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:30:52,387 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:30:52,389 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:30:52,389 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:30:56,612 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:30:56,612 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:30:56,615 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:30:56,615 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:41:15,765 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:41:15,766 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:41:15,769 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:41:15,769 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:41:20,908 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:41:20,908 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:41:20,911 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:41:20,911 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:41:25,669 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:41:25,669 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:41:25,672 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:41:25,672 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:41:30,716 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:41:30,716 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:41:30,719 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:41:30,720 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:53:38,189 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:53:38,190 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:53:38,193 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:53:38,193 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:53:43,489 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:53:43,489 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:53:43,491 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:53:43,491 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:53:48,502 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:53:48,502 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:53:48,506 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:53:48,506 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 14:53:53,939 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 14:53:53,939 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 14:53:53,942 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 14:53:53,943 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:27:00,438 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:27:00,438 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:27:00,441 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:27:00,441 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:27:04,437 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:27:04,437 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:27:04,440 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:27:04,440 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:27:08,276 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:27:08,276 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:27:08,279 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:27:08,279 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:27:12,107 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:27:12,107 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:27:12,110 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:27:12,110 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:35:16,240 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:35:16,240 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:35:16,242 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:35:16,242 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:35:20,004 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:35:20,004 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:35:20,006 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:35:20,006 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:35:23,566 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:35:23,566 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:35:23,568 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:35:23,568 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:35:27,115 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:35:27,115 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:35:27,117 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:35:27,117 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:39:09,773 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:39:09,774 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:39:09,776 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:39:09,776 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:39:14,309 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:39:14,309 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:39:14,312 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:39:14,312 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:39:18,613 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:39:18,613 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:39:18,615 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:39:18,615 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:39:23,257 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:39:23,257 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:39:23,259 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:39:23,259 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:44:49,220 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:44:49,221 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:44:49,223 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:44:49,223 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:44:54,130 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:44:54,130 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:44:54,133 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:44:54,133 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:44:58,805 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:44:58,805 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:44:58,808 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:44:58,808 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:45:03,519 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:45:03,520 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:45:03,522 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:45:03,522 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:47:54,751 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:47:54,751 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:47:54,753 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:47:54,753 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:47:59,671 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:47:59,671 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:47:59,673 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:47:59,673 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:48:04,217 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:48:04,217 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:48:04,219 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:48:04,219 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:48:08,691 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:48:08,691 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:48:08,693 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:48:08,693 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:50:56,704 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:50:56,704 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:50:56,707 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:50:56,707 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:51:02,343 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:51:02,343 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:51:02,345 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:51:02,345 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:51:07,741 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:51:07,741 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:51:07,744 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:51:07,744 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:51:13,116 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:51:13,116 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:51:13,119 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:51:13,119 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:56:54,570 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:56:54,570 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:56:54,572 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:56:54,572 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:56:59,211 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:56:59,211 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:56:59,213 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:56:59,213 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:57:03,338 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:57:03,338 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:57:03,341 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:57:03,341 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 17:57:07,568 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 17:57:07,568 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 17:57:07,570 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 17:57:07,570 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:12:42,712 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:12:42,712 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:12:42,715 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:12:42,715 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:12:47,453 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:12:47,453 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:12:47,455 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:12:47,455 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:12:51,921 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:12:51,921 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:12:51,923 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:12:51,924 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:12:56,452 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:12:56,452 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:12:56,454 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:12:56,454 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:18:12,565 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:18:12,565 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:18:12,568 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:18:12,568 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:18:24,245 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:18:24,245 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:18:24,248 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:18:24,248 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:18:37,342 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:18:37,342 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:18:37,344 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:18:37,344 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:18:50,430 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:18:50,430 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:18:50,433 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:18:50,433 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:20:12,509 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:20:12,510 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:20:12,512 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:20:12,512 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:20:17,368 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:20:17,368 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:20:17,370 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:20:17,370 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:20:22,071 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:20:22,071 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:20:22,074 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:20:22,074 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:20:27,015 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:20:27,015 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:20:27,017 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:20:27,017 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:22:45,208 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:22:45,208 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:22:45,211 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:22:45,211 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:22:49,956 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:22:49,956 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:22:49,958 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:22:49,958 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:22:54,570 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:22:54,570 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:22:54,573 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:22:54,573 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:22:59,364 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:22:59,364 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:22:59,366 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:22:59,366 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:25:26,177 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:25:26,177 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:25:26,179 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:25:26,179 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:25:31,431 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:25:31,431 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:25:31,433 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:25:31,433 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:25:36,297 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:25:36,297 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:25:36,300 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:25:36,300 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2025-12-30 18:25:41,614 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2025-12-30 18:25:41,614 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2025-12-30 18:25:41,617 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2025-12-30 18:25:41,617 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:19:29,640 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:19:29,641 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:19:29,644 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:19:29,644 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:23:53,098 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:23:53,099 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:23:53,101 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:23:53,101 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:24:07,074 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:24:07,074 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:24:07,077 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:24:07,077 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:27:29,135 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:27:29,136 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:27:29,139 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:27:29,139 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:27:43,181 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:27:43,181 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:27:43,184 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:27:43,185 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:30:55,787 | INFO | sql-server | Server stopped by user
+2026-01-01 21:31:25,342 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:31:25,342 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:31:25,345 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:31:25,345 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:31:39,701 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:31:39,701 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:31:39,704 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:31:39,704 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:35:47,755 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:35:47,755 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:35:47,758 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:35:47,758 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:36:08,577 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:36:08,577 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:36:08,580 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:36:08,580 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:36:31,076 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:36:31,076 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:36:31,079 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:36:31,079 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:37:06,881 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:37:06,882 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:37:06,884 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:37:06,884 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:37:32,087 | INFO | sql-server | Server stopped by user
+2026-01-01 21:38:09,134 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:38:09,135 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:38:09,138 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:38:09,138 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:38:22,561 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:38:22,561 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:38:22,564 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:38:22,564 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:43:30,882 | INFO | sql-server | Server stopped by user
+2026-01-01 21:43:31,261 | INFO | sql-server | Server stopped by user
+2026-01-01 21:44:03,219 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:44:03,219 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:44:03,223 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:44:03,224 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:44:17,284 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:44:17,284 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:44:17,288 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:44:17,288 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:49:45,060 | INFO | sql-server | Server stopped by user
+2026-01-01 21:50:09,728 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:50:09,728 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:50:09,732 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:50:09,732 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:50:26,213 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:50:26,214 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:50:26,218 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:50:26,218 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:58:23,989 | INFO | sql-server | Server stopped by user
+2026-01-01 21:59:11,458 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:59:11,458 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:59:11,460 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:59:11,460 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 21:59:24,119 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 21:59:24,119 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 21:59:24,121 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 21:59:24,121 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 22:27:35,286 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 22:27:35,286 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 22:27:35,289 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 22:27:35,289 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-01 22:27:51,797 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-01 22:27:51,797 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-01 22:27:51,800 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-01 22:27:51,800 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:33:50,688 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:33:50,689 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:33:50,694 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:33:50,694 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:34:12,065 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:34:12,065 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:34:12,069 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:34:12,070 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:44:35,632 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:44:35,634 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:44:35,637 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:44:35,637 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:44:52,395 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:44:52,395 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:44:52,401 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:44:52,401 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:45:29,837 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:45:29,837 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:45:29,840 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:45:29,840 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:51:19,679 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:51:19,680 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:51:19,682 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:51:19,682 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:54:59,669 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:54:59,669 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:54:59,672 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:54:59,672 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:56:17,049 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:56:17,049 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:56:17,052 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:56:17,052 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:56:25,653 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:56:25,653 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:56:25,655 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:56:25,655 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 12:56:39,224 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 12:56:39,224 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 12:56:39,226 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 12:56:39,226 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:00:26,624 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:00:26,624 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:00:26,626 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:00:26,626 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:00:26,730 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:00:26,730 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:00:26,732 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:00:26,732 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:05:35,743 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:05:35,743 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:05:35,745 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:05:35,745 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:05:48,361 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:05:48,361 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:05:48,364 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:05:48,364 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:24:39,677 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:24:39,677 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:24:39,679 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:24:39,680 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:25:08,698 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:25:08,699 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:25:08,711 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:25:08,711 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:25:08,794 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:25:08,794 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:25:08,800 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:25:08,800 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:25:09,482 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:25:09,482 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:25:09,489 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:25:09,489 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:36:51,518 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:36:51,518 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:36:51,521 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:36:51,521 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:36:51,770 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:36:51,770 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:36:51,773 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:36:51,773 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:36:52,632 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:36:52,632 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:36:52,634 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:36:52,634 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:00,569 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:55:00,569 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:00,571 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:00,571 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:01,001 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:55:01,001 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:01,003 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:01,003 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:01,866 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:55:01,866 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:01,869 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:01,869 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:16,855 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:55:16,855 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:16,855 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:16,857 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:16,857 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:16,857 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:16,857 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:55:17,515 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:55:17,515 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:55:17,517 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:55:17,517 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:56:30,687 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:56:30,687 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:56:30,690 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:56:30,690 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:56:31,401 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:56:31,401 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:56:31,405 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:56:31,405 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 13:56:31,663 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 13:56:31,663 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 13:56:31,665 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 13:56:31,665 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:01:54,700 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:01:54,700 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:01:54,703 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:01:54,703 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:02:08,357 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:02:08,357 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:02:08,360 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:02:08,360 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:15:40,119 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:15:40,119 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:15:40,122 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:15:40,122 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:17:39,370 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:17:39,370 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:17:39,373 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:17:39,373 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:17:54,465 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:17:54,465 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:17:54,469 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:17:54,469 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:28:53,584 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:28:53,585 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:28:53,588 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:28:53,588 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:30:04,229 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:30:04,229 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:30:04,232 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:30:04,232 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:30:19,862 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:30:19,862 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:30:19,864 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:30:19,865 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:30:34,866 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:30:34,866 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:30:34,869 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:30:34,869 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:41:06,842 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:41:06,842 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:41:06,845 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:41:06,845 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:43:50,366 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:43:50,366 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:43:50,368 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:43:50,368 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:44:11,642 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:44:11,642 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:44:11,644 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:44:11,644 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:45:38,930 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:45:38,930 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:45:38,932 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:45:38,932 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:45:56,229 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:45:56,229 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:45:56,233 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:45:56,233 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:46:36,950 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:46:36,950 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:46:36,953 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:46:36,953 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:47:02,802 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:47:02,802 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:47:02,805 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:47:02,805 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:47:16,592 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:47:16,592 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:47:16,595 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:47:16,596 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:49:27,485 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:49:27,486 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:49:27,488 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:49:27,488 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:49:50,197 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:49:50,197 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:49:50,200 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:49:50,200 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 14:50:15,607 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 14:50:15,607 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 14:50:15,609 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 14:50:15,609 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:43:29,852 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:43:29,852 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:43:29,854 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:43:29,854 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:44:09,122 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:44:09,122 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:44:09,126 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:44:09,126 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:44:55,790 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:44:55,790 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:44:55,793 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:44:55,793 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:47:06,689 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:47:06,689 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:47:06,692 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:47:06,692 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:47:25,084 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:47:25,084 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:47:25,086 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:47:25,086 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:47:37,655 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:47:37,655 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:47:37,657 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:47:37,657 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:52:53,114 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:52:53,115 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:52:53,117 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:52:53,117 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:53:09,814 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:53:09,814 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:53:09,816 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:53:09,816 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:53:22,226 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:53:22,227 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:53:22,229 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:53:22,229 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:56:40,174 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:56:40,174 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:56:40,177 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:56:40,177 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:56:54,175 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:56:54,175 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:56:54,178 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:56:54,178 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 15:57:06,894 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 15:57:06,894 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 15:57:06,897 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 15:57:06,897 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:00:41,671 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:00:41,671 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:00:41,674 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:00:41,674 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:00:54,606 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:00:54,606 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:00:54,609 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:00:54,609 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:03:46,692 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:03:46,692 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:03:46,694 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:03:46,694 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:04:02,401 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:04:02,402 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:04:02,404 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:04:02,404 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:04:15,192 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:04:15,192 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:04:15,195 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:04:15,195 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:08:30,603 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:08:30,603 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:08:30,606 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:08:30,606 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:08:44,858 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:08:44,858 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:08:44,860 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:08:44,860 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:08:58,570 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:08:58,570 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:08:58,573 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:08:58,573 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:10:32,968 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 16:10:32,968 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 16:10:34,998 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:10:34,998 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 16:13:33,251 | INFO | sql-server | SQL query received: 'Create a quarterly business performance dashboard showing revenue growth, customer acquisition metrics, top performing teams, and key product launches. Include charts and action buttons to view detailed reports.' [state_id=user-41, user=41]
+2026-01-02 16:13:33,251 | INFO | sql-server | Processing SQL query: Create a quarterly business performance dashboard showing revenue growth, customer acquisition metri... [state_id=user-41, user=41]
+2026-01-02 16:13:35,307 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:13:35,307 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 16:14:57,364 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:14:57,364 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:14:57,368 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:14:57,368 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:14:57,379 | ERROR | sql-server | Server error: unhandled errors in a TaskGroup (1 sub-exception)
+2026-01-02 16:15:12,016 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:15:12,016 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:15:12,018 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:15:12,018 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:15:24,064 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:15:24,064 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:15:24,067 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:15:24,067 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:17:11,000 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 16:17:11,000 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 16:17:13,070 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:17:13,070 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:17:13,073 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:17:13,074 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:17:15,121 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:17:15,121 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:17:15,129 | INFO | sql-server | SQL query received: 'Show me top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:17:15,129 | INFO | sql-server | Processing SQL query: Show me top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:17:17,185 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:17:17,185 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:17:17,188 | INFO | sql-server | SQL query received: 'Show me key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:17:17,188 | INFO | sql-server | Processing SQL query: Show me key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:17:19,244 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:17:19,244 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:19:35,137 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:19:35,138 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:19:35,140 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:19:35,140 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:21:13,688 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:21:13,688 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:21:13,690 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:21:13,690 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:26:56,334 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 16:26:56,334 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 16:26:56,336 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 16:26:56,336 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 16:57:00,077 | INFO | sql-server | SQL query received: 'Get revenue growth data for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:57:00,077 | INFO | sql-server | Processing SQL query: Get revenue growth data for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:57:02,112 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:57:02,112 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:57:02,120 | INFO | sql-server | SQL query received: 'Get customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:57:02,120 | INFO | sql-server | Processing SQL query: Get customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:57:04,158 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:57:04,158 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:57:04,161 | INFO | sql-server | SQL query received: 'Get top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:57:04,161 | INFO | sql-server | Processing SQL query: Get top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:57:06,215 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:57:06,215 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 16:57:06,217 | INFO | sql-server | SQL query received: 'Get key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-02 16:57:06,217 | INFO | sql-server | Processing SQL query: Get key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-02 16:57:08,265 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 16:57:08,265 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:06:37,869 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 17:06:37,870 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 17:06:39,909 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:06:39,910 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 17:13:09,105 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 17:13:09,105 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 17:13:11,134 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:13:11,134 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:13:11,142 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-02 17:13:11,142 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-02 17:13:13,186 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:13:13,186 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:13:13,190 | INFO | sql-server | SQL query received: 'Show me top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-02 17:13:13,190 | INFO | sql-server | Processing SQL query: Show me top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-02 17:13:15,260 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:13:15,260 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:13:15,266 | INFO | sql-server | SQL query received: 'Show me key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-02 17:13:15,266 | INFO | sql-server | Processing SQL query: Show me key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-02 17:13:17,322 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:13:17,322 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:22:21,140 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 17:22:21,140 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 17:22:23,191 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:22:23,191 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 17:23:33,044 | INFO | sql-server | SQL query received: 'What are the four product categories?' [state_id=user-41, user=41]
+2026-01-02 17:23:33,044 | INFO | sql-server | Processing SQL query: What are the four product categories?... [state_id=user-41, user=41]
+2026-01-02 17:23:35,104 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:23:35,104 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 17:24:01,747 | INFO | sql-server | SQL query received: 'Get quarterly revenue growth data' [state_id=session123, user=system]
+2026-01-02 17:24:01,747 | INFO | sql-server | Processing SQL query: Get quarterly revenue growth data... [state_id=session123, user=system]
+2026-01-02 17:24:03,772 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:24:03,772 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:24:03,779 | INFO | sql-server | SQL query received: 'Get customer acquisition metrics' [state_id=session123, user=system]
+2026-01-02 17:24:03,779 | INFO | sql-server | Processing SQL query: Get customer acquisition metrics... [state_id=session123, user=system]
+2026-01-02 17:24:05,833 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:24:05,833 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:24:05,840 | INFO | sql-server | SQL query received: 'Get top performing teams' [state_id=session123, user=system]
+2026-01-02 17:24:05,840 | INFO | sql-server | Processing SQL query: Get top performing teams... [state_id=session123, user=system]
+2026-01-02 17:24:07,877 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:24:07,877 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:24:07,879 | INFO | sql-server | SQL query received: 'Get key product launches' [state_id=session123, user=system]
+2026-01-02 17:24:07,879 | INFO | sql-server | Processing SQL query: Get key product launches... [state_id=session123, user=system]
+2026-01-02 17:24:09,919 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:24:09,920 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 17:33:44,171 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 17:33:44,172 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 17:33:46,219 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:33:46,219 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 17:34:56,040 | INFO | sql-server | SQL query received: 'What are the four product categories?' [state_id=user-41, user=41]
+2026-01-02 17:34:56,040 | INFO | sql-server | Processing SQL query: What are the four product categories?... [state_id=user-41, user=41]
+2026-01-02 17:34:58,080 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 17:34:58,080 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 21:15:08,586 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:15:08,586 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:15:08,588 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:15:08,588 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 21:15:28,393 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:15:28,393 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:15:28,396 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:15:28,396 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 21:15:45,442 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:15:45,442 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:15:45,445 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:15:45,445 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 21:16:32,118 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:16:32,118 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:16:32,121 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:16:32,121 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 21:17:29,619 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:17:29,619 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:17:29,621 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:17:29,621 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 21:19:06,232 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 21:19:06,232 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 21:19:06,235 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 21:19:06,235 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 22:06:36,015 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 22:06:36,016 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 22:06:36,018 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 22:06:36,018 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 22:06:49,520 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 22:06:49,520 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 22:06:49,523 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 22:06:49,523 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 22:30:36,647 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 22:30:36,648 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 22:30:38,687 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:30:38,687 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 22:30:38,690 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-02 22:30:38,690 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-02 22:30:40,728 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:30:40,728 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 22:30:40,730 | INFO | sql-server | SQL query received: 'Show me top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-02 22:30:40,730 | INFO | sql-server | Processing SQL query: Show me top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-02 22:30:42,771 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:30:42,771 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 22:30:42,776 | INFO | sql-server | SQL query received: 'Show me key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-02 22:30:42,776 | INFO | sql-server | Processing SQL query: Show me key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-02 22:30:44,809 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:30:44,809 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 22:32:06,901 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 22:32:06,901 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 22:32:08,930 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:32:08,931 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 22:38:59,173 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 22:38:59,173 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 22:39:01,229 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:39:01,229 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 22:40:11,353 | INFO | sql-server | SQL query received: 'What are the four product categories?' [state_id=user-41, user=41]
+2026-01-02 22:40:11,353 | INFO | sql-server | Processing SQL query: What are the four product categories?... [state_id=user-41, user=41]
+2026-01-02 22:40:13,412 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 22:40:13,412 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 22:44:51,159 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 22:44:51,160 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 22:44:51,162 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 22:44:51,163 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 22:45:40,481 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 22:45:40,481 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 22:45:40,483 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 22:45:40,484 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-02 23:09:30,519 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 23:09:30,520 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 23:09:32,578 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:09:32,578 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 23:09:32,590 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics' [state_id=session123, user=system]
+2026-01-02 23:09:32,590 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics... [state_id=session123, user=system]
+2026-01-02 23:09:34,648 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:09:34,648 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 23:09:34,652 | INFO | sql-server | SQL query received: 'Show me top performing teams' [state_id=session123, user=system]
+2026-01-02 23:09:34,652 | INFO | sql-server | Processing SQL query: Show me top performing teams... [state_id=session123, user=system]
+2026-01-02 23:09:36,702 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:09:36,702 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 23:09:36,711 | INFO | sql-server | SQL query received: 'Show me key product launches' [state_id=session123, user=system]
+2026-01-02 23:09:36,711 | INFO | sql-server | Processing SQL query: Show me key product launches... [state_id=session123, user=system]
+2026-01-02 23:09:38,755 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:09:38,755 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 23:11:00,253 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-02 23:11:00,253 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-02 23:11:02,302 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:11:02,302 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-02 23:17:50,745 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-02 23:17:50,745 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-02 23:17:52,792 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:17:52,792 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 23:19:03,221 | INFO | sql-server | SQL query received: 'What are the four product categories?' [state_id=user-41, user=41]
+2026-01-02 23:19:03,221 | INFO | sql-server | Processing SQL query: What are the four product categories?... [state_id=user-41, user=41]
+2026-01-02 23:19:05,264 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-02 23:19:05,264 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-02 23:26:44,524 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-02 23:26:44,524 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-02 23:26:44,527 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-02 23:26:44,527 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-03 00:27:17,481 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-03 00:27:17,482 | INFO | sql-server |    LLM Status: {'bedrock': {'available': False, 'model': 'meta.llama3-1-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': False, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-03 00:27:17,485 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-03 00:27:17,485 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-03 01:01:28,068 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-41, user=41]
+2026-01-03 01:01:28,068 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-41, user=41]
+2026-01-03 01:01:30,112 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 01:01:30,113 | INFO | sql-server | SQL response [state_id=user-41]: chart=None
+2026-01-03 02:01:19,598 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-03 02:01:19,598 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-03 02:01:19,601 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-03 02:01:19,601 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-03 12:47:35,521 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-03 12:47:35,521 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-03 12:47:35,528 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-03 12:47:35,528 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-03 13:12:51,940 | INFO | sql-server | SQL query received: 'Get revenue growth for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:12:51,940 | INFO | sql-server | Processing SQL query: Get revenue growth for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:12:53,994 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:12:53,995 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:12:53,999 | INFO | sql-server | SQL query received: 'Get customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:12:53,999 | INFO | sql-server | Processing SQL query: Get customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:12:56,031 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:12:56,031 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:12:56,035 | INFO | sql-server | SQL query received: 'Get top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:12:56,035 | INFO | sql-server | Processing SQL query: Get top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:12:58,076 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:12:58,076 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:12:58,083 | INFO | sql-server | SQL query received: 'Get key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:12:58,083 | INFO | sql-server | Processing SQL query: Get key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:13:00,121 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:13:00,121 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:23:51,786 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-03 13:23:51,786 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-03 13:23:53,852 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:23:53,852 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:23:53,860 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:23:53,860 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:23:55,919 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:23:55,919 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:23:55,923 | INFO | sql-server | SQL query received: 'Show me top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:23:55,923 | INFO | sql-server | Processing SQL query: Show me top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:23:57,966 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:23:57,966 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 13:23:57,972 | INFO | sql-server | SQL query received: 'Show me key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-03 13:23:57,972 | INFO | sql-server | Processing SQL query: Show me key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-03 13:24:00,022 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 13:24:00,022 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 14:43:40,275 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-03 14:43:40,275 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-03 14:43:42,309 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 14:43:42,309 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-03 14:58:40,354 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-71, user=71]
+2026-01-03 14:58:40,354 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-71, user=71]
+2026-01-03 14:58:42,399 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 14:58:42,400 | INFO | sql-server | SQL response [state_id=user-71]: chart=None
+2026-01-03 17:13:05,746 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-78, user=78]
+2026-01-03 17:13:05,746 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-78, user=78]
+2026-01-03 17:13:07,789 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 17:13:07,789 | INFO | sql-server | SQL response [state_id=user-78]: chart=None
+2026-01-03 17:19:27,626 | INFO | sql-server | SQL query received: 'What are the four categories of products?' [state_id=user-77, user=77]
+2026-01-03 17:19:27,626 | INFO | sql-server | Processing SQL query: What are the four categories of products?... [state_id=user-77, user=77]
+2026-01-03 17:19:29,664 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-03 17:19:29,664 | INFO | sql-server | SQL response [state_id=user-77]: chart=None
+2026-01-03 19:29:43,116 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-03 19:29:43,116 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-03 19:29:43,119 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-03 19:29:43,119 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
