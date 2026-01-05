@@ -1468,3 +1468,79 @@
 2026-01-03 20:36:10,093 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
 2026-01-03 20:36:10,805 | INFO | knowledgebase-server | ✅ SmartVisualizationTool created chart: charts/kb/pie_user-93_20260103_203610.png
 2026-01-03 20:36:10,805 | INFO | knowledgebase-server | KB response [state_id=user-93]: chart=charts/kb/pie_user-93_20260103_203610.png
+2026-01-04 00:45:08,815 | INFO | knowledgebase-server | Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-01-04 00:45:08,817 | INFO | knowledgebase-server | Loading existing embeddings from ..\Vector\data\vectordb\embeddings.pkl
+2026-01-04 00:45:08,818 | INFO | knowledgebase-server | Loaded 277 document chunks
+2026-01-04 00:45:08,818 | INFO | knowledgebase-server | Vector database initialized successfully
+2026-01-04 00:45:09,500 | INFO | knowledgebase-server | ✅ MultiProviderLLM initialized
+2026-01-04 00:45:09,500 | INFO | knowledgebase-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 00:45:09,501 | INFO | knowledgebase-server | ✅ SmartVisualizationTool initialized (auto-detect charts)
+2026-01-04 00:45:09,503 | INFO | knowledgebase-server | Starting Knowledge Base MCP Server (stdio)...
+2026-01-04 00:45:09,503 | INFO | knowledgebase-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:05:31,732 | INFO | knowledgebase-server | KB query received: 'Who gave the budget speech?' [state_id=user-98]
+2026-01-04 01:05:31,732 | INFO | knowledgebase-server | Processing KB query: Who gave the budget speech?... [state_id=user-98]
+2026-01-04 01:05:32,887 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:05:33,145 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:05:33,145 | INFO | knowledgebase-server | KB response [state_id=user-98]: chart=None
+2026-01-04 01:06:59,641 | INFO | knowledgebase-server | KB query received: 'Who delivered the budget speech?' [state_id=user-98]
+2026-01-04 01:06:59,641 | INFO | knowledgebase-server | Processing KB query: Who delivered the budget speech?... [state_id=user-98]
+2026-01-04 01:07:00,122 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:07:00,379 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:07:00,379 | INFO | knowledgebase-server | KB response [state_id=user-98]: chart=None
+2026-01-04 01:07:38,201 | INFO | knowledgebase-server | KB query received: 'Who gave the budget speech?' [state_id=user-112]
+2026-01-04 01:07:38,201 | INFO | knowledgebase-server | Processing KB query: Who gave the budget speech?... [state_id=user-112]
+2026-01-04 01:07:38,701 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:07:38,961 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:07:38,961 | INFO | knowledgebase-server | KB response [state_id=user-112]: chart=None
+2026-01-04 01:07:39,710 | INFO | knowledgebase-server | KB query received: 'Who delivered the budget speech?' [state_id=user-113]
+2026-01-04 01:07:39,710 | INFO | knowledgebase-server | Processing KB query: Who delivered the budget speech?... [state_id=user-113]
+2026-01-04 01:07:40,192 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:07:40,487 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:07:40,488 | INFO | knowledgebase-server | KB response [state_id=user-113]: chart=None
+2026-01-04 01:17:33,184 | INFO | knowledgebase-server | Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-01-04 01:17:33,185 | INFO | knowledgebase-server | Loading existing embeddings from ..\Vector\data\vectordb\embeddings.pkl
+2026-01-04 01:17:33,189 | INFO | knowledgebase-server | Loaded 277 document chunks
+2026-01-04 01:17:33,189 | INFO | knowledgebase-server | Vector database initialized successfully
+2026-01-04 01:17:33,274 | INFO | knowledgebase-server | Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-01-04 01:17:33,274 | INFO | knowledgebase-server | Loading existing embeddings from ..\Vector\data\vectordb\embeddings.pkl
+2026-01-04 01:17:33,276 | INFO | knowledgebase-server | Loaded 277 document chunks
+2026-01-04 01:17:33,276 | INFO | knowledgebase-server | Vector database initialized successfully
+2026-01-04 01:17:34,201 | INFO | knowledgebase-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:34,201 | INFO | knowledgebase-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:34,203 | INFO | knowledgebase-server | ✅ SmartVisualizationTool initialized (auto-detect charts)
+2026-01-04 01:17:34,206 | INFO | knowledgebase-server | Starting Knowledge Base MCP Server (stdio)...
+2026-01-04 01:17:34,206 | INFO | knowledgebase-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:17:34,256 | INFO | knowledgebase-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:34,256 | INFO | knowledgebase-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:34,259 | INFO | knowledgebase-server | ✅ SmartVisualizationTool initialized (auto-detect charts)
+2026-01-04 01:17:34,262 | INFO | knowledgebase-server | Starting Knowledge Base MCP Server (stdio)...
+2026-01-04 01:17:34,262 | INFO | knowledgebase-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:17:34,680 | INFO | knowledgebase-server | Loaded embedding model: sentence-transformers/all-MiniLM-L6-v2
+2026-01-04 01:17:34,681 | INFO | knowledgebase-server | Loading existing embeddings from ..\Vector\data\vectordb\embeddings.pkl
+2026-01-04 01:17:34,682 | INFO | knowledgebase-server | Loaded 277 document chunks
+2026-01-04 01:17:34,682 | INFO | knowledgebase-server | Vector database initialized successfully
+2026-01-04 01:17:35,700 | INFO | knowledgebase-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:35,700 | INFO | knowledgebase-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:35,703 | INFO | knowledgebase-server | ✅ SmartVisualizationTool initialized (auto-detect charts)
+2026-01-04 01:17:35,706 | INFO | knowledgebase-server | Starting Knowledge Base MCP Server (stdio)...
+2026-01-04 01:17:35,706 | INFO | knowledgebase-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:21:24,035 | INFO | knowledgebase-server | KB query received: 'Who gave the budget speech?' [state_id=user-130]
+2026-01-04 01:21:24,035 | INFO | knowledgebase-server | Processing KB query: Who gave the budget speech?... [state_id=user-130]
+2026-01-04 01:21:25,139 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:21:25,396 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:21:25,396 | INFO | knowledgebase-server | KB response [state_id=user-130]: chart=None
+2026-01-04 01:21:26,088 | INFO | knowledgebase-server | KB query received: 'Who delivered the budget speech?' [state_id=user-131]
+2026-01-04 01:21:26,088 | INFO | knowledgebase-server | Processing KB query: Who delivered the budget speech?... [state_id=user-131]
+2026-01-04 01:21:26,571 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:21:26,842 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:21:26,842 | INFO | knowledgebase-server | KB response [state_id=user-131]: chart=None
+2026-01-04 01:41:13,322 | INFO | knowledgebase-server | KB query received: 'Who gave the budget speech?' [state_id=user-157]
+2026-01-04 01:41:13,322 | INFO | knowledgebase-server | Processing KB query: Who gave the budget speech?... [state_id=user-157]
+2026-01-04 01:41:13,820 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:41:14,117 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:41:14,117 | INFO | knowledgebase-server | KB response [state_id=user-157]: chart=None
+2026-01-04 01:42:16,532 | INFO | knowledgebase-server | KB query received: 'Who delivered the budget speech?' [state_id=user-158]
+2026-01-04 01:42:16,532 | INFO | knowledgebase-server | Processing KB query: Who delivered the budget speech?... [state_id=user-158]
+2026-01-04 01:42:16,964 | INFO | knowledgebase-server | ✅ KB answer generated via bedrock
+2026-01-04 01:42:17,212 | INFO | knowledgebase-server | Visualization: No chartable data found in result
+2026-01-04 01:42:17,212 | INFO | knowledgebase-server | KB response [state_id=user-158]: chart=None

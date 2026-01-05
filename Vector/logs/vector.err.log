@@ -6,3 +6,5 @@ INFO:     Application startup complete.
 INFO:     Uvicorn running on http://0.0.0.0:8001 (Press CTRL+C to quit)
 2026-01-03 12:41:11,379 INFO request complete | request_id=1093a9c0e6c54210b6dfd684ebbd06e6 path=/health status=200 duration_ms=1.81
 INFO:secure_rag:request complete | request_id=1093a9c0e6c54210b6dfd684ebbd06e6 path=/health status=200 duration_ms=1.81
+2026-01-04 00:42:32,594 INFO request complete | request_id=96e5f070e7fc488da485641712b07691 path=/health status=200 duration_ms=15.38
+INFO:secure_rag:request complete | request_id=96e5f070e7fc488da485641712b07691 path=/health status=200 duration_ms=15.38

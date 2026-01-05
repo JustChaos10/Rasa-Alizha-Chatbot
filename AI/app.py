@@ -404,6 +404,8 @@ def chat():
             adaptive_card = result.get("payload", {})
         elif result_data.get("type") == "adaptive_card":
             adaptive_card = result_data.get("card")
+        elif isinstance(result_data.get("data"), dict) and result_data["data"].get("type") == "adaptive_card":
+            adaptive_card = result_data["data"].get("card")
         else:
             tool_calls = result_data.get("tool_calls", [])
             for call in tool_calls:
@@ -534,12 +536,17 @@ def chat():
             result_metadata = {}
             if result_data.get("metadata"):
                 result_metadata = result_data["metadata"]
+            elif isinstance(result_data.get("data"), dict) and isinstance(result_data["data"].get("metadata"), dict):
+                result_metadata = result_data["data"]["metadata"]
             else:
                 for call in result_data.get("tool_calls", []):
                     call_result = call.get("result", {})
                     data_block = call_result.get("data", call_result)
-                    if isinstance(data_block, dict) and data_block.get("metadata"):
+                    if isinstance(data_block, dict) and isinstance(data_block.get("metadata"), dict):
                         result_metadata = data_block["metadata"]
+                        break
+                    if isinstance(data_block, dict) and isinstance(data_block.get("data"), dict) and isinstance(data_block["data"].get("metadata"), dict):
+                        result_metadata = data_block["data"]["metadata"]
                         break
 
             responses.append(

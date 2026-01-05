@@ -1456,3 +1456,91 @@ connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection re
 2026-01-03 19:29:43,116 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
 2026-01-03 19:29:43,119 | INFO | sql-server | Starting SQL MCP Server (stdio)...
 2026-01-03 19:29:43,119 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 00:45:10,946 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-04 00:45:10,951 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 00:45:10,953 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-04 00:45:10,953 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:01:12,389 | INFO | sql-server | SQL query received: 'Show me quarterly revenue growth' [state_id=session123, user=system]
+2026-01-04 01:01:12,389 | INFO | sql-server | Processing SQL query: Show me quarterly revenue growth... [state_id=session123, user=system]
+2026-01-04 01:01:14,440 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:01:14,440 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:01:14,445 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics' [state_id=session123, user=system]
+2026-01-04 01:01:14,445 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics... [state_id=session123, user=system]
+2026-01-04 01:01:16,494 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:01:16,494 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:01:16,497 | INFO | sql-server | SQL query received: 'Show me top performing teams' [state_id=session123, user=system]
+2026-01-04 01:01:16,497 | INFO | sql-server | Processing SQL query: Show me top performing teams... [state_id=session123, user=system]
+2026-01-04 01:01:18,546 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:01:18,546 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:01:18,549 | INFO | sql-server | SQL query received: 'Show me key product launches' [state_id=session123, user=system]
+2026-01-04 01:01:18,549 | INFO | sql-server | Processing SQL query: Show me key product launches... [state_id=session123, user=system]
+2026-01-04 01:01:20,598 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:01:20,598 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:06:32,685 | INFO | sql-server | SQL query received: 'Get quarterly revenue growth' [state_id=session123, user=system]
+2026-01-04 01:06:32,685 | INFO | sql-server | Processing SQL query: Get quarterly revenue growth... [state_id=session123, user=system]
+2026-01-04 01:06:34,732 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:06:34,732 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:06:34,735 | INFO | sql-server | SQL query received: 'Get customer acquisition metrics' [state_id=session123, user=system]
+2026-01-04 01:06:34,735 | INFO | sql-server | Processing SQL query: Get customer acquisition metrics... [state_id=session123, user=system]
+2026-01-04 01:06:36,785 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:06:36,785 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:06:36,789 | INFO | sql-server | SQL query received: 'Get top performing teams' [state_id=session123, user=system]
+2026-01-04 01:06:36,789 | INFO | sql-server | Processing SQL query: Get top performing teams... [state_id=session123, user=system]
+2026-01-04 01:06:38,839 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:06:38,839 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:06:38,843 | INFO | sql-server | SQL query received: 'Get key product launches' [state_id=session123, user=system]
+2026-01-04 01:06:38,843 | INFO | sql-server | Processing SQL query: Get key product launches... [state_id=session123, user=system]
+2026-01-04 01:06:40,891 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:06:40,892 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:17:36,577 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:36,577 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:36,581 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-04 01:17:36,581 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:17:36,665 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:36,665 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:36,669 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-04 01:17:36,669 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:17:38,083 | INFO | sql-server | ✅ MultiProviderLLM initialized
+2026-01-04 01:17:38,083 | INFO | sql-server |    LLM Status: {'bedrock': {'available': True, 'model': 'meta.llama3-8b-instruct-v1:0', 'failures': 0}, 'groq': {'available': True, 'model': 'llama-3.3-70b-versatile', 'failures': 0}, 'google': {'available': True, 'model': 'gemini-2.5-pro', 'failures': 0}}
+2026-01-04 01:17:38,086 | INFO | sql-server | Starting SQL MCP Server (stdio)...
+2026-01-04 01:17:38,087 | INFO | sql-server | Architecture: Schema-Driven Visualization + Multi-Provider LLM
+2026-01-04 01:20:16,548 | INFO | sql-server | SQL query received: 'Show me top 5 products by sales' [state_id=session123, user=system]
+2026-01-04 01:20:16,548 | INFO | sql-server | Processing SQL query: Show me top 5 products by sales... [state_id=session123, user=system]
+2026-01-04 01:20:18,609 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:20:18,610 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:20:18,613 | INFO | sql-server | SQL query received: 'Show me customer acquisition metrics for the last quarter' [state_id=session123, user=system]
+2026-01-04 01:20:18,613 | INFO | sql-server | Processing SQL query: Show me customer acquisition metrics for the last quarter... [state_id=session123, user=system]
+2026-01-04 01:20:20,674 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:20:20,674 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:20:20,677 | INFO | sql-server | SQL query received: 'Show me top performing teams for the last quarter' [state_id=session123, user=system]
+2026-01-04 01:20:20,677 | INFO | sql-server | Processing SQL query: Show me top performing teams for the last quarter... [state_id=session123, user=system]
+2026-01-04 01:20:22,728 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:20:22,728 | INFO | sql-server | SQL response [state_id=session123]: chart=None
+2026-01-04 01:20:22,731 | INFO | sql-server | SQL query received: 'Show me key product launches for the last quarter' [state_id=session123, user=system]
+2026-01-04 01:20:22,731 | INFO | sql-server | Processing SQL query: Show me key product launches for the last quarter... [state_id=session123, user=system]
+2026-01-04 01:20:24,780 | ERROR | sql-server | Error processing query: connection to server at "127.0.0.1", port 55432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+
+2026-01-04 01:20:24,781 | INFO | sql-server | SQL response [state_id=session123]: chart=None

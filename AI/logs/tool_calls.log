@@ -461,3 +461,63 @@
 2026-01-03 20:41:11,843 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
 2026-01-03 20:42:34,735 | INFO | ROUTING | message="My favorite color is blue." | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
 2026-01-03 20:43:44,093 | INFO | ROUTING | message="What's my favorite color?" | intent=nlu_fallback | confidence=0.0 | tool=chat | type=ToolType.CODE_EXECUTION
+2026-01-04 00:45:14,169 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 00:46:37,610 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 00:48:14,922 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 00:49:59,843 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=chat | type=ToolType.CODE_EXECUTION
+2026-01-04 00:51:20,753 | INFO | ROUTING | message="What is the weather in bangalore like today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 00:52:41,287 | INFO | ROUTING | message="How is the weather in Riyadh today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 00:54:04,962 | INFO | ROUTING | message="Give me top headlines about AI" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 00:55:30,640 | INFO | ROUTING | message="Generate a survey" | intent=nlu_fallback | confidence=0.0 | tool=survey | type=ToolType.CODE_EXECUTION
+2026-01-04 00:56:50,736 | INFO | ROUTING | message="Collect my info" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 00:58:15,035 | INFO | ROUTING | message="Show my info / Show my contact card" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 00:59:40,118 | INFO | ROUTING | message="Create a brochure on Coffee" | intent=nlu_fallback | confidence=0.0 | tool=brochure.generate_brochure | type=ToolType.MCP_SERVER
+2026-01-04 01:01:20,600 | INFO | ROUTING | message="Create a quarterly business performance dashboard ..." | intent=nlu_fallback | confidence=0.0 | tool=sql.sql_query | type=ToolType.MCP_SERVER
+2026-01-04 01:02:40,786 | INFO | SESSION_START | session_id=leave_session | tool=leave.analyze_leave_request
+2026-01-04 01:02:40,786 | INFO | ROUTING | message="Can i take a leave ?" | intent=nlu_fallback | confidence=0.0 | tool=leave.analyze_leave_request | type=ToolType.MCP_SERVER
+2026-01-04 01:03:58,465 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:03:59,539 | INFO | ROUTING | message="How is the weather in Riyadh today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:04:01,028 | INFO | ROUTING | message="What is Akash's salary?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:05:10,924 | INFO | ROUTING | message="Generate a survey" | intent=nlu_fallback | confidence=0.0 | tool=survey | type=ToolType.CODE_EXECUTION
+2026-01-04 01:05:11,301 | INFO | ROUTING | message="Give me top headlines about AI" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:05:14,081 | INFO | ROUTING | message="Create a brochure on Coffee" | intent=nlu_fallback | confidence=0.0 | tool=brochure.generate_brochure | type=ToolType.MCP_SERVER
+2026-01-04 01:05:33,149 | INFO | ROUTING | message="Who gave the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:06:21,289 | INFO | SESSION_START | session_id=leave_session | tool=leave.analyze_leave_request
+2026-01-04 01:06:21,289 | INFO | ROUTING | message="Can i take a leave ?" | intent=nlu_fallback | confidence=0.0 | tool=leave.analyze_leave_request | type=ToolType.MCP_SERVER
+2026-01-04 01:06:24,115 | INFO | ROUTING | message="What is Akash's salary?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:06:40,894 | INFO | ROUTING | message="Create a quarterly business performance dashboard ..." | intent=nlu_fallback | confidence=0.0 | tool=sql.sql_query | type=ToolType.MCP_SERVER
+2026-01-04 01:07:00,381 | INFO | ROUTING | message="Who delivered the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:07:38,964 | INFO | ROUTING | message="Who gave the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:07:40,489 | INFO | ROUTING | message="Who delivered the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:08:57,928 | INFO | ROUTING | message="Collect my info" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 01:17:38,786 | INFO | ROUTING | message="What is the weather in bangalore like today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:17:39,389 | INFO | ROUTING | message="How is the weather in Riyadh today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:17:40,292 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:18:52,314 | INFO | ROUTING | message="Give me top headlines about AI" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:18:55,782 | INFO | ROUTING | message="Create a brochure on Coffee" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:18:56,020 | INFO | ROUTING | message="Generate a survey" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:20:05,601 | INFO | SESSION_START | session_id=leave_session | tool=leave.analyze_leave_request
+2026-01-04 01:20:05,601 | INFO | ROUTING | message="Can i take a leave ?" | intent=nlu_fallback | confidence=0.0 | tool=leave.analyze_leave_request | type=ToolType.MCP_SERVER
+2026-01-04 01:20:16,551 | INFO | ROUTING | message="What is Akash's salary?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:20:24,782 | INFO | ROUTING | message="Create a quarterly business performance dashboard ..." | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:21:25,399 | INFO | ROUTING | message="Who gave the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:21:26,844 | INFO | ROUTING | message="Who delivered the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:22:44,702 | INFO | ROUTING | message="Collect my info" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 01:25:45,119 | INFO | ROUTING | message="Create a brochure on Coffee" | intent=nlu_fallback | confidence=0.0 | tool=brochure.generate_brochure | type=ToolType.MCP_SERVER
+2026-01-04 01:27:15,774 | INFO | ROUTING | message="Collect my info" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 01:30:46,076 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:30:46,309 | INFO | ROUTING | message="How is the weather in Riyadh today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:31:57,996 | INFO | ROUTING | message="Give me top headlines about AI" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:36:20,791 | INFO | ROUTING | message="What is a dog?" | intent=nlu_fallback | confidence=0.0 | tool=chat | type=ToolType.CODE_EXECUTION
+2026-01-04 01:37:28,239 | INFO | ROUTING | message="How is the weather in Riyadh today?" | intent=nlu_fallback | confidence=0.0 | tool=weather | type=ToolType.CODE_EXECUTION
+2026-01-04 01:37:32,680 | INFO | ROUTING | message="Give me top headlines about AI" | intent=nlu_fallback | confidence=0.0 | tool=news | type=ToolType.CODE_EXECUTION
+2026-01-04 01:38:39,562 | INFO | ROUTING | message="Generate a survey" | intent=nlu_fallback | confidence=0.0 | tool=survey | type=ToolType.CODE_EXECUTION
+2026-01-04 01:38:45,850 | INFO | ROUTING | message="Create a brochure on Coffee" | intent=nlu_fallback | confidence=0.0 | tool=brochure.generate_brochure | type=ToolType.MCP_SERVER
+2026-01-04 01:39:59,351 | INFO | ROUTING | message="Create an adaptive card for a quarterly business p..." | intent=nlu_fallback | confidence=0.0 | tool=adaptive_card | type=ToolType.CODE_EXECUTION
+2026-01-04 01:40:04,591 | INFO | SESSION_START | session_id=leave_session | tool=leave.analyze_leave_request
+2026-01-04 01:40:04,592 | INFO | ROUTING | message="Can i take a leave ?" | intent=nlu_fallback | confidence=0.0 | tool=leave.analyze_leave_request | type=ToolType.MCP_SERVER
+2026-01-04 01:41:08,589 | INFO | ROUTING | message="What is Akash's salary?" | intent=nlu_fallback | confidence=0.0 | tool=secure_rag.secure_query | type=ToolType.MCP_SERVER
+2026-01-04 01:41:14,119 | INFO | ROUTING | message="Who gave the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:42:17,214 | INFO | ROUTING | message="Who delivered the budget speech?" | intent=nlu_fallback | confidence=0.0 | tool=knowledgebase.knowledgebase_query | type=ToolType.MCP_SERVER
+2026-01-04 01:43:33,629 | INFO | ROUTING | message="Collect my info" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
+2026-01-04 01:47:56,560 | INFO | ROUTING | message="Show my contact card" | intent=nlu_fallback | confidence=0.0 | tool=contact_form | type=ToolType.CODE_EXECUTION
